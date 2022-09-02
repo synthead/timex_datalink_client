@@ -2,7 +2,9 @@
 
 class TimexDatalinkClient
   class Sync
-    SYNC_BYTE = "U"
+    SYNC_1_BYTE = "U"
+    SYNC_2_BYTE = "\xaa"
+    SYNC_2_LENGTH = 40
 
     attr_accessor :length
 
@@ -11,7 +13,17 @@ class TimexDatalinkClient
     end
 
     def render
-      SYNC_BYTE * length
+      render_sync_1 + render_sync_2
+    end
+
+    private
+
+    def render_sync_1
+      SYNC_1_BYTE * length
+    end
+
+    def render_sync_2
+      SYNC_2_BYTE * SYNC_2_LENGTH
     end
   end
 end

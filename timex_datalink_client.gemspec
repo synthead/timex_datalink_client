@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/synthead/timex_datalink_client"
   s.license     = "MIT"
 
+  s.add_dependency "crc", "~> 0.4.2"
   s.add_dependency "rubyserial", "~> 0.6.0"
 
   s.add_development_dependency "rspec", "~> 3.11.0"

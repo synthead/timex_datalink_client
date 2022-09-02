@@ -15,14 +15,13 @@ class TimexDatalinkClient
   end
 
   def write
-    models_to_write.each do |model|
-      notebook_adapter.write(model.render)
-    end
+    rendered_models = models_to_write.map(&:render)
+    notebook_adapter.write(rendered_models)
   end
 
   private
 
   def notebook_adapter
-    @notebook_adapter ||= NotebookAdapter.new(serial_device: serial_device)
+    @notebook_adapter ||= NotebookAdapter.new(serial_device)
   end
 end

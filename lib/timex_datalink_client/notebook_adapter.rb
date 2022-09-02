@@ -2,17 +2,24 @@
 
 class TimexDatalinkClient
   class NotebookAdapter
-    attr_accessor :serial_device, :serial_sleep
+    BYTE_SLEEP = 0.025
+    PACKET_SLEEP = 0.25
 
-    def initialize(serial_device:, serial_sleep: 0.025)
+    attr_accessor :serial_device
+
+    def initialize(serial_device)
       @serial_device = serial_device
-      @serial_sleep = serial_sleep
     end
 
-    def write(bytes)
-      bytes.each_char do |byte|
-        serial.write(byte)
-        sleep(serial_sleep)
+    def write(packets)
+      packets.each do |packet|
+        packet.each_char do |byte|
+          serial.write(byte)
+
+          sleep(BYTE_SLEEP)
+        end
+
+        sleep(PACKET_SLEEP)
       end
     end
 

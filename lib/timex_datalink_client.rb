@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 require "rubyserial"
+require "crc"
 
+require "timex_datalink_client/crc"
+require "timex_datalink_client/end"
 require "timex_datalink_client/notebook_adapter"
+require "timex_datalink_client/start"
 require "timex_datalink_client/sync"
 require "timex_datalink_client/version"
 

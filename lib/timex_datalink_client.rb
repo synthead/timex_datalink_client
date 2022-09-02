@@ -3,11 +3,13 @@
 require "rubyserial"
 require "crc"
 
+require "timex_datalink_client/char_encoder"
 require "timex_datalink_client/crc"
 require "timex_datalink_client/end"
 require "timex_datalink_client/notebook_adapter"
 require "timex_datalink_client/start"
 require "timex_datalink_client/sync"
+require "timex_datalink_client/time"
 require "timex_datalink_client/version"
 
 class TimexDatalinkClient

@@ -11,7 +11,6 @@ Gem::Specification.new do |s|
   s.email       = "synthead@gmail.com"
   s.files       = [
     "lib/timex_datalink_client.rb",
-    "lib/timex_datalink_client/serial.rb",
     "lib/timex_datalink_client/sync.rb",
     "lib/timex_datalink_client/version.rb"
   ]

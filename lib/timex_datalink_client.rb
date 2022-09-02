@@ -2,18 +2,34 @@
 
 require "rubyserial"
 
-require "timex_datalink_client/serial"
 require "timex_datalink_client/sync"
 require "timex_datalink_client/version"
 
 class TimexDatalinkClient
-  include Serial
-  include Sync
+  attr_accessor :serial_device, :serial_sleep, :models_to_write
 
-  attr_reader :serial_device, :post_write_sleep
-
-  def initialize(serial_device:, post_write_sleep: nil)
+  def initialize(serial_device:, serial_sleep: 0.025)
     @serial_device = serial_device
-    @post_write_sleep = post_write_sleep
+    @serial_sleep = serial_sleep
+    @models_to_write = []
+  end
+
+  def write
+    models_to_write.each do |model|
+      write_serial(model.render)
+    end
+  end
+
+  private
+
+  def serial
+    @serial ||= Serial.new(serial_device)
+  end
+
+  def write_serial(bytes)
+    bytes.each_char do |byte|
+      serial.write(byte)
+      sleep(serial_sleep)
+    end
   end
 end

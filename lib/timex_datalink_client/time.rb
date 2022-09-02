@@ -10,11 +10,11 @@ class TimexDatalinkClient
 
     attr_accessor :zone, :is_24h, :date_format
 
-    def initialize(zone:, time: nil, is_24h: true, date_format: 2)
+    def initialize(zone:, is_24h:, date_format:, time: nil)
       @zone = zone
-      @time = time
       @is_24h = is_24h
       @date_format = date_format
+      @time = time
     end
 
     def render

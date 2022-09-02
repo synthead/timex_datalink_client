@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
 class TimexDatalinkClient
-  class Crc
+  module Crc
+    attr_reader :render_without_crc
+
     def render
-      header + original_render + footer
+      @render_without_crc = super
+
+      crc_header + render_without_crc + crc_footer
     end
 
     private
 
-    def original_render
-      @original_render ||= render_without_crc
-    end
-
-    def header
-      length = original_render.length + 3
+    def crc_header
+      length = render_without_crc.length + 3
       length.chr
     end
 
-    def footer
-      crc = CRC.crc16_arc(header + original_render)
+    def crc_footer
+      crc = CRC.crc16_arc(crc_header + render_without_crc)
       crc.divmod(256).pack("CC")
     end
   end

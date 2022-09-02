@@ -6,11 +6,10 @@ class TimexDatalinkClient
     include CharEncoder
 
     CPACKET_TIME = "\x32"
-    TIME_OFFSET = 3.0
 
-    attr_accessor :zone, :is_24h, :date_format
+    attr_accessor :zone, :is_24h, :date_format, :time
 
-    def initialize(zone:, is_24h:, date_format:, time: nil)
+    def initialize(zone:, is_24h:, date_format:, time:)
       @zone = zone
       @is_24h = is_24h
       @date_format = date_format
@@ -37,25 +36,6 @@ class TimexDatalinkClient
         is_24h_value,
         date_format
       ].flatten
-    end
-
-    def time
-      @time ||= time_now_synced
-    end
-
-    def time_now_synced
-      offset_time = ::Time.now + TIME_OFFSET.ceil
-
-      sleep(1 - TIME_OFFSET % 1) unless TIME_OFFSET == TIME_OFFSET.to_i
-
-      seconds = offset_time.usec / 1000000.0
-
-      unless seconds.zero?
-        offset_time += 1
-        sleep(1 - seconds)
-      end
-
-      offset_time
     end
 
     def timezone_characters

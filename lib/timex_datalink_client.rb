@@ -2,34 +2,27 @@
 
 require "rubyserial"
 
+require "timex_datalink_client/notebook_adapter"
 require "timex_datalink_client/sync"
 require "timex_datalink_client/version"
 
 class TimexDatalinkClient
-  attr_accessor :serial_device, :serial_sleep, :models_to_write
+  attr_accessor :serial_device, :models_to_write
 
-  def initialize(serial_device:, serial_sleep: 0.025)
+  def initialize(serial_device)
     @serial_device = serial_device
-    @serial_sleep = serial_sleep
     @models_to_write = []
   end
 
   def write
     models_to_write.each do |model|
-      write_serial(model.render)
+      notebook_adapter.write(model.render)
     end
   end
 
   private
 
-  def serial
-    @serial ||= Serial.new(serial_device)
-  end
-
-  def write_serial(bytes)
-    bytes.each_char do |byte|
-      serial.write(byte)
-      sleep(serial_sleep)
-    end
+  def notebook_adapter
+    @notebook_adapter ||= NotebookAdapter.new(serial_device: serial_device)
   end
 end

@@ -12,8 +12,8 @@ class TimexDatalinkClient
       @length = length
     end
 
-    def render
-      render_sync_1 + render_sync_2
+    def packets
+      [render_sync_1 + render_sync_2]
     end
 
     private

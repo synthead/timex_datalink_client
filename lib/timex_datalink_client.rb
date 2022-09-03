@@ -21,8 +21,8 @@ class TimexDatalinkClient
   end
 
   def write
-    rendered_models = models_to_write.map(&:render)
-    notebook_adapter.write(rendered_models)
+    packets = models_to_write.map(&:packets).flatten
+    notebook_adapter.write(packets)
   end
 
   private

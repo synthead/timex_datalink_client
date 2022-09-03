@@ -4,8 +4,8 @@ class TimexDatalinkClient
   class End
     prepend Crc
 
-    def render
-      "!"
+    def packets
+      ["!"]
     end
   end
 end

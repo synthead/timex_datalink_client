@@ -16,8 +16,8 @@ class TimexDatalinkClient
       @time = time
     end
 
-    def render
-      CPACKET_TIME + time_array.pack("C*")
+    def packets
+      [CPACKET_TIME + time_array.pack("C*")]
     end
 
     private

@@ -13,15 +13,15 @@ require "timex_datalink_client/time"
 require "timex_datalink_client/version"
 
 class TimexDatalinkClient
-  attr_accessor :serial_device, :models_to_write
+  attr_accessor :serial_device, :models
 
-  def initialize(serial_device)
+  def initialize(serial_device:, models: [])
     @serial_device = serial_device
-    @models_to_write = []
+    @models = models
   end
 
   def write
-    packets = models_to_write.map(&:packets).flatten
+    packets = models.map(&:packets).flatten
     notebook_adapter.write(packets)
   end
 

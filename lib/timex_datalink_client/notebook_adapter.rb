@@ -13,8 +13,8 @@ class TimexDatalinkClient
 
     def write(packets)
       packets.each do |packet|
-        packet.each_char do |byte|
-          serial.write(byte)
+        packet.each_byte do |byte|
+          serial.write(byte.chr)
 
           sleep(BYTE_SLEEP)
         end

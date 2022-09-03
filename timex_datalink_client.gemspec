@@ -13,6 +13,8 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client.rb",
     "lib/timex_datalink_client/char_encoder.rb",
     "lib/timex_datalink_client/crc.rb",
+    "lib/timex_datalink_client/eeprom.rb",
+    "lib/timex_datalink_client/eeprom/appointment.rb",
     "lib/timex_datalink_client/end.rb",
     "lib/timex_datalink_client/notebook_adapter.rb",
     "lib/timex_datalink_client/start.rb",

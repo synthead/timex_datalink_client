@@ -3,7 +3,6 @@
 class TimexDatalinkClient
   class Eeprom
     prepend Crc
-    # include CharEncoder
 
     START_ADDRESS = 0x0236
     ITEMS_PER_PACKET = 32

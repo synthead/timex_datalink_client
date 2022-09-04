@@ -52,10 +52,10 @@ class TimexDatalinkClient
 
     def payload
       packets = all_items.flatten.map(&:packet).join
-      paginated_packets = packets.chars.each_slice(ITEMS_PER_PACKET).map(&:join)
+      paginated_bytes = packets.bytes.each_slice(ITEMS_PER_PACKET)
 
-      paginated_packets.each.with_index(1).map do |paginated_packet, index|
-        PAYLOAD_COMMAND + index.chr + paginated_packet
+      paginated_bytes.each.with_index(1).map do |paginated_byte, index|
+        PAYLOAD_COMMAND + index.chr + paginated_byte.pack("C*").force_encoding("UTF-8")
       end
     end
 
@@ -64,7 +64,7 @@ class TimexDatalinkClient
     end
 
     def packet_count
-      item_packets = all_items.flatten.sum { |item| item.packet.length }
+      item_packets = all_items.flatten.sum { |item| item.packet.bytesize }
       item_packets.fdiv(ITEMS_PER_PACKET).ceil
     end
 
@@ -74,9 +74,7 @@ class TimexDatalinkClient
       all_items.each_with_object([]) do |items, addresses|
         addresses.concat(address.divmod(256))
 
-        next if items.empty?
-
-        address += items.sum { |item| item.packet.length } + 1
+        address += items.sum { |item| item.packet.bytesize }
       end
     end
 

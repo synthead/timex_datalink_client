@@ -13,7 +13,7 @@ class TimexDatalinkClient
       end
 
       def packet
-        [length, packet_array].flatten.pack("C*").force_encoding("UTF-8")
+        [length] + packet_array
       end
 
       private

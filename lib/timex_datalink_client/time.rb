@@ -5,7 +5,7 @@ class TimexDatalinkClient
     prepend Crc
     include CharEncoder
 
-    CPACKET_TIME = "\x32"
+    CPACKET_TIME = [0x32]
 
     attr_accessor :zone, :is_24h, :date_format, :time
 
@@ -17,26 +17,25 @@ class TimexDatalinkClient
     end
 
     def packets
-      [CPACKET_TIME + time_array.pack("C*")]
+      [
+        [
+          CPACKET_TIME,
+          zone,
+          time.sec,
+          time.hour,
+          time.min,
+          time.month,
+          time.day,
+          year_mod_1900,
+          timezone_characters,
+          wday_from_monday,
+          is_24h_value,
+          date_format
+        ].flatten
+      ]
     end
 
     private
-
-    def time_array
-      [
-        zone,
-        time.sec,
-        time.hour,
-        time.min,
-        time.month,
-        time.day,
-        year_mod_1900,
-        timezone_characters,
-        wday_from_monday,
-        is_24h_value,
-        date_format
-      ].flatten
-    end
 
     def timezone_characters
       chars_for(time.zone.downcase)

@@ -8,10 +8,10 @@ class TimexDatalinkClient
     START_ADDRESS = 0x0236
     ITEMS_PER_PACKET = 32
 
-    CLEAR_COMMAND = "\x93\x01"
-    HEADER_COMMAND = "\x90\x01"
-    PAYLOAD_COMMAND = "\x91\x01"
-    END_COMMAND = "\x92\x01"
+    CLEAR_COMMAND = [0x93, 0x01]
+    HEADER_COMMAND = [0x90, 0x01]
+    PAYLOAD_COMMAND = [0x91, 0x01]
+    END_COMMAND = [0x92, 0x01]
 
     APPOINTMENT_NO_NOTIFICATION = 0xff
 
@@ -26,22 +26,14 @@ class TimexDatalinkClient
     end
 
     def packets
-      [
-        CLEAR_COMMAND,
-        header,
-        payload,
-        END_COMMAND
-      ].flatten
+      [CLEAR_COMMAND, header] + payload + [END_COMMAND]
     end
 
     private
 
     def header
-      HEADER_COMMAND + header_array.pack("C*").force_encoding("UTF-8")
-    end
-
-    def header_array
       [
+        HEADER_COMMAND,
         packet_count,
         items_addresses,
         items_lengths,
@@ -51,11 +43,11 @@ class TimexDatalinkClient
     end
 
     def payload
-      packets = all_items.flatten.map(&:packet).join
-      paginated_bytes = packets.bytes.each_slice(ITEMS_PER_PACKET)
+      all_packets = all_items.flatten.map(&:packet).flatten
+      paginated_packets = all_packets.each_slice(ITEMS_PER_PACKET)
 
-      paginated_bytes.each.with_index(1).map do |paginated_byte, index|
-        PAYLOAD_COMMAND + index.chr + paginated_byte.pack("C*").force_encoding("UTF-8")
+      paginated_packets.each.with_index(1).map do |paginated_packet, index|
+        PAYLOAD_COMMAND + [index] + paginated_packet
       end
     end
 
@@ -64,7 +56,7 @@ class TimexDatalinkClient
     end
 
     def packet_count
-      item_packets = all_items.flatten.sum { |item| item.packet.bytesize }
+      item_packets = all_items.flatten.sum { |item| item.packet.length }
       item_packets.fdiv(ITEMS_PER_PACKET).ceil
     end
 
@@ -74,7 +66,7 @@ class TimexDatalinkClient
       all_items.each_with_object([]) do |items, addresses|
         addresses.concat(address.divmod(256))
 
-        address += items.sum { |item| item.packet.bytesize }
+        address += items.sum { |item| item.packet.length }
       end
     end
 

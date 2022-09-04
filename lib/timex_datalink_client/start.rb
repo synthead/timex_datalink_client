@@ -5,7 +5,9 @@ class TimexDatalinkClient
     prepend Crc
 
     def packets
-      [" \0\0\03"]
+      [
+        [0x20, 0x00, 0x00, 0x03]
+      ]
     end
   end
 end

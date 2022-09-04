@@ -11,13 +11,14 @@ class TimexDatalinkClient
     private
 
     def crc_header(packet)
-      length = packet.bytesize + 3
-      length.chr.force_encoding("UTF-8")
+      [packet.length + 3]
     end
 
     def crc_footer(packet)
-      crc = CRC.crc16_arc(crc_header(packet) + packet)
-      crc.divmod(256).pack("CC").force_encoding("UTF-8")
+      crc_check = (crc_header(packet) + packet).pack("C*")
+      crc = CRC.crc16_arc(crc_check)
+
+      crc.divmod(256)
     end
   end
 end

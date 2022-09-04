@@ -28,7 +28,8 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/start.rb",
     "lib/timex_datalink_client/sync.rb",
     "lib/timex_datalink_client/time.rb",
-    "lib/timex_datalink_client/version.rb"
+    "lib/timex_datalink_client/version.rb",
+    "lib/timex_datalink_client/wrist_app.rb"
   ]
   s.homepage    = "https://github.com/synthead/timex_datalink_client"
   s.license     = "MIT"

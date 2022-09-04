@@ -22,6 +22,7 @@ require "timex_datalink_client/start"
 require "timex_datalink_client/sync"
 require "timex_datalink_client/time"
 require "timex_datalink_client/version"
+require "timex_datalink_client/wrist_app"
 
 class TimexDatalinkClient
   attr_accessor :serial_device, :models

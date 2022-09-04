@@ -4,6 +4,7 @@ class TimexDatalinkClient
   class Sync
     SYNC_1_BYTE = [0x55]
     SYNC_2_BYTE = [0xaa]
+
     SYNC_2_LENGTH = 40
 
     attr_accessor :length

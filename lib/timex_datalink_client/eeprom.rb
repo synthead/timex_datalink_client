@@ -5,13 +5,12 @@ class TimexDatalinkClient
     prepend Crc
     include PaginateCpackets
 
+    CPACKET_CLEAR = [0x93, 0x01]
+    CPACKET_SECT = [0x90, 0x01]
+    CPACKET_DATA = [0x91, 0x01]
+    CPACKET_END = [0x92, 0x01]
+
     START_ADDRESS = 0x0236
-
-    CLEAR_COMMAND = [0x93, 0x01]
-    HEADER_COMMAND = [0x90, 0x01]
-    PAYLOAD_COMMAND = [0x91, 0x01]
-    END_COMMAND = [0x92, 0x01]
-
     APPOINTMENT_NO_NOTIFICATION = 0xff
 
     attr_accessor :appointments, :anniversaries, :phone_numbers, :lists, :appointment_notification
@@ -25,14 +24,14 @@ class TimexDatalinkClient
     end
 
     def packets
-      [CLEAR_COMMAND, header] + payloads + [END_COMMAND]
+      [CPACKET_CLEAR, header] + payloads + [CPACKET_END]
     end
 
     private
 
     def header
       [
-        HEADER_COMMAND,
+        CPACKET_SECT,
         payloads.length,
         items_addresses,
         items_lengths,
@@ -42,7 +41,7 @@ class TimexDatalinkClient
     end
 
     def payloads
-      paginate_cpackets(header: PAYLOAD_COMMAND, cpackets: all_packets)
+      paginate_cpackets(header: CPACKET_DATA, cpackets: all_packets)
     end
 
     def all_items

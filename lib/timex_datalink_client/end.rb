@@ -4,10 +4,10 @@ class TimexDatalinkClient
   class End
     prepend Crc
 
+    CPACKET_SKIP = [0x21]
+
     def packets
-      [
-        [0x21]
-      ]
+      [CPACKET_SKIP]
     end
   end
 end

@@ -5,11 +5,11 @@ class TimexDatalinkClient
     prepend Crc
     include PaginateCpackets
 
-    CLOAD_SECT_SOUND = [0x90, 0x03]
-    CPACKET_DATA_SOUND = [0x91, 0x03]
-    CPACKET_END_SOUND = [0x92, 0x03]
+    CPACKET_SECT = [0x90, 0x03]
+    CPACKET_DATA = [0x91, 0x03]
+    CPACKET_END = [0x92, 0x03]
 
-    SOUND_FILE_HEADER = "\x25\x04\x19\x69"
+    SOUND_DATA_HEADER = "\x25\x04\x19\x69"
 
     attr_accessor :sound_data
 
@@ -18,21 +18,21 @@ class TimexDatalinkClient
     end
 
     def packets
-      [load_sect] + payloads + [CPACKET_END_SOUND]
+      [load_sect] + payloads + [CPACKET_END]
     end
 
     private
 
     def sound_bytes
-      sound_data.delete_prefix(SOUND_FILE_HEADER).bytes
+      sound_data.delete_prefix(SOUND_DATA_HEADER).bytes
     end
 
     def load_sect
-      CLOAD_SECT_SOUND + [payloads.length, offset]
+      CPACKET_SECT + [payloads.length, offset]
     end
 
     def payloads
-      paginate_cpackets(header: CPACKET_DATA_SOUND, cpackets: sound_bytes)
+      paginate_cpackets(header: CPACKET_DATA, cpackets: sound_bytes)
     end
 
     def offset

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "rubyserial"
+
 class TimexDatalinkClient
   class NotebookAdapter
     BYTE_SLEEP = 0.025

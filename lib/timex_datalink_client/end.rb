@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require "timex_datalink_client/helpers/crc_packets_wrapper"
+
 class TimexDatalinkClient
   class End
-    prepend Crc
+    prepend Helpers::CrcPacketsWrapper
 
     CPACKET_SKIP = [0x21]
 

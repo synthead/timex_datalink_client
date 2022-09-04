@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require "timex_datalink_client/helpers/crc_packets_wrapper"
+
 class TimexDatalinkClient
   class SoundOptions
-    prepend Crc
+    prepend Helpers::CrcPacketsWrapper
 
     CPACKET_BEEPS = [0x71]
 

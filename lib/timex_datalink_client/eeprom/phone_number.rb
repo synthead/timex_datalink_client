@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
+require "timex_datalink_client/helpers/char_encoders"
+require "timex_datalink_client/helpers/length_packet_wrapper"
+
 class TimexDatalinkClient
   class Eeprom
     class PhoneNumber
-      prepend PrependLength
-      include CharEncoder
+      include Helpers::CharEncoders
+      prepend Helpers::LengthPacketWrapper
 
       PHONE_DIGITS = 12
 

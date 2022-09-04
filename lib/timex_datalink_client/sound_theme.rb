@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
+require "timex_datalink_client/helpers/cpacket_paginator"
+require "timex_datalink_client/helpers/crc_packets_wrapper"
+
 class TimexDatalinkClient
   class SoundTheme
-    prepend Crc
-    include PaginateCpackets
+    include Helpers::CpacketPaginator
+    prepend Helpers::CrcPacketsWrapper
 
     CPACKET_SECT = [0x90, 0x03]
     CPACKET_DATA = [0x91, 0x03]

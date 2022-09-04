@@ -26,7 +26,7 @@ class TimexDatalinkClient
     end
 
     def packets
-      [CLEAR_COMMAND, header] + payload + [END_COMMAND]
+      [CLEAR_COMMAND, header] + payloads + [END_COMMAND]
     end
 
     private
@@ -42,7 +42,7 @@ class TimexDatalinkClient
       ].flatten
     end
 
-    def payload
+    def payloads
       all_packets = all_items.flatten.map(&:packet).flatten
       paginated_packets = all_packets.each_slice(ITEMS_PER_PACKET)
 

@@ -60,7 +60,7 @@ class TimexDatalinkClient
     end
 
     def all_items
-      [appointments, anniversaries, phone_numbers, lists]
+      [appointments, lists, phone_numbers, anniversaries]
     end
 
     def packet_count

@@ -5,7 +5,7 @@ class TimexDatalinkClient
     class PhoneNumber
       include CharEncoder
 
-      NUMBER_LENGTH_ADD_TYPE = 10
+      PHONE_DIGITS = 12
 
       attr_accessor :name, :number, :type
 
@@ -28,12 +28,15 @@ class TimexDatalinkClient
         ].flatten
       end
 
-      def number_with_type
-        "#{number} #{type}"
+      def number_with_type_truncated
+        number_with_type = "#{number} #{type}"
+        padded_number_with_type = number_with_type.rjust(PHONE_DIGITS)
+
+        padded_number_with_type[0..PHONE_DIGITS - 1]
       end
 
       def number_characters
-        phone_chars_for(number_with_type)
+        phone_chars_for(number_with_type_truncated)
       end
 
       def name_characters

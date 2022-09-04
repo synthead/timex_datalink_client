@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TimexDatalinkClient
-  class Sounds
+  class SoundTheme
     prepend Crc
     include PaginateCpackets
 

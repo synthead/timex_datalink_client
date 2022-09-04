@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/eeprom/prepend_length.rb",
     "lib/timex_datalink_client/end.rb",
     "lib/timex_datalink_client/notebook_adapter.rb",
-    "lib/timex_datalink_client/sounds.rb",
+    "lib/timex_datalink_client/sound_theme.rb",
     "lib/timex_datalink_client/start.rb",
     "lib/timex_datalink_client/sync.rb",
     "lib/timex_datalink_client/time.rb",

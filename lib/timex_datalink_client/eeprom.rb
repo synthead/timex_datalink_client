@@ -33,7 +33,7 @@ class TimexDatalinkClient
     def header
       [
         HEADER_COMMAND,
-        packet_count,
+        payloads.length,
         items_addresses,
         items_lengths,
         earliest_appointment_year,
@@ -51,11 +51,6 @@ class TimexDatalinkClient
 
     def all_packets
       all_items.flatten.map(&:packet).flatten
-    end
-
-    def packet_count
-      item_packets = all_items.flatten.sum { |item| item.packet.length }
-      item_packets.fdiv(ITEMS_PER_PACKET).ceil
     end
 
     def items_addresses

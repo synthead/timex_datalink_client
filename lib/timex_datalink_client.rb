@@ -7,6 +7,7 @@ require "timex_datalink_client/char_encoder"
 require "timex_datalink_client/crc"
 
 require "timex_datalink_client/eeprom"
+require "timex_datalink_client/eeprom/anniversary"
 require "timex_datalink_client/eeprom/appointment"
 require "timex_datalink_client/end"
 require "timex_datalink_client/notebook_adapter"

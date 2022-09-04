@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.files       = [
     "lib/timex_datalink_client.rb",
     "lib/timex_datalink_client/alarm.rb",
+    "lib/timex_datalink_client/beeps.rb"
     "lib/timex_datalink_client/char_encoder.rb",
     "lib/timex_datalink_client/crc.rb",
     "lib/timex_datalink_client/eeprom.rb",

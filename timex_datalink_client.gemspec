@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/eeprom/anniversary.rb",
     "lib/timex_datalink_client/eeprom/appointment.rb",
     "lib/timex_datalink_client/eeprom/list.rb",
+    "lib/timex_datalink_client/eeprom/paginate_cpackets.rb",
     "lib/timex_datalink_client/eeprom/phone_number.rb",
     "lib/timex_datalink_client/eeprom/prepend_length.rb",
     "lib/timex_datalink_client/end.rb",

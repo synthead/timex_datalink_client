@@ -3,9 +3,9 @@
 class TimexDatalinkClient
   class Eeprom
     prepend Crc
+    include PaginateCpackets
 
     START_ADDRESS = 0x0236
-    ITEMS_PER_PACKET = 32
 
     CLEAR_COMMAND = [0x93, 0x01]
     HEADER_COMMAND = [0x90, 0x01]
@@ -42,16 +42,15 @@ class TimexDatalinkClient
     end
 
     def payloads
-      all_packets = all_items.flatten.map(&:packet).flatten
-      paginated_packets = all_packets.each_slice(ITEMS_PER_PACKET)
-
-      paginated_packets.each.with_index(1).map do |paginated_packet, index|
-        PAYLOAD_COMMAND + [index] + paginated_packet
-      end
+      paginate_cpackets(header: PAYLOAD_COMMAND, cpackets: all_packets)
     end
 
     def all_items
       [appointments, lists, phone_numbers, anniversaries]
+    end
+
+    def all_packets
+      all_items.flatten.map(&:packet).flatten
     end
 
     def packet_count

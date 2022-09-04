@@ -6,6 +6,7 @@ require "crc"
 require "timex_datalink_client/char_encoder"
 require "timex_datalink_client/crc"
 require "timex_datalink_client/eeprom/prepend_length"
+require "timex_datalink_client/paginate_cpackets"
 
 require "timex_datalink_client/alarm"
 require "timex_datalink_client/eeprom"

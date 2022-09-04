@@ -3,6 +3,7 @@
 class TimexDatalinkClient
   class Eeprom
     class PhoneNumber
+      prepend PrependLength
       include CharEncoder
 
       PHONE_DIGITS = 12
@@ -16,17 +17,13 @@ class TimexDatalinkClient
       end
 
       def packet
-        [length] + packet_array
-      end
-
-      private
-
-      def packet_array
         [
           number_with_type_characters,
           name_characters,
         ].flatten
       end
+
+      private
 
       def number_with_type_truncated
         number_with_type = "#{number} #{type}"
@@ -41,10 +38,6 @@ class TimexDatalinkClient
 
       def name_characters
         eeprom_chars_for(name)
-      end
-
-      def length
-        packet_array.length + 1
       end
     end
   end

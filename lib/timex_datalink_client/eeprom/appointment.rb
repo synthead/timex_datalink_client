@@ -3,6 +3,7 @@
 class TimexDatalinkClient
   class Eeprom
     class Appointment
+      prepend PrependLength
       include CharEncoder
 
       attr_accessor :time, :message
@@ -13,12 +14,6 @@ class TimexDatalinkClient
       end
 
       def packet
-        [length] + packet_array
-      end
-
-      private
-
-      def packet_array
         [
           time.month,
           time.day,
@@ -27,16 +22,14 @@ class TimexDatalinkClient
         ].flatten
       end
 
+      private
+
       def time_15m
         time.hour * 4 + time.min / 15
       end
 
       def message_characters
         eeprom_chars_for(message)
-      end
-
-      def length
-        packet_array.length + 1
       end
     end
   end

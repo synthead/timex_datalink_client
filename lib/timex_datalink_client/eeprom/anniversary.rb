@@ -3,6 +3,7 @@
 class TimexDatalinkClient
   class Eeprom
     class Anniversary
+      prepend PrependLength
       include CharEncoder
 
       attr_accessor :time, :anniversary
@@ -13,12 +14,6 @@ class TimexDatalinkClient
       end
 
       def packet
-        [length] + packet_array
-      end
-
-      private
-
-      def packet_array
         [
           time.month,
           time.day,
@@ -26,12 +21,10 @@ class TimexDatalinkClient
         ].flatten
       end
 
+      private
+
       def anniversary_characters
         eeprom_chars_for(anniversary)
-      end
-
-      def length
-        packet_array.length + 1
       end
     end
   end

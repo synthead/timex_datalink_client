@@ -5,6 +5,7 @@ require "crc"
 
 require "timex_datalink_client/char_encoder"
 require "timex_datalink_client/crc"
+require "timex_datalink_client/eeprom/prepend_length"
 
 require "timex_datalink_client/eeprom"
 require "timex_datalink_client/eeprom/anniversary"

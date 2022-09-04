@@ -23,7 +23,7 @@ class TimexDatalinkClient
 
       def packet_array
         [
-          number_characters,
+          number_with_type_characters,
           name_characters,
         ].flatten
       end
@@ -35,7 +35,7 @@ class TimexDatalinkClient
         padded_number_with_type[0..PHONE_DIGITS - 1]
       end
 
-      def number_characters
+      def number_with_type_characters
         phone_chars_for(number_with_type_truncated)
       end
 

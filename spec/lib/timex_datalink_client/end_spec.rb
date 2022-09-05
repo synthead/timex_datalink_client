@@ -11,4 +11,3 @@ describe TimexDatalinkClient::End do
     it_behaves_like "CRC-wrapped packets", [[0x21]]
   end
 end
-

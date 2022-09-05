@@ -25,12 +25,12 @@ class TimexDatalinkClient
   end
 
   def write
-    notebook_adapter.write(model_packets)
+    notebook_adapter.write(packets)
   end
 
   private
 
-  def model_packets
+  def packets
     models.map(&:packets).flatten(1)
   end
 

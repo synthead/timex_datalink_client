@@ -38,4 +38,5 @@ Gem::Specification.new do |s|
   s.add_dependency "rubyserial", "~> 0.6.0"
 
   s.add_development_dependency "rspec", "~> 3.11.0"
+  s.add_development_dependency "tzinfo", "~> 2.0.5"
 end

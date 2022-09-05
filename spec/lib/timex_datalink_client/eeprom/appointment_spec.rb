@@ -20,7 +20,7 @@ describe TimexDatalinkClient::Eeprom::Appointment do
       0x09, 0x13, 0x00, 0x9b, 0x53, 0x39, 0x0a, 0xe7, 0x90, 0x9d, 0x64, 0x39, 0x61, 0x53, 0xc9, 0x4e, 0xe8, 0xfc
     ]
 
-    context "when time is 1997-9-19" do
+    context "when time is 2015-10-21" do
       let(:time) { Time.new(2015, 10, 21) }
 
       it_behaves_like "a length-prefixed packet", [

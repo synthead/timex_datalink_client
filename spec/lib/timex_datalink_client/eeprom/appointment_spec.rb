@@ -37,4 +37,3 @@ describe TimexDatalinkClient::Eeprom::Appointment do
     end
   end
 end
-

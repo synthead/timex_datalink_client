@@ -20,4 +20,3 @@ describe TimexDatalinkClient::SoundTheme do
     ]
   end
 end
-

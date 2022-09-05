@@ -32,4 +32,3 @@ describe TimexDatalinkClient::WristApp do
     ]
   end
 end
-

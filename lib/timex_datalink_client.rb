@@ -28,11 +28,11 @@ class TimexDatalinkClient
     notebook_adapter.write(packets)
   end
 
-  private
-
   def packets
     models.map(&:packets).flatten(1)
   end
+
+  private
 
   def notebook_adapter
     @notebook_adapter ||= NotebookAdapter.new(serial_device)

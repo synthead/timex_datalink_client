@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-require "timex_datalink_client/sound_options"
-
 describe TimexDatalinkClient::SoundOptions do
   let(:sound_options) do
     described_class.new(

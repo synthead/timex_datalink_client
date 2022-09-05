@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "../../lib/timex_datalink_client.rb"
+require "spec_helper"
 
 describe TimexDatalinkClient do
   describe "VERSION" do

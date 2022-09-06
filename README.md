@@ -207,7 +207,7 @@ TimexDatalinkClient::WristApp.new(
 
 ```ruby
   TimexDatalinkClient::SoundTheme.new(
-    sound_data: File.open("DATALINK/SND/DEFHIGH.SPC").read
+    sound_data: File.open("DATALINK/SND/DEFAULT.SPC").read
   )
 
   TimexDatalinkClient::SoundOptions.new(

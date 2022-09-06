@@ -139,7 +139,7 @@ TimexDatalinkClient::Time.new(
   date_format: 0,
 )
 
-timezone_2 = TZInfo::Timezone.get("UTC")
+timezone_2 = TZInfo::Timezone.get("GMT")
 time_2 = timezone_2.local_time(2022, 9, 5, 11, 39, 44)
 
 TimexDatalinkClient::Time.new(

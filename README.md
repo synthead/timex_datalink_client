@@ -172,21 +172,21 @@ TimexDatalinkClient::Alarm.new(
 TimexDatalinkClient::Alarm.new(
   number: 3,
   audible: 1,
-  time: Time.new(2022, 1, 1, 9, 5),
+  time: Time.new(2022, 1, 1, 9, 10),
   message: "get up"
 )
 
 TimexDatalinkClient::Alarm.new(
   number: 4,
   audible: 1,
-  time: Time.new(2022, 1, 1, 9, 5),
+  time: Time.new(2022, 1, 1, 9, 15),
   message: "or not"
 )
 
 TimexDatalinkClient::Alarm.new(
   number: 5,
   audible: 0,
-  time: Time.new(2022, 1, 1, 9, 5),
+  time: Time.new(2022, 1, 1, 11, 30),
   message: "told you"
 )
 ```

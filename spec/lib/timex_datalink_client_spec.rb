@@ -6,6 +6,7 @@ require "spec_helper"
 
 describe TimexDatalinkClient do
   let(:serial_device) { "/dev/ttyACM0" }
+  let(:verbose) { false }
 
   let(:models) do
     [
@@ -33,7 +34,8 @@ describe TimexDatalinkClient do
   let(:timex_datalink_client) do
     described_class.new(
       serial_device: serial_device,
-      models: models
+      models: models,
+      verbose: verbose
     )
   end
 
@@ -74,8 +76,12 @@ describe TimexDatalinkClient do
     subject(:write) { timex_datalink_client.write }
 
     it "passes the correct serial device to NotebookAdapter#new" do
-      expect(TimexDatalinkClient::NotebookAdapter).to receive(:new).with(serial_device).and_return(notebook_adapter_double)
       allow(notebook_adapter_double).to receive(:write)
+
+      expect(TimexDatalinkClient::NotebookAdapter).to receive(:new).with(
+        serial_device: serial_device,
+        verbose: verbose
+      ).and_return(notebook_adapter_double)
 
       write
     end

@@ -3,7 +3,7 @@
 require "spec_helper"
 
 describe TimexDatalinkClient::NotebookAdapter do
-  let(:serial_device) { "/dev/ttyACM0" }
+  let(:serial_device) { "/some/serial/device" }
   let(:verbose) { false }
 
   subject(:notebook_adapter) do

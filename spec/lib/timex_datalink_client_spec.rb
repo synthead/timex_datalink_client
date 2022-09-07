@@ -5,7 +5,7 @@ require "tzinfo"
 require "spec_helper"
 
 describe TimexDatalinkClient do
-  let(:serial_device) { "/dev/ttyACM0" }
+  let(:serial_device) { "/some/serial/device" }
   let(:verbose) { false }
 
   let(:models) do

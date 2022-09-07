@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    timex_datalink_client (0.1.0)
+    timex_datalink_client (0.2.0)
       crc (~> 0.4.2)
       rubyserial (~> 0.6.0)
 

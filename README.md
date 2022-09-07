@@ -157,35 +157,35 @@ TimexDatalinkClient::Time.new(
 ```ruby
 TimexDatalinkClient::Alarm.new(
   number: 1,
-  audible: 1,
+  audible: true,
   time: Time.new(2022, 1, 1, 9, 0),
   message: "wake up"
 )
 
 TimexDatalinkClient::Alarm.new(
   number: 2,
-  audible: 1,
+  audible: true,
   time: Time.new(2022, 1, 1, 9, 5),
   message: "for real"
 )
 
 TimexDatalinkClient::Alarm.new(
   number: 3,
-  audible: 1,
+  audible: true,
   time: Time.new(2022, 1, 1, 9, 10),
   message: "get up"
 )
 
 TimexDatalinkClient::Alarm.new(
   number: 4,
-  audible: 1,
+  audible: true,
   time: Time.new(2022, 1, 1, 9, 15),
   message: "or not"
 )
 
 TimexDatalinkClient::Alarm.new(
   number: 5,
-  audible: 0,
+  audible: false,
   time: Time.new(2022, 1, 1, 11, 30),
   message: "told you"
 )
@@ -295,31 +295,31 @@ models = [
 
   TimexDatalinkClient::Alarm.new(
     number: 1,
-    audible: 1,
+    audible: true,
     time: Time.new(2022, 1, 1, 9, 0),
     message: "wake up"
   ),
   TimexDatalinkClient::Alarm.new(
     number: 2,
-    audible: 1,
+    audible: true,
     time: Time.new(2022, 1, 1, 9, 5),
     message: "for real"
   ),
   TimexDatalinkClient::Alarm.new(
     number: 3,
-    audible: 1,
+    audible: true,
     time: Time.new(2022, 1, 1, 9, 10),
     message: "get up"
   ),
   TimexDatalinkClient::Alarm.new(
     number: 4,
-    audible: 1,
+    audible: true,
     time: Time.new(2022, 1, 1, 9, 15),
     message: "or not"
   ),
   TimexDatalinkClient::Alarm.new(
     number: 5,
-    audible: 0,
+    audible: false,
     time: Time.new(2022, 1, 1, 11, 30),
     message: "told you"
   ),

@@ -39,7 +39,8 @@ describe TimexDatalinkClient::NotebookAdapter do
     end
 
     it "does not write to console" do
-      allow_any_instance_of(Serial).to receive(:write)
+      allow(Serial).to receive(:new).with(serial_device).and_return(serial_double)
+      allow(serial_double).to receive(:write)
       allow(notebook_adapter).to receive(:sleep)
 
       expect(notebook_adapter).to_not receive(:printf)

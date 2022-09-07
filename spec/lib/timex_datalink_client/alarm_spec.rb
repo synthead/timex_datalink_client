@@ -4,7 +4,7 @@ require "spec_helper"
 
 describe TimexDatalinkClient::Alarm do
   let(:number) { 1 }
-  let(:audible) { 0 }
+  let(:audible) { false }
   let(:time) { Time.new(1994) }
   let(:message) { "alarm 1" }
 
@@ -32,8 +32,8 @@ describe TimexDatalinkClient::Alarm do
       ]
     end
 
-    context "when audible is 1" do
-      let(:audible) { 1 }
+    context "when audible is true" do
+      let(:audible) { true }
 
       it_behaves_like "CRC-wrapped packets", [
         [0x50, 0x01, 0x00, 0x00, 0x00, 0x00, 0x0a, 0x15, 0x0a, 0x1b, 0x16, 0x24, 0x01, 0x24, 0x01]

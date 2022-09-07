@@ -17,8 +17,16 @@ class TimexDatalinkClient
 
     def packets
       [
-        CPACKET_BEEPS + [hourly_chime, button_beep]
+        CPACKET_BEEPS + [hourly_chime_integer, button_beep_integer]
       ]
+    end
+
+    def hourly_chime_integer
+      hourly_chime ? 1 : 0
+    end
+
+    def button_beep_integer
+      button_beep ? 1 : 0
     end
   end
 end

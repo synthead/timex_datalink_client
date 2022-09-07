@@ -3,8 +3,8 @@
 require "spec_helper"
 
 describe TimexDatalinkClient::SoundOptions do
-  let(:hourly_chime) { 0 }
-  let(:button_beep) { 0 }
+  let(:hourly_chime) { false }
+  let(:button_beep) { false }
 
   let(:sound_options) do
     described_class.new(
@@ -19,20 +19,20 @@ describe TimexDatalinkClient::SoundOptions do
     it_behaves_like "CRC-wrapped packets", [[0x71, 0x00, 0x00]]
 
     context "when hourly chime is enabled" do
-      let(:hourly_chime) { 1 }
+      let(:hourly_chime) { true }
 
       it_behaves_like "CRC-wrapped packets", [[0x71, 0x01, 0x00]]
     end
 
     context "when button beep is enabled" do
-      let(:button_beep) { 1 }
+      let(:button_beep) { true }
 
       it_behaves_like "CRC-wrapped packets", [[0x71, 0x00, 0x01]]
     end
 
     context "when hourly chime and button beep are enabled" do
-      let(:hourly_chime) { 1 }
-      let(:button_beep) { 1 }
+      let(:hourly_chime) { true }
+      let(:button_beep) { true }
 
       it_behaves_like "CRC-wrapped packets", [[0x71, 0x01, 0x01]]
     end

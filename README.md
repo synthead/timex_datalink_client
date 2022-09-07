@@ -211,7 +211,7 @@ TimexDatalinkClient::WristApp.new(
   )
 
   TimexDatalinkClient::SoundOptions.new(
-    hourly_chimes: 1,
+    hourly_chime: 1,
     button_beep: 0
   )
 ```
@@ -336,7 +336,7 @@ models = [
     sound_data: File.open("DATALINK/SND/DEFHIGH.SPC").read
   ),
   TimexDatalinkClient::SoundOptions.new(
-    hourly_chimes: 1,
+    hourly_chime: 1,
     button_beep: 1
   ),
 

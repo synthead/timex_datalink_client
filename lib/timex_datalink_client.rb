@@ -17,11 +17,12 @@ require "timex_datalink_client/version"
 require "timex_datalink_client/wrist_app"
 
 class TimexDatalinkClient
-  attr_accessor :serial_device, :models
+  attr_accessor :serial_device, :models, :verbose
 
-  def initialize(serial_device:, models: [])
+  def initialize(serial_device:, models: [], verbose: false)
     @serial_device = serial_device
     @models = models
+    @verbose = verbose
   end
 
   def write
@@ -35,6 +36,9 @@ class TimexDatalinkClient
   private
 
   def notebook_adapter
-    @notebook_adapter ||= NotebookAdapter.new(serial_device)
+    @notebook_adapter ||= NotebookAdapter.new(
+      serial_device: serial_device,
+      verbose: verbose
+    )
   end
 end

@@ -8,16 +8,16 @@ class TimexDatalinkClient
 
     CPACKET_BEEPS = [0x71]
 
-    attr_accessor :hourly_chimes, :button_beep
+    attr_accessor :hourly_chime, :button_beep
 
-    def initialize(hourly_chimes:, button_beep:)
-      @hourly_chimes = hourly_chimes
+    def initialize(hourly_chime:, button_beep:)
+      @hourly_chime = hourly_chime
       @button_beep = button_beep
     end
 
     def packets
       [
-        CPACKET_BEEPS + [hourly_chimes, button_beep]
+        CPACKET_BEEPS + [hourly_chime, button_beep]
       ]
     end
   end

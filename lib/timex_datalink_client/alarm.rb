@@ -31,7 +31,7 @@ class TimexDatalinkClient
           0,
           0,
           message_characters,
-          audible
+          audible_integer
         ].flatten
       ]
     end
@@ -42,6 +42,10 @@ class TimexDatalinkClient
       message_padded = message.ljust(MESSAGE_LENGTH)
 
       chars_for(message_padded)
+    end
+
+    def audible_integer
+      audible ? 1 : 0
     end
   end
 end

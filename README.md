@@ -349,7 +349,8 @@ models = [
 
 timex_datalink_client = TimexDatalinkClient.new(
   serial_device: "/dev/ttyACM0",
-  models: models
+  models: models,
+  verbose: true
 )
 
 timex_datalink_client.write

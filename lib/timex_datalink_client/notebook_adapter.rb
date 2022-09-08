@@ -4,13 +4,15 @@ require "rubyserial"
 
 class TimexDatalinkClient
   class NotebookAdapter
-    BYTE_SLEEP = 0.025
-    PACKET_SLEEP = 0.25
+    BYTE_SLEEP_DEFAULT = 0.025
+    PACKET_SLEEP_DEFAULT = 0.25
 
-    attr_accessor :serial_device, :verbose
+    attr_accessor :serial_device, :byte_sleep, :packet_sleep, :verbose
 
-    def initialize(serial_device:, verbose: false)
+    def initialize(serial_device:, byte_sleep: nil, packet_sleep: nil, verbose: false)
       @serial_device = serial_device
+      @byte_sleep = byte_sleep || BYTE_SLEEP_DEFAULT
+      @packet_sleep = packet_sleep || PACKET_SLEEP_DEFAULT
       @verbose = verbose
     end
 
@@ -21,10 +23,10 @@ class TimexDatalinkClient
 
           serial.write(byte.chr)
 
-          sleep(BYTE_SLEEP)
+          sleep(byte_sleep)
         end
 
-        sleep(PACKET_SLEEP)
+        sleep(packet_sleep)
 
         puts if verbose
       end

@@ -17,11 +17,13 @@ require "timex_datalink_client/version"
 require "timex_datalink_client/wrist_app"
 
 class TimexDatalinkClient
-  attr_accessor :serial_device, :models, :verbose
+  attr_accessor :serial_device, :models, :byte_sleep, :packet_sleep, :verbose
 
-  def initialize(serial_device:, models: [], verbose: false)
+  def initialize(serial_device:, models: [], byte_sleep: nil, packet_sleep: nil, verbose: false)
     @serial_device = serial_device
     @models = models
+    @byte_sleep = byte_sleep
+    @packet_sleep = packet_sleep
     @verbose = verbose
   end
 
@@ -38,6 +40,8 @@ class TimexDatalinkClient
   def notebook_adapter
     @notebook_adapter ||= NotebookAdapter.new(
       serial_device: serial_device,
+      byte_sleep: byte_sleep,
+      packet_sleep: packet_sleep,
       verbose: verbose
     )
   end

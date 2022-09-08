@@ -6,6 +6,8 @@ require "spec_helper"
 
 describe TimexDatalinkClient do
   let(:serial_device) { "/some/serial/device" }
+  let(:byte_sleep) { 0.006 }
+  let(:packet_sleep) { 0.06 }
   let(:verbose) { false }
 
   let(:models) do
@@ -35,6 +37,8 @@ describe TimexDatalinkClient do
     described_class.new(
       serial_device: serial_device,
       models: models,
+      byte_sleep: byte_sleep,
+      packet_sleep: packet_sleep,
       verbose: verbose
     )
   end
@@ -80,6 +84,8 @@ describe TimexDatalinkClient do
 
       expect(TimexDatalinkClient::NotebookAdapter).to receive(:new).with(
         serial_device: serial_device,
+        byte_sleep: byte_sleep,
+        packet_sleep: packet_sleep,
         verbose: verbose
       ).and_return(notebook_adapter_double)
 

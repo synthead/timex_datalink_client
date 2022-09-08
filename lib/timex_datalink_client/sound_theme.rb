@@ -16,11 +16,19 @@ class TimexDatalinkClient
 
     attr_accessor :spc_file
 
+    # Create a SoundTheme instance.
+    #
+    # @param sound_theme_data [String] Sound theme data.
+    # @param spc_file [String] Path to SPC file.
+    # @return [SoundTheme] SoundTheme instance.
     def initialize(sound_theme_data: nil, spc_file: nil)
       @sound_theme_data = sound_theme_data
       @spc_file = spc_file
     end
 
+    # Compile packets for a sound theme.
+    #
+    # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
     def packets
       [load_sect] + payloads + [CPACKET_END]
     end

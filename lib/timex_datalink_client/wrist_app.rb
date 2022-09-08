@@ -20,8 +20,8 @@ class TimexDatalinkClient
 
     # Create a WristApp instance.
     #
-    # @param wrist_app_data [String] WristApp data.
-    # @param zap_file [String] Path to ZAP file.
+    # @param wrist_app_data [String, nil] WristApp data.
+    # @param zap_file [String, nil] Path to ZAP file.
     # @return [WristApp] WristApp instance.
     def initialize(wrist_app_data: nil, zap_file: nil)
       @wrist_app_data = wrist_app_data

@@ -204,9 +204,7 @@ TimexDatalinkClient::WristApp.new(zap_file: "DATALINK/APP/TIMER13.ZAP")
 <image src="https://user-images.githubusercontent.com/820984/188434465-97dc97ca-a396-4643-82ee-26724a4ca718.png" width="600px">
 
 ```ruby
-  TimexDatalinkClient::SoundTheme.new(
-    sound_data: File.open("DATALINK/SND/DEFAULT.SPC").read
-  )
+  TimexDatalinkClient::SoundTheme.new(spc_file: "DATALINK/SND/DEFAULT.SPC")
 
   TimexDatalinkClient::SoundOptions.new(
     hourly_chime: true,
@@ -330,9 +328,7 @@ models = [
     appointment_notification: 2
   ),
 
-  TimexDatalinkClient::SoundTheme.new(
-    sound_data: File.open("DATALINK/SND/DEFHIGH.SPC").read
-  ),
+  TimexDatalinkClient::SoundTheme.new(spc_file: "DATALINK/SND/DEFHIGH.SPC"),
   TimexDatalinkClient::SoundOptions.new(
     hourly_chime: true,
     button_beep: true

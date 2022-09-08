@@ -24,8 +24,8 @@ class TimexDatalinkClient
   # @param serial_device [String] Path to serial device.
   # @param models [Array<Alarm, Eeprom, End, SoundOptions, SoundTheme, Start, Sync, Time, WristApp>] Models to compile
   #   data for.
-  # @param byte_sleep [Integer] Time to sleep after sending byte.
-  # @param packet_sleep [Integer] Time to sleep after sending packet of bytes.
+  # @param byte_sleep [Integer, nil] Time to sleep after sending byte.
+  # @param packet_sleep [Integer, nil] Time to sleep after sending packet of bytes.
   # @param verbose [Boolean] Write verbose output to console.
   # @return [TimexDatalinkClient] TimexDatalinkClient instance.
   def initialize(serial_device:, models: [], byte_sleep: nil, packet_sleep: nil, verbose: false)

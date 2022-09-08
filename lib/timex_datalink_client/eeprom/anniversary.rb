@@ -13,7 +13,7 @@ class TimexDatalinkClient
 
       # Create an Anniversary instance.
       #
-      # @param time [Time] Time of anniversary.
+      # @param time [::Time] Time of anniversary.
       # @param anniversary [String] Anniversary text.
       # @return [Anniversary] Anniversary instance.
       def initialize(time:, anniversary:)

@@ -13,7 +13,7 @@ class TimexDatalinkClient
 
       # Create an Appointment instance.
       #
-      # @param time [Time] Time of appointment.
+      # @param time [::Time] Time of appointment.
       # @param message [String] Appointment text.
       # @return [Appointment] Appointment instance.
       def initialize(time:, message:)

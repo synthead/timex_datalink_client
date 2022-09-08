@@ -17,7 +17,7 @@ class TimexDatalinkClient
     # @param zone [Integer] Time zone number (1 or 2).
     # @param is_24h [Boolean] Toggle 24 hour time.
     # @param date_format [Integer] Date format.
-    # @param time [Time] Time to set (including time zone).
+    # @param time [::Time] Time to set (including time zone).
     # @return [Time] Time instance.
     def initialize(zone:, is_24h:, date_format:, time:)
       @zone = zone

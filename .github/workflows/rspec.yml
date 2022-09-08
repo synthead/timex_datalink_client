@@ -1,6 +1,7 @@
 name: Timex Datalink Client CI
 
-on: [push, pull_request]
+on: push
+
 jobs:
   rspec:
     runs-on: ubuntu-latest

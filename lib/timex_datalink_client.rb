@@ -19,6 +19,14 @@ require "timex_datalink_client/wrist_app"
 class TimexDatalinkClient
   attr_accessor :serial_device, :models, :byte_sleep, :packet_sleep, :verbose
 
+  # Create a TimexDatalinkClient instance.
+  #
+  # @param serial_device [String] Path to serial device.
+  # @param models [Array] Models to compile data for.
+  # @param byte_sleep [Integer] Time to sleep after sending byte.
+  # @param packet_sleep [Integer] Time to sleep after sending packet of bytes.
+  # @param verbose [Boolean] Write verbose output to console.
+  # @return [TimexDatalinkClient] TimexDatalinkClient instance.
   def initialize(serial_device:, models: [], byte_sleep: nil, packet_sleep: nil, verbose: false)
     @serial_device = serial_device
     @models = models
@@ -27,10 +35,16 @@ class TimexDatalinkClient
     @verbose = verbose
   end
 
+  # Write data for all models to serial device.
+  #
+  # @return [void]
   def write
     notebook_adapter.write(packets)
   end
 
+  # Compile packets for all models.
+  #
+  # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
   def packets
     models.map(&:packets).flatten(1)
   end

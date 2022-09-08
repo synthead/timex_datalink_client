@@ -52,6 +52,5 @@ class TimexDatalinkClient
     def zap_file_data_binary
       [zap_file_data_ascii].pack("H*")
     end
-
   end
 end

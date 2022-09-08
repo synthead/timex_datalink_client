@@ -22,7 +22,8 @@ class TimexDatalinkClient
   # Create a TimexDatalinkClient instance.
   #
   # @param serial_device [String] Path to serial device.
-  # @param models [Array] Models to compile data for.
+  # @param models [Array<Alarm, Eeprom, End, SoundOptions, SoundTheme, Start, Sync, Time, WristApp>] Models to compile
+  #   data for.
   # @param byte_sleep [Integer] Time to sleep after sending byte.
   # @param packet_sleep [Integer] Time to sleep after sending packet of bytes.
   # @param verbose [Boolean] Write verbose output to console.

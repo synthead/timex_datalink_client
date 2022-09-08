@@ -9,6 +9,13 @@ class TimexDatalinkClient
 
     attr_accessor :serial_device, :byte_sleep, :packet_sleep, :verbose
 
+    # Create a NotebookAdapter instance.
+    #
+    # @param serial_device [String] Path to serial device.
+    # @param byte_sleep [Integer] Time to sleep after sending byte.
+    # @param packet_sleep [Integer] Time to sleep after sending packet of bytes.
+    # @param verbose [Boolean] Write verbose output to console.
+    # @return [void]
     def initialize(serial_device:, byte_sleep: nil, packet_sleep: nil, verbose: false)
       @serial_device = serial_device
       @byte_sleep = byte_sleep || BYTE_SLEEP_DEFAULT
@@ -16,6 +23,10 @@ class TimexDatalinkClient
       @verbose = verbose
     end
 
+    # Write packets of bytes to serial device.
+    #
+    # @param packets [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
+    # @return [void]
     def write(packets)
       packets.each do |packet|
         packet.each do |byte|

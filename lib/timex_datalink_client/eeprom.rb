@@ -18,6 +18,15 @@ class TimexDatalinkClient
 
     attr_accessor :appointments, :anniversaries, :phone_numbers, :lists, :appointment_notification
 
+    # Create an Eeprom instance.
+    #
+    # @param appointments [Array<Appointment>] Appointments to be added to EEPROM data.
+    # @param anniversaries [Array<Anniversary>] Anniversaries to be added to EEPROM data.
+    # @param phone_numbers [Array<PhoneNumber>] Phone numbers to be added to EEPROM data.
+    # @param lists [Array<List>] Lists to be added to EEPROM data.
+    # @param appointment_notification [Integer] Appointment notification (intervals of 15 minutes, 255 for no
+    #   notification)
+    # @return [void]
     def initialize(appointments: [], anniversaries: [], phone_numbers: [], lists: [], appointment_notification: APPOINTMENT_NO_NOTIFICATION)
       @appointments = appointments
       @anniversaries = anniversaries
@@ -26,6 +35,9 @@ class TimexDatalinkClient
       @appointment_notification = appointment_notification
     end
 
+    # Compile packets for EEPROM data.
+    #
+    # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
     def packets
       [CPACKET_CLEAR, header] + payloads + [CPACKET_END]
     end

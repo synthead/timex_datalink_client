@@ -13,12 +13,21 @@ class TimexDatalinkClient
 
       attr_accessor :name, :number, :type
 
+      # Create a PhoneNumber instance.
+      #
+      # @param name [String] Name associated to phone number.
+      # @param number [String] Phone number text.
+      # @param type [String] Phone number type.
+      # @return [void]
       def initialize(name:, number:, type: " ")
         @name = name
         @number = number
         @type = type
       end
 
+      # Compile a packet for a phone number.
+      #
+      # @return [Array<Integer>] Array of integers that represent bytes.
       def packet
         [
           number_with_type_characters,

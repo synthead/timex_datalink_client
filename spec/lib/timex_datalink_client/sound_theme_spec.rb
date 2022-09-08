@@ -3,8 +3,8 @@
 require "spec_helper"
 
 describe TimexDatalinkClient::SoundTheme do
-  let(:sound_data) { File.open("spec/fixtures/EXAMPLE.SPC", "rb").read }
-  let(:sound_theme) { described_class.new(sound_data: sound_data) }
+  let(:sound_theme_data) { File.open("spec/fixtures/EXAMPLE.SPC", "rb").read }
+  let(:sound_theme) { described_class.new(sound_theme_data: sound_theme_data) }
 
   describe "#packets", :crc do
     subject(:packets) { sound_theme.packets }

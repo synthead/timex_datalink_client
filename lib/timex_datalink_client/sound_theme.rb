@@ -14,10 +14,10 @@ class TimexDatalinkClient
 
     SOUND_DATA_HEADER = "\x25\x04\x19\x69"
 
-    attr_accessor :sound_data
+    attr_accessor :sound_theme_data
 
-    def initialize(sound_data:)
-      @sound_data = sound_data
+    def initialize(sound_theme_data:)
+      @sound_theme_data = sound_theme_data
     end
 
     def packets
@@ -27,7 +27,7 @@ class TimexDatalinkClient
     private
 
     def sound_bytes
-      sound_data.delete_prefix(SOUND_DATA_HEADER).bytes
+      sound_theme_data.delete_prefix(SOUND_DATA_HEADER).bytes
     end
 
     def load_sect

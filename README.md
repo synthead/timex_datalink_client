@@ -196,9 +196,7 @@ TimexDatalinkClient::Alarm.new(
 <image src="https://user-images.githubusercontent.com/820984/188433986-723686d2-d862-4f54-acea-430c1a8f2571.png" width="600px">
 
 ```ruby
-TimexDatalinkClient::WristApp.new(
-  wrist_app_data: File.open("DATALINK/APP/TIMER13.ZAP", "rb").read
-)
+TimexDatalinkClient::WristApp.new(zap_file: "DATALINK/APP/TIMER13.ZAP")
 ```
 
 ### Watch Sounds
@@ -340,9 +338,7 @@ models = [
     button_beep: true
   ),
 
-  TimexDatalinkClient::WristApp.new(
-    wrist_app_data: File.open("DATALINK/APP/TIMER13.ZAP", "rb").read
-  ),
+  TimexDatalinkClient::WristApp.new(zap_file: "DATALINK/APP/TIMER13.ZAP"),
 
   TimexDatalinkClient::End.new
 ]

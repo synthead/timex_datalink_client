@@ -16,10 +16,11 @@ class TimexDatalinkClient
     WRIST_APP_DELIMITER = /\xac.*\r\n/n
     WRIST_APP_CODE_INDEX = 8
 
-    attr_accessor :wrist_app_data
+    attr_accessor :zap_file
 
-    def initialize(wrist_app_data:)
+    def initialize(wrist_app_data: nil, zap_file: nil)
       @wrist_app_data = wrist_app_data
+      @zap_file = zap_file
     end
 
     def packets
@@ -32,16 +33,24 @@ class TimexDatalinkClient
       CPACKET_SECT + [payloads.length, 1]
     end
 
-    def wrist_app_ascii
-      wrist_app_data.split(WRIST_APP_DELIMITER)[WRIST_APP_CODE_INDEX]
-    end
-
-    def wrist_app_bytes
-      [wrist_app_ascii].pack("H*").bytes
-    end
-
     def payloads
-      paginate_cpackets(header: CPACKET_DATA, cpackets: wrist_app_bytes)
+      paginate_cpackets(header: CPACKET_DATA, cpackets: wrist_app_data.bytes)
+    end
+
+    def wrist_app_data
+      @wrist_app_data || zap_file_data_binary
+    end
+
+    def zap_file_data
+      File.open(zap_file, "rb").read
+    end
+
+    def zap_file_data_ascii
+      zap_file_data.split(WRIST_APP_DELIMITER)[WRIST_APP_CODE_INDEX]
+    end
+
+    def zap_file_data_binary
+      [zap_file_data_ascii].pack("H*")
     end
   end
 end

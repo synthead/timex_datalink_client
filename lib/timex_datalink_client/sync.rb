@@ -9,10 +9,17 @@ class TimexDatalinkClient
 
     attr_accessor :length
 
+    # Create a Sync instance.
+    #
+    # @param length [Integer] Number of 0x55 sync bytes to use.
+    # @return [Sync] Sync instance.
     def initialize(length: 300)
       @length = length
     end
 
+    # Compile packets for syncronization data.
+    #
+    # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
     def packets
       [render_sync_1 + render_sync_2]
     end

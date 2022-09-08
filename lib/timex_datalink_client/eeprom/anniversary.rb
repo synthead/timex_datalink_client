@@ -11,11 +11,19 @@ class TimexDatalinkClient
 
       attr_accessor :time, :anniversary
 
+      # Create an Anniversary instance.
+      #
+      # @param time [Time] Time of anniversary.
+      # @param anniversary [String] Anniversary text.
+      # @return [Anniversary] Anniversary instance.
       def initialize(time:, anniversary:)
         @time = time
         @anniversary = anniversary
       end
 
+      # Compile a packet for an anniversary.
+      #
+      # @return [Array<Integer>] Array of integers that represent bytes.
       def packet
         [
           time.month,

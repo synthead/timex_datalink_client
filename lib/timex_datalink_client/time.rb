@@ -12,6 +12,13 @@ class TimexDatalinkClient
 
     attr_accessor :zone, :is_24h, :date_format, :time
 
+    # Create a Time instance.
+    #
+    # @param zone [Integer] Time zone number (1 or 2).
+    # @param is_24h [Boolean] Toggle 24 hour time.
+    # @param date_format [Integer] Date format.
+    # @param time [Time] Time to set (including time zone).
+    # @return [Time] Time instance.
     def initialize(zone:, is_24h:, date_format:, time:)
       @zone = zone
       @is_24h = is_24h
@@ -19,6 +26,9 @@ class TimexDatalinkClient
       @time = time
     end
 
+    # Compile packets for a time.
+    #
+    # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
     def packets
       [
         [

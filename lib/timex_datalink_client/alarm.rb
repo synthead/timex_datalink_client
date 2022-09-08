@@ -14,6 +14,13 @@ class TimexDatalinkClient
 
     attr_accessor :number, :audible, :time, :message
 
+    # Create an Alarm instance.
+    #
+    # @param number [Integer] Alarm number (from 1 to 5).
+    # @param audible [Boolean] Toggle alarm sounds.
+    # @param time [Time] Time of alarm.
+    # @param message [String] Alarm message text.
+    # @return [Alarm] Alarm instance.
     def initialize(number:, audible:, time:, message:)
       @number = number
       @audible = audible
@@ -21,6 +28,9 @@ class TimexDatalinkClient
       @message = message
     end
 
+    # Compile packets for an alarm.
+    #
+    # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
     def packets
       [
         [

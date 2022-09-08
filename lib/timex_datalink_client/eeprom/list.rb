@@ -11,11 +11,19 @@ class TimexDatalinkClient
 
       attr_accessor :list_entry, :priority
 
+      # Create a List instance.
+      #
+      # @param list_entry [String] List entry text.
+      # @param priority [Integer] List priority.
+      # @return [List] List instance.
       def initialize(list_entry:, priority:)
         @list_entry = list_entry
         @priority = priority
       end
 
+      # Compile a packet for a list.
+      #
+      # @return [Array<Integer>] Array of integers that represent bytes.
       def packet
         [
           priority,

@@ -18,11 +18,19 @@ class TimexDatalinkClient
 
     attr_accessor :zap_file
 
+    # Create a WristApp instance.
+    #
+    # @param wrist_app_data [String, nil] WristApp data.
+    # @param zap_file [String, nil] Path to ZAP file.
+    # @return [WristApp] WristApp instance.
     def initialize(wrist_app_data: nil, zap_file: nil)
       @wrist_app_data = wrist_app_data
       @zap_file = zap_file
     end
 
+    # Compile packets for an alarm.
+    #
+    # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
     def packets
       [CPACKET_CLEAR, cpacket_sect] + payloads + [CPACKET_END]
     end

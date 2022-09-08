@@ -26,7 +26,7 @@ class TimexDatalinkClient
     # @param lists [Array<List>] Lists to be added to EEPROM data.
     # @param appointment_notification [Integer] Appointment notification (intervals of 15 minutes, 255 for no
     #   notification)
-    # @return [void]
+    # @return [Eeprom] Eeprom instance.
     def initialize(appointments: [], anniversaries: [], phone_numbers: [], lists: [], appointment_notification: APPOINTMENT_NO_NOTIFICATION)
       @appointments = appointments
       @anniversaries = anniversaries

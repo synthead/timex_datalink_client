@@ -15,7 +15,7 @@ class TimexDatalinkClient
       #
       # @param list_entry [String] List entry text.
       # @param priority [Integer] List priority.
-      # @return [void]
+      # @return [List] List instance.
       def initialize(list_entry:, priority:)
         @list_entry = list_entry
         @priority = priority

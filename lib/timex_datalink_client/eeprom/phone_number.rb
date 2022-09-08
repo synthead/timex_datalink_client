@@ -18,7 +18,7 @@ class TimexDatalinkClient
       # @param name [String] Name associated to phone number.
       # @param number [String] Phone number text.
       # @param type [String] Phone number type.
-      # @return [void]
+      # @return [PhoneNumber] PhoneNumber instance.
       def initialize(name:, number:, type: " ")
         @name = name
         @number = number

@@ -20,7 +20,7 @@ class TimexDatalinkClient
     # @param audible [Boolean] Toggle alarm sounds.
     # @param time [Time] Time of alarm.
     # @param message [String] Alarm message text.
-    # @return [void]
+    # @return [Alarm] Alarm instance.
     def initialize(number:, audible:, time:, message:)
       @number = number
       @audible = audible

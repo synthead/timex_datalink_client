@@ -15,7 +15,7 @@ class TimexDatalinkClient
     # @param byte_sleep [Integer] Time to sleep after sending byte.
     # @param packet_sleep [Integer] Time to sleep after sending packet of bytes.
     # @param verbose [Boolean] Write verbose output to console.
-    # @return [void]
+    # @return [NotebookAdapter] NotebookAdapter instance.
     def initialize(serial_device:, byte_sleep: nil, packet_sleep: nil, verbose: false)
       @serial_device = serial_device
       @byte_sleep = byte_sleep || BYTE_SLEEP_DEFAULT

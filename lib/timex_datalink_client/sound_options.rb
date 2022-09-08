@@ -10,11 +10,19 @@ class TimexDatalinkClient
 
     attr_accessor :hourly_chime, :button_beep
 
+    # Create a SoundOptions instance.
+    #
+    # @param hourly_chime [Boolean] Toggle hourly chime sounds.
+    # @param button_beep [Boolean] Toggle button beep sounds.
+    # @return [SoundOptions] SoundOptions instance.
     def initialize(hourly_chime:, button_beep:)
       @hourly_chime = hourly_chime
       @button_beep = button_beep
     end
 
+    # Compile packets for sound options.
+    #
+    # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
     def packets
       [
         CPACKET_BEEPS + [hourly_chime_integer, button_beep_integer]

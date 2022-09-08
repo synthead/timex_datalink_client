@@ -355,3 +355,26 @@ timex_datalink_client = TimexDatalinkClient.new(
 
 timex_datalink_client.write
 ```
+
+## Tuning data transfer performance
+
+After every byte is sent to the watch, a small delay is necessary before advancing to the next byte.  This gives the
+watch time to decode and store the incoming data.  In addition, an additional delay is necessary after sending a packet
+of data (bytes that represent a piece of data, i.e. an alarm).
+
+The byte and packet sleep time defaults to the same rate of the Timex Datalink software for parity.  This is 0.025
+seconds per byte, and 0.25 seconds per packet.  These two sleep times can be tuned with the `byte_sleep` and
+`packet_sleep` keywords when creating a `TimexDatalinkClient` instance.
+
+In practice, much smaller values can be used for a much higher data rate.  In testing, these values seem to work
+reliably with the [Teensy LC Notebook Adapter](https://github.com/synthead/timex-datalink-arduino):
+
+```ruby
+timex_datalink_client = TimexDatalinkClient.new(
+  serial_device: "/dev/ttyACM0",
+  models: models,
+  byte_sleep: 0.006,
+  packet_sleep: 0.06,
+  verbose: true
+)
+```

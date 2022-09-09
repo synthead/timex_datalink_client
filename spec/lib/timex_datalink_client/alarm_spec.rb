@@ -6,7 +6,7 @@ describe TimexDatalinkClient::Alarm do
   let(:number) { 1 }
   let(:audible) { false }
   let(:time) { Time.new(1994) }
-  let(:message) { "alarm 1" }
+  let(:message) { "Alarm 1" }
 
   let(:alarm) do
     described_class.new(
@@ -48,8 +48,8 @@ describe TimexDatalinkClient::Alarm do
       ]
     end
 
-    context "when message is \"wake up with more than 8 characters\"" do
-      let(:message) { "wake up with more than 8 characters" }
+    context "when message is \"Wake Up with More than 8 Characters\"" do
+      let(:message) { "Wake Up with More than 8 Characters" }
 
       it_behaves_like "CRC-wrapped packets", [
         [0x50, 0x01, 0x00, 0x00, 0x00, 0x00, 0x20, 0x0a, 0x14, 0x0e, 0x24, 0x1e, 0x19, 0x24, 0x00]

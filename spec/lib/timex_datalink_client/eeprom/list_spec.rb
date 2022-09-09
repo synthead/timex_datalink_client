@@ -3,7 +3,7 @@
 require "spec_helper"
 
 describe TimexDatalinkClient::Eeprom::List do
-  let(:list_entry) { "muffler bearings" }
+  let(:list_entry) { "Muffler Bearings" }
   let(:priority) { 0 }
 
   let(:list) do
@@ -28,8 +28,8 @@ describe TimexDatalinkClient::Eeprom::List do
       ]
     end
 
-    context "when list_entry is \"headlight fluid with more than 31 characters\"" do
-      let(:list_entry) { "headlight fluid with more than 31 characters" }
+    context "when list_entry is \"Headlight Fluid with More than 31 Characters\"" do
+      let(:list_entry) { "Headlight Fluid with More than 31 Characters" }
 
       it_behaves_like "a length-prefixed packet", [
         0x00, 0x91, 0xa3, 0x34, 0x95, 0x04, 0x45, 0x1d, 0xf9, 0x54, 0x9e, 0xd4, 0x90, 0xa0, 0xd4, 0x45, 0xa4, 0x85,

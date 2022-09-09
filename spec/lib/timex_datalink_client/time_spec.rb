@@ -78,8 +78,8 @@ describe TimexDatalinkClient::Time do
       ]
     end
 
-    context "when name is \"longer than 3 characters\"" do
-      let(:name) { "longer than 3 characters" }
+    context "when name is \"Longer than 3 Characters\"" do
+      let(:name) { "Longer than 3 Characters" }
 
       it_behaves_like "CRC-wrapped packets", [
         [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x15, 0x18, 0x17, 0x02, 0x01, 0x00]

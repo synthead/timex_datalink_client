@@ -3,7 +3,8 @@
 class TimexDatalinkClient
   class Helpers
     module CharEncoders
-      CHARS = "0123456789abcdefghijklmnopqrstuvwxyz !\"#$%&'()*+,-./:\\;=@?ABCDEF"
+      CHARS = "0123456789abcdefghijklmnopqrstuvwxyz !\"#$%&'()*+,-./:\\;=@?_|<>[]"
+
       EEPROM_TERMINATOR = 0x3f
 
       PHONE_CHARS = "0123456789cfhpw "

@@ -48,8 +48,8 @@ describe TimexDatalinkClient::Alarm do
       ]
     end
 
-    context "when message is \"wake up\"" do
-      let(:message) { "wake up" }
+    context "when message is \"wake up with more than 8 characters\"" do
+      let(:message) { "wake up with more than 8 characters" }
 
       it_behaves_like "CRC-wrapped packets", [
         [0x50, 0x01, 0x00, 0x00, 0x00, 0x00, 0x20, 0x0a, 0x14, 0x0e, 0x24, 0x1e, 0x19, 0x24, 0x00]

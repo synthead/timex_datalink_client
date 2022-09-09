@@ -49,9 +49,7 @@ class TimexDatalinkClient
     private
 
     def message_characters
-      message_padded = message.ljust(MESSAGE_LENGTH)
-
-      chars_for(message_padded)
+      chars_for(message, length: 8, pad: true)
     end
 
     def audible_integer

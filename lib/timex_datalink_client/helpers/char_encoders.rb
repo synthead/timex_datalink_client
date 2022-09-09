@@ -8,14 +8,17 @@ class TimexDatalinkClient
 
       PHONE_CHARS = "0123456789cfhpw "
 
-      def chars_for(string_chars, char_map: CHARS)
-        string_chars.each_char.map do |string_char|
-          char_map.index(string_char)
+      def chars_for(string_chars, char_map: CHARS, length: nil, pad: false)
+        formatted_chars = string_chars[0..length.to_i - 1]
+        formatted_chars = formatted_chars.ljust(length) if pad
+
+        formatted_chars.each_char.map do |char|
+          char_map.index(char)
         end
       end
 
       def eeprom_chars_for(string_chars)
-        chars = chars_for(string_chars).append(EEPROM_TERMINATOR)
+        chars = chars_for(string_chars, length: 31).append(EEPROM_TERMINATOR)
 
         packed_int = chars.each_with_index.sum do |char, index|
           char << (6 * index)
@@ -25,7 +28,7 @@ class TimexDatalinkClient
       end
 
       def phone_chars_for(string_chars)
-        chars = chars_for(string_chars, char_map: PHONE_CHARS)
+        chars = chars_for(string_chars, char_map: PHONE_CHARS, length: 12)
 
         packed_int = chars.each_with_index.sum do |char, index|
           char << (4 * index)

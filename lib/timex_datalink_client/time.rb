@@ -51,7 +51,7 @@ class TimexDatalinkClient
     private
 
     def timezone_characters
-      chars_for(time.zone.downcase)
+      chars_for(time.zone.downcase, length: 3, pad: true)
     end
 
     def year_mod_1900

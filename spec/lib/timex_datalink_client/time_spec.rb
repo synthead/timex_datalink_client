@@ -51,12 +51,12 @@ describe TimexDatalinkClient::Time do
       ]
     end
 
-    context "when time is 2015-10-21 19:28:32" do
-      let(:tzinfo) { TZInfo::Timezone.get("UTC") }
+    context "when time is 2015-10-21 19:28:32 NZDT" do
+      let(:tzinfo) { TZInfo::Timezone.get("Pacific/Auckland") }
       let(:time) { tzinfo.local_time(1997, 9, 19, 19, 36, 55) }
 
       it_behaves_like "CRC-wrapped packets", [
-        [0x32, 0x01, 0x37, 0x13, 0x24, 0x09, 0x13, 0x61, 0x1e, 0x1d, 0x0c, 0x04, 0x01, 0x00]
+        [0x32, 0x01, 0x37, 0x13, 0x24, 0x09, 0x13, 0x61, 0x17, 0x23, 0x1c, 0x04, 0x01, 0x00]
       ]
     end
   end

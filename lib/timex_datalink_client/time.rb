@@ -18,12 +18,14 @@ class TimexDatalinkClient
     # @param is_24h [Boolean] Toggle 24 hour time.
     # @param date_format [Integer] Date format.
     # @param time [::Time] Time to set (including time zone).
+    # @param name [String, nil] Name of time zone (defaults to zone from time; 3 chars max)
     # @return [Time] Time instance.
-    def initialize(zone:, is_24h:, date_format:, time:)
+    def initialize(zone:, is_24h:, date_format:, time:, name: nil)
       @zone = zone
       @is_24h = is_24h
       @date_format = date_format
       @time = time
+      @name = name
     end
 
     # Compile packets for a time.
@@ -40,7 +42,7 @@ class TimexDatalinkClient
           time.month,
           time.day,
           year_mod_1900,
-          timezone_characters,
+          name_characters,
           wday_from_monday,
           is_24h_value,
           date_format
@@ -50,8 +52,12 @@ class TimexDatalinkClient
 
     private
 
-    def timezone_characters
-      chars_for(time.zone.downcase, length: 3, pad: true)
+    def name
+      @name || time.zone.downcase
+    end
+
+    def name_characters
+      chars_for(name, length: 3, pad: true)
     end
 
     def year_mod_1900

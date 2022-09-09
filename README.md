@@ -129,25 +129,21 @@ TimexDatalinkClient::Eeprom.new(lists: lists)
 <image src="https://user-images.githubusercontent.com/820984/188431136-e2a40eec-d9cd-4b15-992e-3d7b1251b0ee.png" width="600px">
 
 ```ruby
-timezone_1 = TZInfo::Timezone.get("US/Pacific")
-time_1 = timezone_1.local_time(2022, 9, 5, 3, 39, 44)
-
 TimexDatalinkClient::Time.new(
   zone: 1,
-  time: time_1,
+  name: "pdt",
+  time: Time.new(2022, 9, 5, 3, 39, 44),
   is_24h: false,
   date_format: 0,
 )
 
-timezone_2 = TZInfo::Timezone.get("GMT")
-time_2 = timezone_2.local_time(2022, 9, 5, 11, 39, 44)
-
 TimexDatalinkClient::Time.new(
   zone: 2,
-  time: time_2,
+  name: "gmt",
+  time: Time.new(2022, 9, 5, 11, 39, 44),
   is_24h: true,
   date_format: 0,
-),
+)
 ```
 
 ### Alarms

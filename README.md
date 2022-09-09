@@ -143,7 +143,7 @@ TimexDatalinkClient::Time.new(
   time: Time.new(2022, 9, 5, 11, 39, 44),
   is_24h: true,
   date_format: 0,
-),
+)
 ```
 
 ### Alarms

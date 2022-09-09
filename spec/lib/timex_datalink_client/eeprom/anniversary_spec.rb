@@ -4,7 +4,7 @@ require "spec_helper"
 
 describe TimexDatalinkClient::Eeprom::Anniversary do
   let(:time) { Time.new(1997, 9, 19) }
-  let(:anniversary) { "timexdl.exe modified date" }
+  let(:anniversary) { "TIMEXDL.EXE modified date" }
 
   let(:anniversary_instance) do
     described_class.new(
@@ -30,8 +30,8 @@ describe TimexDatalinkClient::Eeprom::Anniversary do
       ]
     end
 
-    context "when anniversary is \"to the delorean with more than 31 characters\"" do
-      let(:anniversary) { "to the delorean with more than 31 characters" }
+    context "when anniversary is \"To the Delorean with More Than 31 Characters\"" do
+      let(:anniversary) { "To the Delorean with More Than 31 Characters" }
 
       it_behaves_like "a length-prefixed packet", [
         0x09, 0x13, 0x1d, 0x46, 0x76, 0x91, 0x43, 0x36, 0x4e, 0x85, 0x6d, 0x8e, 0x72, 0x91, 0xa0, 0xd4, 0x45, 0xa4,

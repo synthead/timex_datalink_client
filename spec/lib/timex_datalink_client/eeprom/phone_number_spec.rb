@@ -3,7 +3,7 @@
 require "spec_helper"
 
 describe TimexDatalinkClient::Eeprom::PhoneNumber do
-  let(:name) { "marty mcfly" }
+  let(:name) { "Marty McFly" }
   let(:number) { "1234567890" }
   let(:type) { "c" }
 
@@ -22,8 +22,8 @@ describe TimexDatalinkClient::Eeprom::PhoneNumber do
       0x21, 0x43, 0x65, 0x87, 0x09, 0xaf, 0x96, 0xb2, 0x75, 0x22, 0x69, 0x31, 0x4f, 0x25, 0xfe
     ]
 
-    context "when name is \"doc brown with more than 31 characters\"" do
-      let(:name) { "doc brown with more than 31 characters" }
+    context "when name is \"Doc Brown with More than 31 Characters\"" do
+      let(:name) { "Doc Brown with More than 31 Characters" }
 
       it_behaves_like "a length-prefixed packet", [
         0x21, 0x43, 0x65, 0x87, 0x09, 0xaf, 0x0d, 0xc6, 0x90, 0xcb, 0x86, 0x81, 0x17, 0x09, 0x4a, 0x5d, 0x44, 0x5a,
@@ -55,7 +55,7 @@ describe TimexDatalinkClient::Eeprom::PhoneNumber do
       ]
     end
 
-    context "when type is \"h\"" do
+    context "when type is \"H\"" do
       let(:type) { "h" }
 
       it_behaves_like "a length-prefixed packet", [

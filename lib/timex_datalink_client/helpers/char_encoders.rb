@@ -10,7 +10,7 @@ class TimexDatalinkClient
       PHONE_CHARS = "0123456789cfhpw "
 
       def chars_for(string_chars, char_map: CHARS, length: nil, pad: false)
-        formatted_chars = string_chars[0..length.to_i - 1]
+        formatted_chars = string_chars.downcase[0..length.to_i - 1]
         formatted_chars = formatted_chars.ljust(length) if pad
 
         formatted_chars.each_char.map do |char|

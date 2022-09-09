@@ -47,15 +47,15 @@ Here are some examples of data in the original Timex Datalink software and how t
 appointments = [
   TimexDatalinkClient::Eeprom::Appointment.new(
     time: Time.new(2022, 10, 31, 19, 0),
-    message: "scare the neighbors"
+    message: "Scare the neighbors"
   ),
   TimexDatalinkClient::Eeprom::Appointment.new(
     time: Time.new(2022, 11, 24, 17, 0),
-    message: "feed the neighbors"
+    message: "Feed the neighbors"
   ),
   TimexDatalinkClient::Eeprom::Appointment.new(
     time: Time.new(2022, 12, 25, 14, 0),
-    message: "spoil the neighbors"
+    message: "Spoil the neighbors"
   )
 ]
 
@@ -73,11 +73,11 @@ TimexDatalinkClient::Eeprom.new(
 anniversaries = [
   TimexDatalinkClient::Eeprom::Anniversary.new(
     time: Time.new(1985, 7, 3),
-    anniversary: "release of back to the future"
+    anniversary: "Release of Back to the Future"
   ),
   TimexDatalinkClient::Eeprom::Anniversary.new(
     time: Time.new(1968, 4, 6),
-    anniversary: "release of 2001"
+    anniversary: "Release of 2001"
   )
 ]
 
@@ -91,14 +91,14 @@ TimexDatalinkClient::Eeprom.new(anniversaries: anniversaries)
 ```ruby
 phone_numbers = [
   TimexDatalinkClient::Eeprom::PhoneNumber.new(
-    name: "marty mcfly",
+    name: "Marty McFly",
     number: "1112223333",
-    type: "h"
+    type: "H"
   ),
   TimexDatalinkClient::Eeprom::PhoneNumber.new(
-    name: "doc brown",
+    name: "Doc Brown",
     number: "4445556666",
-    type: "c"
+    type: "C"
   )
 ]
 
@@ -112,11 +112,11 @@ TimexDatalinkClient::Eeprom.new(phone_numbers: phone_numbers)
 ```ruby
 lists = [
   TimexDatalinkClient::Eeprom::List.new(
-    list_entry: "muffler bearings",
+    list_entry: "Muffler bearings",
     priority: 2
   ),
   TimexDatalinkClient::Eeprom::List.new(
-    list_entry: "headlight fluid",
+    list_entry: "Headlight fluid",
     priority: 4
   )
 ]
@@ -131,7 +131,7 @@ TimexDatalinkClient::Eeprom.new(lists: lists)
 ```ruby
 TimexDatalinkClient::Time.new(
   zone: 1,
-  name: "pdt",
+  name: "PDT",
   time: Time.new(2022, 9, 5, 3, 39, 44),
   is_24h: false,
   date_format: 0,
@@ -139,7 +139,7 @@ TimexDatalinkClient::Time.new(
 
 TimexDatalinkClient::Time.new(
   zone: 2,
-  name: "gmt",
+  name: "GMT",
   time: Time.new(2022, 9, 5, 11, 39, 44),
   is_24h: true,
   date_format: 0,
@@ -155,35 +155,35 @@ TimexDatalinkClient::Alarm.new(
   number: 1,
   audible: true,
   time: Time.new(2022, 1, 1, 9, 0),
-  message: "wake up"
+  message: "Wake up"
 )
 
 TimexDatalinkClient::Alarm.new(
   number: 2,
   audible: true,
   time: Time.new(2022, 1, 1, 9, 5),
-  message: "for real"
+  message: "For real"
 )
 
 TimexDatalinkClient::Alarm.new(
   number: 3,
   audible: true,
   time: Time.new(2022, 1, 1, 9, 10),
-  message: "get up"
+  message: "Get up"
 )
 
 TimexDatalinkClient::Alarm.new(
   number: 4,
   audible: true,
   time: Time.new(2022, 1, 1, 9, 15),
-  message: "or not"
+  message: "Or not"
 )
 
 TimexDatalinkClient::Alarm.new(
   number: 5,
   audible: false,
   time: Time.new(2022, 1, 1, 11, 30),
-  message: "told you"
+  message: "Told you"
 )
 ```
 
@@ -218,49 +218,49 @@ require "timex_datalink_client"
 appointments = [
   TimexDatalinkClient::Eeprom::Appointment.new(
     time: Time.new(2022, 10, 31, 19, 0),
-    message: "scare the neighbors"
+    message: "Scare the neighbors"
   ),
   TimexDatalinkClient::Eeprom::Appointment.new(
     time: Time.new(2022, 11, 24, 17, 0),
-    message: "feed the neighbors"
+    message: "Feed the neighbors"
   ),
   TimexDatalinkClient::Eeprom::Appointment.new(
     time: Time.new(2022, 12, 25, 14, 0),
-    message: "spoil the neighbors"
+    message: "Spoil the neighbors"
   )
 ]
 
 anniversaries = [
   TimexDatalinkClient::Eeprom::Anniversary.new(
     time: Time.new(1985, 7, 3),
-    anniversary: "release of back to the future"
+    anniversary: "Release of Back to the Future"
   ),
   TimexDatalinkClient::Eeprom::Anniversary.new(
     time: Time.new(1968, 4, 6),
-    anniversary: "release of 2001"
+    anniversary: "Release of 2001"
   )
 ]
 
 phone_numbers = [
   TimexDatalinkClient::Eeprom::PhoneNumber.new(
-    name: "marty mcfly",
+    name: "Marty McFly",
     number: "1112223333",
-    type: "h"
+    type: "H"
   ),
   TimexDatalinkClient::Eeprom::PhoneNumber.new(
-    name: "doc brown",
+    name: "Doc Brown",
     number: "4445556666",
-    type: "c"
+    type: "C"
   )
 ]
 
 lists = [
   TimexDatalinkClient::Eeprom::List.new(
-    list_entry: "muffler bearings",
+    list_entry: "Muffler bearings",
     priority: 2
   ),
   TimexDatalinkClient::Eeprom::List.new(
-    list_entry: "headlight fluid",
+    list_entry: "Headlight fluid",
     priority: 4
   )
 ]
@@ -289,31 +289,31 @@ models = [
     number: 1,
     audible: true,
     time: Time.new(2022, 1, 1, 9, 0),
-    message: "wake up"
+    message: "Wake up"
   ),
   TimexDatalinkClient::Alarm.new(
     number: 2,
     audible: true,
     time: Time.new(2022, 1, 1, 9, 5),
-    message: "for real"
+    message: "For real"
   ),
   TimexDatalinkClient::Alarm.new(
     number: 3,
     audible: true,
     time: Time.new(2022, 1, 1, 9, 10),
-    message: "get up"
+    message: "Get up"
   ),
   TimexDatalinkClient::Alarm.new(
     number: 4,
     audible: true,
     time: Time.new(2022, 1, 1, 9, 15),
-    message: "or not"
+    message: "Or not"
   ),
   TimexDatalinkClient::Alarm.new(
     number: 5,
     audible: false,
     time: Time.new(2022, 1, 1, 11, 30),
-    message: "told you"
+    message: "Told you"
   ),
 
   TimexDatalinkClient::Eeprom.new(

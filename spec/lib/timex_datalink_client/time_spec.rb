@@ -10,13 +10,15 @@ describe TimexDatalinkClient::Time do
   let(:date_format) { 0 }
   let(:tzinfo) { TZInfo::Timezone.get("US/Pacific") }
   let(:time) { tzinfo.local_time(2015, 10, 21, 19, 28, 32) }
+  let(:name) { nil }
 
   let(:time_instance) do
     described_class.new(
       zone: zone,
       is_24h: is_24h,
       date_format: date_format,
-      time: time
+      time: time,
+      name: name
     )
   end
 
@@ -57,6 +59,22 @@ describe TimexDatalinkClient::Time do
 
       it_behaves_like "CRC-wrapped packets", [
         [0x32, 0x01, 0x37, 0x13, 0x24, 0x09, 0x13, 0x61, 0x17, 0x23, 0x1c, 0x04, 0x01, 0x00]
+      ]
+    end
+
+    context "when name is \"1\"" do
+      let(:name) { "1" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x01, 0x24, 0x24, 0x02, 0x01, 0x00]
+      ]
+    end
+
+    context "when name is \"longer than 3 characters\"" do
+      let(:name) { "longer than 3 characters" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x15, 0x18, 0x17, 0x02, 0x01, 0x00]
       ]
     end
   end

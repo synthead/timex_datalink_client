@@ -31,7 +31,8 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/version.rb",
     "lib/timex_datalink_client/wrist_app.rb"
   ]
-  s.homepage    = "https://github.com/synthead/timex_datalink_client"
+
+  s.homepage    = "https://github.com/synthead/timex_datalink_client/tree/v#{s.version}"
   s.license     = "MIT"
 
   s.add_dependency "crc", "~> 0.4.2"

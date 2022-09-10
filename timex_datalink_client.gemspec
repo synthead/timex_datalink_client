@@ -8,6 +8,9 @@ Gem::Specification.new do |s|
   s.summary     = "Library for optical Timex Datalink watches"
   s.authors     = ["Maxwell Pray"]
   s.email       = "synthead@gmail.com"
+  s.homepage    = "https://github.com/synthead/timex_datalink_client/tree/v#{s.version}"
+  s.license     = "MIT"
+
   s.files       = [
     "lib/timex_datalink_client.rb",
     "lib/timex_datalink_client/alarm.rb",
@@ -30,9 +33,6 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/version.rb",
     "lib/timex_datalink_client/wrist_app.rb"
   ]
-
-  s.homepage    = "https://github.com/synthead/timex_datalink_client/tree/v#{s.version}"
-  s.license     = "MIT"
 
   s.add_dependency "crc", "~> 0.4.2"
   s.add_dependency "rubyserial", "~> 0.6.0"

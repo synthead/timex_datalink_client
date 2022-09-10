@@ -5,10 +5,12 @@ require_relative "lib/timex_datalink_client/version.rb"
 Gem::Specification.new do |s|
   s.name        = "timex_datalink_client"
   s.version     = TimexDatalinkClient::VERSION
-  s.summary     = "Library for optical Timex Datalink watches"
-  s.description = "Write data to Timex Datalink watches with an optical sensor"
+  s.summary     = "Write data to Timex Datalink devices with an optical sensor"
   s.authors     = ["Maxwell Pray"]
   s.email       = "synthead@gmail.com"
+  s.homepage    = "https://github.com/synthead/timex_datalink_client/tree/v#{s.version}"
+  s.license     = "MIT"
+
   s.files       = [
     "lib/timex_datalink_client.rb",
     "lib/timex_datalink_client/alarm.rb",
@@ -31,9 +33,6 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/version.rb",
     "lib/timex_datalink_client/wrist_app.rb"
   ]
-
-  s.homepage    = "https://github.com/synthead/timex_datalink_client/tree/v#{s.version}"
-  s.license     = "MIT"
 
   s.add_dependency "crc", "~> 0.4.2"
   s.add_dependency "rubyserial", "~> 0.6.0"

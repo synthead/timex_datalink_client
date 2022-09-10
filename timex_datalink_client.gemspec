@@ -5,7 +5,7 @@ require_relative "lib/timex_datalink_client/version.rb"
 Gem::Specification.new do |s|
   s.name        = "timex_datalink_client"
   s.version     = TimexDatalinkClient::VERSION
-  s.summary     = "Library for optical Timex Datalink watches"
+  s.summary     = "Write data to Timex Datalink devices with an optical sensor"
   s.authors     = ["Maxwell Pray"]
   s.email       = "synthead@gmail.com"
   s.homepage    = "https://github.com/synthead/timex_datalink_client/tree/v#{s.version}"

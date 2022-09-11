@@ -45,21 +45,21 @@ Here are some examples of data in the original Timex Datalink software and how t
 
 ```ruby
 appointments = [
-  TimexDatalinkClient::Eeprom::Appointment.new(
+  TimexDatalinkClient::Protocol3::Eeprom::Appointment.new(
     time: Time.new(2022, 10, 31, 19, 0),
     message: "Scare the neighbors"
   ),
-  TimexDatalinkClient::Eeprom::Appointment.new(
+  TimexDatalinkClient::Protocol3::Eeprom::Appointment.new(
     time: Time.new(2022, 11, 24, 17, 0),
     message: "Feed the neighbors"
   ),
-  TimexDatalinkClient::Eeprom::Appointment.new(
+  TimexDatalinkClient::Protocol3::Eeprom::Appointment.new(
     time: Time.new(2022, 12, 25, 14, 0),
     message: "Spoil the neighbors"
   )
 ]
 
-TimexDatalinkClient::Eeprom.new(
+TimexDatalinkClient::Protocol3::Eeprom.new(
   appointments: appointments,
   appointment_notification: 2
 )
@@ -71,17 +71,17 @@ TimexDatalinkClient::Eeprom.new(
 
 ```ruby
 anniversaries = [
-  TimexDatalinkClient::Eeprom::Anniversary.new(
+  TimexDatalinkClient::Protocol3::Eeprom::Anniversary.new(
     time: Time.new(1985, 7, 3),
     anniversary: "Release of Back to the Future"
   ),
-  TimexDatalinkClient::Eeprom::Anniversary.new(
+  TimexDatalinkClient::Protocol3::Eeprom::Anniversary.new(
     time: Time.new(1968, 4, 6),
     anniversary: "Release of 2001"
   )
 ]
 
-TimexDatalinkClient::Eeprom.new(anniversaries: anniversaries)
+TimexDatalinkClient::Protocol3::Eeprom.new(anniversaries: anniversaries)
 ```
 
 ### Phone Numbers
@@ -90,19 +90,19 @@ TimexDatalinkClient::Eeprom.new(anniversaries: anniversaries)
 
 ```ruby
 phone_numbers = [
-  TimexDatalinkClient::Eeprom::PhoneNumber.new(
+  TimexDatalinkClient::Protocol3::Eeprom::PhoneNumber.new(
     name: "Marty McFly",
     number: "1112223333",
     type: "H"
   ),
-  TimexDatalinkClient::Eeprom::PhoneNumber.new(
+  TimexDatalinkClient::Protocol3::Eeprom::PhoneNumber.new(
     name: "Doc Brown",
     number: "4445556666",
     type: "C"
   )
 ]
 
-TimexDatalinkClient::Eeprom.new(phone_numbers: phone_numbers)
+TimexDatalinkClient::Protocol3::Eeprom.new(phone_numbers: phone_numbers)
 ```
 
 ### Make a List
@@ -111,17 +111,17 @@ TimexDatalinkClient::Eeprom.new(phone_numbers: phone_numbers)
 
 ```ruby
 lists = [
-  TimexDatalinkClient::Eeprom::List.new(
+  TimexDatalinkClient::Protocol3::Eeprom::List.new(
     list_entry: "Muffler bearings",
     priority: 2
   ),
-  TimexDatalinkClient::Eeprom::List.new(
+  TimexDatalinkClient::Protocol3::Eeprom::List.new(
     list_entry: "Headlight fluid",
     priority: 4
   )
 ]
 
-TimexDatalinkClient::Eeprom.new(lists: lists)
+TimexDatalinkClient::Protocol3::Eeprom.new(lists: lists)
 ```
 
 ### Time Settings
@@ -129,7 +129,7 @@ TimexDatalinkClient::Eeprom.new(lists: lists)
 <image src="https://user-images.githubusercontent.com/820984/188431136-e2a40eec-d9cd-4b15-992e-3d7b1251b0ee.png" width="600px">
 
 ```ruby
-TimexDatalinkClient::Time.new(
+TimexDatalinkClient::Protocol3::Time.new(
   zone: 1,
   name: "PDT",
   time: Time.new(2022, 9, 5, 3, 39, 44),
@@ -137,7 +137,7 @@ TimexDatalinkClient::Time.new(
   date_format: 0,
 )
 
-TimexDatalinkClient::Time.new(
+TimexDatalinkClient::Protocol3::Time.new(
   zone: 2,
   name: "GMT",
   time: Time.new(2022, 9, 5, 11, 39, 44),
@@ -151,35 +151,35 @@ TimexDatalinkClient::Time.new(
 <image src="https://user-images.githubusercontent.com/820984/188433212-57f41380-9416-4bc2-98fa-4dbc260c2965.png" width="600px">
 
 ```ruby
-TimexDatalinkClient::Alarm.new(
+TimexDatalinkClient::Protocol3::Alarm.new(
   number: 1,
   audible: true,
   time: Time.new(2022, 1, 1, 9, 0),
   message: "Wake up"
 )
 
-TimexDatalinkClient::Alarm.new(
+TimexDatalinkClient::Protocol3::Alarm.new(
   number: 2,
   audible: true,
   time: Time.new(2022, 1, 1, 9, 5),
   message: "For real"
 )
 
-TimexDatalinkClient::Alarm.new(
+TimexDatalinkClient::Protocol3::Alarm.new(
   number: 3,
   audible: true,
   time: Time.new(2022, 1, 1, 9, 10),
   message: "Get up"
 )
 
-TimexDatalinkClient::Alarm.new(
+TimexDatalinkClient::Protocol3::Alarm.new(
   number: 4,
   audible: true,
   time: Time.new(2022, 1, 1, 9, 15),
   message: "Or not"
 )
 
-TimexDatalinkClient::Alarm.new(
+TimexDatalinkClient::Protocol3::Alarm.new(
   number: 5,
   audible: false,
   time: Time.new(2022, 1, 1, 11, 30),
@@ -192,7 +192,7 @@ TimexDatalinkClient::Alarm.new(
 <image src="https://user-images.githubusercontent.com/820984/188433986-723686d2-d862-4f54-acea-430c1a8f2571.png" width="600px">
 
 ```ruby
-TimexDatalinkClient::WristApp.new(zap_file: "DATALINK/APP/TIMER13.ZAP")
+TimexDatalinkClient::Protocol3::WristApp.new(zap_file: "DATALINK/APP/TIMER13.ZAP")
 ```
 
 ### Watch Sounds
@@ -200,9 +200,9 @@ TimexDatalinkClient::WristApp.new(zap_file: "DATALINK/APP/TIMER13.ZAP")
 <image src="https://user-images.githubusercontent.com/820984/188434465-97dc97ca-a396-4643-82ee-26724a4ca718.png" width="600px">
 
 ```ruby
-  TimexDatalinkClient::SoundTheme.new(spc_file: "DATALINK/SND/DEFAULT.SPC")
+  TimexDatalinkClient::Protocol3::SoundTheme.new(spc_file: "DATALINK/SND/DEFAULT.SPC")
 
-  TimexDatalinkClient::SoundOptions.new(
+  TimexDatalinkClient::Protocol3::SoundOptions.new(
     hourly_chime: true,
     button_beep: false
   )
@@ -216,38 +216,38 @@ Here is an example that sends every type of data to the watch and uses all the f
 require "timex_datalink_client"
 
 appointments = [
-  TimexDatalinkClient::Eeprom::Appointment.new(
+  TimexDatalinkClient::Protocol3::Eeprom::Appointment.new(
     time: Time.new(2022, 10, 31, 19, 0),
     message: "Scare the neighbors"
   ),
-  TimexDatalinkClient::Eeprom::Appointment.new(
+  TimexDatalinkClient::Protocol3::Eeprom::Appointment.new(
     time: Time.new(2022, 11, 24, 17, 0),
     message: "Feed the neighbors"
   ),
-  TimexDatalinkClient::Eeprom::Appointment.new(
+  TimexDatalinkClient::Protocol3::Eeprom::Appointment.new(
     time: Time.new(2022, 12, 25, 14, 0),
     message: "Spoil the neighbors"
   )
 ]
 
 anniversaries = [
-  TimexDatalinkClient::Eeprom::Anniversary.new(
+  TimexDatalinkClient::Protocol3::Eeprom::Anniversary.new(
     time: Time.new(1985, 7, 3),
     anniversary: "Release of Back to the Future"
   ),
-  TimexDatalinkClient::Eeprom::Anniversary.new(
+  TimexDatalinkClient::Protocol3::Eeprom::Anniversary.new(
     time: Time.new(1968, 4, 6),
     anniversary: "Release of 2001"
   )
 ]
 
 phone_numbers = [
-  TimexDatalinkClient::Eeprom::PhoneNumber.new(
+  TimexDatalinkClient::Protocol3::Eeprom::PhoneNumber.new(
     name: "Marty McFly",
     number: "1112223333",
     type: "H"
   ),
-  TimexDatalinkClient::Eeprom::PhoneNumber.new(
+  TimexDatalinkClient::Protocol3::Eeprom::PhoneNumber.new(
     name: "Doc Brown",
     number: "4445556666",
     type: "C"
@@ -255,11 +255,11 @@ phone_numbers = [
 ]
 
 lists = [
-  TimexDatalinkClient::Eeprom::List.new(
+  TimexDatalinkClient::Protocol3::Eeprom::List.new(
     list_entry: "Muffler bearings",
     priority: 2
   ),
-  TimexDatalinkClient::Eeprom::List.new(
+  TimexDatalinkClient::Protocol3::Eeprom::List.new(
     list_entry: "Headlight fluid",
     priority: 4
   )
@@ -269,54 +269,54 @@ time1 = Time.now + 4  # Add four seconds to keep in sync.
 time2 = time1.dup.utc
 
 models = [
-  TimexDatalinkClient::Sync.new(length: 50),
-  TimexDatalinkClient::Start.new,
+  TimexDatalinkClient::Protocol3::Sync.new(length: 50),
+  TimexDatalinkClient::Protocol3::Start.new,
 
-  TimexDatalinkClient::Time.new(
+  TimexDatalinkClient::Protocol3::Time.new(
     zone: 1,
     is_24h: false,
     date_format: 2,
     time: time1
   ),
-  TimexDatalinkClient::Time.new(
+  TimexDatalinkClient::Protocol3::Time.new(
     zone: 2,
     is_24h: true,
     date_format: 2,
     time: time2
   ),
 
-  TimexDatalinkClient::Alarm.new(
+  TimexDatalinkClient::Protocol3::Alarm.new(
     number: 1,
     audible: true,
     time: Time.new(2022, 1, 1, 9, 0),
     message: "Wake up"
   ),
-  TimexDatalinkClient::Alarm.new(
+  TimexDatalinkClient::Protocol3::Alarm.new(
     number: 2,
     audible: true,
     time: Time.new(2022, 1, 1, 9, 5),
     message: "For real"
   ),
-  TimexDatalinkClient::Alarm.new(
+  TimexDatalinkClient::Protocol3::Alarm.new(
     number: 3,
     audible: true,
     time: Time.new(2022, 1, 1, 9, 10),
     message: "Get up"
   ),
-  TimexDatalinkClient::Alarm.new(
+  TimexDatalinkClient::Protocol3::Alarm.new(
     number: 4,
     audible: true,
     time: Time.new(2022, 1, 1, 9, 15),
     message: "Or not"
   ),
-  TimexDatalinkClient::Alarm.new(
+  TimexDatalinkClient::Protocol3::Alarm.new(
     number: 5,
     audible: false,
     time: Time.new(2022, 1, 1, 11, 30),
     message: "Told you"
   ),
 
-  TimexDatalinkClient::Eeprom.new(
+  TimexDatalinkClient::Protocol3::Eeprom.new(
     appointments: appointments,
     anniversaries: anniversaries,
     lists: lists,
@@ -324,15 +324,15 @@ models = [
     appointment_notification: 2
   ),
 
-  TimexDatalinkClient::SoundTheme.new(spc_file: "DATALINK/SND/DEFHIGH.SPC"),
-  TimexDatalinkClient::SoundOptions.new(
+  TimexDatalinkClient::Protocol3::SoundTheme.new(spc_file: "DATALINK/SND/DEFHIGH.SPC"),
+  TimexDatalinkClient::Protocol3::SoundOptions.new(
     hourly_chime: true,
     button_beep: true
   ),
 
-  TimexDatalinkClient::WristApp.new(zap_file: "DATALINK/APP/TIMER13.ZAP"),
+  TimexDatalinkClient::Protocol3::WristApp.new(zap_file: "DATALINK/APP/TIMER13.ZAP"),
 
-  TimexDatalinkClient::End.new
+  TimexDatalinkClient::Protocol3::End.new
 ]
 
 timex_datalink_client = TimexDatalinkClient.new(

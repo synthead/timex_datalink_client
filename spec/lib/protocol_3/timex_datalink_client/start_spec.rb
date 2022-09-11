@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe TimexDatalinkClient::Start do
+describe TimexDatalinkClient::Protocol3::Start do
   let(:start) { described_class.new }
 
   describe "#packets", :crc do

@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe TimexDatalinkClient::Sync do
+describe TimexDatalinkClient::Protocol3::Sync do
   let(:length) { 200 }
   let(:sync) { described_class.new(length: length) }
 

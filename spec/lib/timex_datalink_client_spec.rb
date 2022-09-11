@@ -12,24 +12,24 @@ describe TimexDatalinkClient do
 
   let(:models) do
     [
-      TimexDatalinkClient::Sync.new(length: 50),
-      TimexDatalinkClient::Start.new,
-      TimexDatalinkClient::Time.new(
+      TimexDatalinkClient::Protocol3::Sync.new(length: 50),
+      TimexDatalinkClient::Protocol3::Start.new,
+      TimexDatalinkClient::Protocol3::Time.new(
         zone: 1,
         is_24h: false,
         date_format: 0,
         time: TZInfo::Timezone.get("US/Pacific").local_time(2015, 10, 21, 19, 28, 32)
       ),
-      TimexDatalinkClient::Eeprom.new(
+      TimexDatalinkClient::Protocol3::Eeprom.new(
         appointments: [
-          TimexDatalinkClient::Eeprom::Appointment.new(
+          TimexDatalinkClient::Protocol3::Eeprom::Appointment.new(
             time: Time.new(1997, 9, 19),
             message: "release timexdl.exe"
           )
         ],
         appointment_notification: 0
       ),
-      TimexDatalinkClient::End.new
+      TimexDatalinkClient::Protocol3::End.new
     ]
   end
 

@@ -39,7 +39,7 @@ describe TimexDatalinkClient::Eeprom::PhoneNumber do
       ]
     end
 
-    context "when number is 123" do
+    context "when number is \"123\"" do
       let(:number) { "123" }
 
       it_behaves_like "a length-prefixed packet", [
@@ -47,7 +47,7 @@ describe TimexDatalinkClient::Eeprom::PhoneNumber do
       ]
     end
 
-    context "when number is 12345678901234567890" do
+    context "when number is \"12345678901234567890\"" do
       let(:number) { "12345678901234567890" }
 
       it_behaves_like "a length-prefixed packet", [

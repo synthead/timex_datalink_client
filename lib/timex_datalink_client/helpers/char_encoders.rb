@@ -4,17 +4,17 @@ class TimexDatalinkClient
   class Helpers
     module CharEncoders
       CHARS = "0123456789abcdefghijklmnopqrstuvwxyz !\"#$%&'()*+,-./:\\;=@?_|<>[]"
+      PHONE_CHARS = "0123456789cfhpw "
+      INVALID_CHAR = " "
 
       EEPROM_TERMINATOR = 0x3f
-
-      PHONE_CHARS = "0123456789cfhpw "
 
       def chars_for(string_chars, char_map: CHARS, length: nil, pad: false)
         formatted_chars = string_chars.downcase[0..length.to_i - 1]
         formatted_chars = formatted_chars.ljust(length) if pad
 
         formatted_chars.each_char.map do |char|
-          char_map.index(char)
+          char_map.index(char) || char_map.index(INVALID_CHAR)
         end
       end
 

@@ -13,25 +13,29 @@ Gem::Specification.new do |s|
 
   s.files       = [
     "lib/timex_datalink_client.rb",
-    "lib/timex_datalink_client/alarm.rb",
-    "lib/timex_datalink_client/eeprom.rb",
-    "lib/timex_datalink_client/eeprom/anniversary.rb",
-    "lib/timex_datalink_client/eeprom/appointment.rb",
-    "lib/timex_datalink_client/eeprom/list.rb",
-    "lib/timex_datalink_client/eeprom/phone_number.rb",
     "lib/timex_datalink_client/end.rb",
+    "lib/timex_datalink_client/notebook_adapter.rb",
+    "lib/timex_datalink_client/sync.rb",
+    "lib/timex_datalink_client/version.rb",
+
     "lib/timex_datalink_client/helpers/char_encoders.rb",
     "lib/timex_datalink_client/helpers/cpacket_paginator.rb",
     "lib/timex_datalink_client/helpers/crc_packets_wrapper.rb",
     "lib/timex_datalink_client/helpers/length_packet_wrapper.rb",
-    "lib/timex_datalink_client/notebook_adapter.rb",
-    "lib/timex_datalink_client/sound_options.rb",
-    "lib/timex_datalink_client/sound_theme.rb",
-    "lib/timex_datalink_client/start.rb",
-    "lib/timex_datalink_client/sync.rb",
-    "lib/timex_datalink_client/time.rb",
-    "lib/timex_datalink_client/version.rb",
-    "lib/timex_datalink_client/wrist_app.rb"
+
+    "lib/timex_datalink_client/protocol_3/alarm.rb",
+    "lib/timex_datalink_client/protocol_3/eeprom.rb",
+    "lib/timex_datalink_client/protocol_3/eeprom/anniversary.rb",
+    "lib/timex_datalink_client/protocol_3/eeprom/appointment.rb",
+    "lib/timex_datalink_client/protocol_3/eeprom/list.rb",
+    "lib/timex_datalink_client/protocol_3/eeprom/phone_number.rb",
+    "lib/timex_datalink_client/protocol_3/end.rb",
+    "lib/timex_datalink_client/protocol_3/sound_options.rb",
+    "lib/timex_datalink_client/protocol_3/sound_theme.rb",
+    "lib/timex_datalink_client/protocol_3/start.rb",
+    "lib/timex_datalink_client/protocol_3/sync.rb",
+    "lib/timex_datalink_client/protocol_3/time.rb",
+    "lib/timex_datalink_client/protocol_3/wrist_app.rb"
   ]
 
   s.add_dependency "crc", "~> 0.4.2"

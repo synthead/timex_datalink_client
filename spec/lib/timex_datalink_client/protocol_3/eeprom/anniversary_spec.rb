@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe TimexDatalinkClient::Eeprom::Anniversary do
+describe TimexDatalinkClient::Protocol3::Eeprom::Anniversary do
   let(:time) { Time.new(1997, 9, 19) }
   let(:anniversary) { "TIMEXDL.EXE modified date" }
 

@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe TimexDatalinkClient::Alarm do
+describe TimexDatalinkClient::Protocol3::Alarm do
   let(:number) { 1 }
   let(:audible) { false }
   let(:time) { Time.new(1994) }

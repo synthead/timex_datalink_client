@@ -4,7 +4,7 @@ require "tzinfo"
 
 require "spec_helper"
 
-describe TimexDatalinkClient::Time do
+describe TimexDatalinkClient::Protocol3::Time do
   let(:zone) { 1 }
   let(:is_24h) { false }
   let(:date_format) { 0 }

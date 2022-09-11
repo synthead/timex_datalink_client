@@ -2,14 +2,14 @@
 
 require "spec_helper"
 
-describe TimexDatalinkClient::Eeprom do
+describe TimexDatalinkClient::Protocol3::Eeprom do
   let(:appointments) do
     [
-      TimexDatalinkClient::Eeprom::Appointment.new(
+      TimexDatalinkClient::Protocol3::Eeprom::Appointment.new(
         time: Time.new(1997, 9, 19),
         message: "release timexdl.exe"
       ),
-      TimexDatalinkClient::Eeprom::Appointment.new(
+      TimexDatalinkClient::Protocol3::Eeprom::Appointment.new(
         time: Time.new(2015, 10, 21),
         message: "get to the delorean"
       )
@@ -18,11 +18,11 @@ describe TimexDatalinkClient::Eeprom do
 
   let(:anniversaries) do
     [
-      TimexDatalinkClient::Eeprom::Anniversary.new(
+      TimexDatalinkClient::Protocol3::Eeprom::Anniversary.new(
         time: Time.new(1997, 9, 19),
         anniversary: "timexdl.exe modified date"
       ),
-      TimexDatalinkClient::Eeprom::Anniversary.new(
+      TimexDatalinkClient::Protocol3::Eeprom::Anniversary.new(
         time: Time.new(2015, 10, 21),
         anniversary: "to the delorean"
       )
@@ -31,12 +31,12 @@ describe TimexDatalinkClient::Eeprom do
 
   let(:phone_numbers) do
     [
-      TimexDatalinkClient::Eeprom::PhoneNumber.new(
+      TimexDatalinkClient::Protocol3::Eeprom::PhoneNumber.new(
         name: "marty mcfly",
         number: "1234567890",
         type: "c",
       ),
-      TimexDatalinkClient::Eeprom::PhoneNumber.new(
+      TimexDatalinkClient::Protocol3::Eeprom::PhoneNumber.new(
         name: "doc brown",
         number: "1112223333",
         type: "h",
@@ -46,11 +46,11 @@ describe TimexDatalinkClient::Eeprom do
 
   let(:lists) do
     [
-      TimexDatalinkClient::Eeprom::List.new(
+      TimexDatalinkClient::Protocol3::Eeprom::List.new(
         list_entry: "muffler bearings",
         priority: 0
       ),
-      TimexDatalinkClient::Eeprom::List.new(
+      TimexDatalinkClient::Protocol3::Eeprom::List.new(
         list_entry: "headlight fluid",
         priority: 0
       )

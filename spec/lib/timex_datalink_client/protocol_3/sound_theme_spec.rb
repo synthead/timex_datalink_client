@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe TimexDatalinkClient::SoundTheme do
+describe TimexDatalinkClient::Protocol3::SoundTheme do
   let(:sound_theme) do
     described_class.new(
       sound_theme_data: sound_theme_data,

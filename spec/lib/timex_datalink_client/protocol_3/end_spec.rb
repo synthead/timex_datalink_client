@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe TimexDatalinkClient::End do
+describe TimexDatalinkClient::Protocol3::End do
   let(:end_instance) { described_class.new }
 
   describe "#packets", :crc do

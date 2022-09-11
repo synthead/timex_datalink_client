@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe TimexDatalinkClient::WristApp do
+describe TimexDatalinkClient::Protocol3::WristApp do
   let(:wrist_app) do
     described_class.new(
       wrist_app_data: wrist_app_data,

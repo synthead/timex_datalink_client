@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe TimexDatalinkClient::SoundOptions do
+describe TimexDatalinkClient::Protocol3::SoundOptions do
   let(:hourly_chime) { false }
   let(:button_beep) { false }
 

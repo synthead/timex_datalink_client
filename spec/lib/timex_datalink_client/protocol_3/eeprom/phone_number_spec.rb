@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe TimexDatalinkClient::Eeprom::PhoneNumber do
+describe TimexDatalinkClient::Protocol3::Eeprom::PhoneNumber do
   let(:name) { "Marty McFly" }
   let(:number) { "1234567890" }
   let(:type) { "c" }

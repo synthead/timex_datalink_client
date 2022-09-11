@@ -1,20 +1,21 @@
 # frozen_string_literal: true
 
-require "timex_datalink_client/alarm"
-require "timex_datalink_client/eeprom"
-require "timex_datalink_client/eeprom/anniversary"
-require "timex_datalink_client/eeprom/appointment"
-require "timex_datalink_client/eeprom/list"
-require "timex_datalink_client/eeprom/phone_number"
-require "timex_datalink_client/end"
-require "timex_datalink_client/notebook_adapter"
-require "timex_datalink_client/sound_options"
-require "timex_datalink_client/sound_theme"
-require "timex_datalink_client/start"
-require "timex_datalink_client/sync"
-require "timex_datalink_client/time"
 require "timex_datalink_client/version"
-require "timex_datalink_client/wrist_app"
+require "timex_datalink_client/notebook_adapter"
+
+require "timex_datalink_client/protocol_3/alarm"
+require "timex_datalink_client/protocol_3/eeprom"
+require "timex_datalink_client/protocol_3/eeprom/anniversary"
+require "timex_datalink_client/protocol_3/eeprom/appointment"
+require "timex_datalink_client/protocol_3/eeprom/list"
+require "timex_datalink_client/protocol_3/eeprom/phone_number"
+require "timex_datalink_client/protocol_3/end"
+require "timex_datalink_client/protocol_3/sound_options"
+require "timex_datalink_client/protocol_3/sound_theme"
+require "timex_datalink_client/protocol_3/start"
+require "timex_datalink_client/protocol_3/sync"
+require "timex_datalink_client/protocol_3/time"
+require "timex_datalink_client/protocol_3/wrist_app"
 
 class TimexDatalinkClient
   attr_accessor :serial_device, :models, :byte_sleep, :packet_sleep, :verbose
@@ -22,7 +23,8 @@ class TimexDatalinkClient
   # Create a TimexDatalinkClient instance.
   #
   # @param serial_device [String] Path to serial device.
-  # @param models [Array<Alarm, Eeprom, End, SoundOptions, SoundTheme, Start, Sync, Time, WristApp>] Models to compile
+  # @param models [Array<Protocol3::Alarm, Protocol3::Eeprom, Protocol3::End, Protocol3::SoundOptions,
+  #   Protocol3::SoundTheme, Protocol3::Start, Protocol3::Sync, Protocol3::Time, Protocol3::WristApp>] Models to compile
   #   data for.
   # @param byte_sleep [Integer, nil] Time to sleep after sending byte.
   # @param packet_sleep [Integer, nil] Time to sleep after sending packet of bytes.

@@ -4,6 +4,7 @@ class TimexDatalinkClient
   class Helpers
     module CharEncoders
       CHARS = "0123456789abcdefghijklmnopqrstuvwxyz !\"#$%&'()*+,-./:\\;=@?_|<>[]"
+      EEPROM_CHARS = "0123456789abcdefghijklmnopqrstuvwxyz !\"#$%&'()*+,-./:\\;=@?_|<>["
       PHONE_CHARS = "0123456789cfhpw "
       INVALID_CHAR = " "
 
@@ -19,7 +20,7 @@ class TimexDatalinkClient
       end
 
       def eeprom_chars_for(string_chars)
-        chars = chars_for(string_chars, length: 31).append(EEPROM_TERMINATOR)
+        chars = chars_for(string_chars, char_map: EEPROM_CHARS, length: 31).append(EEPROM_TERMINATOR)
 
         packed_int = chars.each_with_index.sum do |char, index|
           char << (6 * index)

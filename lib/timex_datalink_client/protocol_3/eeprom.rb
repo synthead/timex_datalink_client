@@ -14,6 +14,7 @@ class TimexDatalinkClient
       CPACKET_DATA = [0x91, 0x01]
       CPACKET_END = [0x92, 0x01]
 
+      CPACKET_DATA_LENGTH = 32
       START_ADDRESS = 0x0236
       APPOINTMENT_NO_NOTIFICATION = 0xff
 
@@ -57,7 +58,7 @@ class TimexDatalinkClient
       end
 
       def payloads
-        paginate_cpackets(header: CPACKET_DATA, cpackets: all_packets)
+        paginate_cpackets(header: CPACKET_DATA, length: CPACKET_DATA_LENGTH, cpackets: all_packets)
       end
 
       def all_items

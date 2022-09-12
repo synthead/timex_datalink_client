@@ -11,8 +11,6 @@ class TimexDatalinkClient
 
       CPACKET_ALARM = [0x50]
 
-      MESSAGE_LENGTH = 8
-
       attr_accessor :number, :audible, :time, :message
 
       # Create an Alarm instance.

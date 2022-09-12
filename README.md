@@ -1,13 +1,22 @@
 # Timex Datalink library for Ruby
 
 Here is a fully-tested, feature-complete, and byte-for-byte perfect reimplementation of the Timex Datalink client
-software as a Ruby library!
+software as a Ruby library!  This library supports protocol version 1 and 3, which covers almost every Timex Datalink
+device!
 
-For now, this library only supports the Timex Datalink 150 watch.  More models may be supported in the future!
+These devices have been tested to work with this library:
 
-## What is a Timex Datalink?
+- Timex 70301 (Datalink 50, protocol 1)
+- Timex 69737 (Datalink 150, protocol 3)
+- Franklin Rolodex Flash PC Companion RFLS-8 (protocol 1)
 
-The Timex Datalink is a watch that was introduced in 1994 that is essentially a small PDA on your wrist.  The early models (supported by this software) have an optical sensor on the top of the face that receives data via visible light.
+Protocol 4 is not currently supported.  The only known product to use this protocol is the Timex Datalink 150s.  This
+may be supported sometime in the future.
+
+## What is the Timex Datalink?
+
+The Timex Datalink is a watch that was introduced in 1994 that is essentially a small PDA on your wrist.  The early
+models (supported by this software) have an optical sensor on the top of the face that receives data via visible light.
 
 <image src="https://user-images.githubusercontent.com/820984/188436920-c6763a48-ce5a-4f16-af2d-df8bd7ca4849.png" width="600px">
 
@@ -32,6 +41,26 @@ As a fun tidbit, these watches are flight certified by NASA and is one of four w
 travel!  Here's a shot of James H. Newman wearing a Datalink watch on the Space Shuttle for STS-88!
 
 <image src="https://user-images.githubusercontent.com/820984/188442622-13ff7be5-4cf6-488e-936b-ca8874648467.png" width="600px">
+
+In addition, the Datalink protocol is also used in some other watches, organizers, and toys, i.e. the Motorola Beepwear
+Pro, Royal FL95, Tiger PDA2000, Franklin Rolodex Flash PC Companion RFLS-8, and DSI e-BRAIN 69006.
+
+## Determining the protocol to use
+
+On Timex Datalink watches, pressing the center button on the right will change its mode.  Press this button until "COMM
+MODE" is displayed, then "COMM READY" will appear.  This is sometimes accompanied by a version number.  Use the table
+below to identify the protcol.
+
+|Watch display|Protocol compatibility|
+|---|---|
+|![image](https://user-images.githubusercontent.com/820984/189607899-5bb67438-1c82-41e0-95d1-d1134cfb1f8b.png)|Use protocol 1 models in `TimexDatalinkClient::Protocol1`|
+|![image](https://user-images.githubusercontent.com/820984/189609399-25eea5c5-958e-489d-936e-139342c9fddf.png)|Use protocol 3 models in `TimexDatalinkClient::Protocol3`|
+|![image](https://user-images.githubusercontent.com/820984/189609671-33a6dc6b-1eb1-4942-8bac-238e6056d1c2.png)|Protocol 4 (currently not supported)|
+
+During data transmission, the "start" packet of each protocol will announce the protocol number to the device.  If the
+protocol doesn't match the device, the screen will display "PC-WATCH MISMATCH" and safely abort the data transmission.
+
+Most non-Timex devices use protocol 1, so start with protocol 1 if the protocol can't be identified.
 
 ## Parity to the Timex Datalink software
 

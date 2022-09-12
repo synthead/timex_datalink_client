@@ -14,6 +14,7 @@ class TimexDatalinkClient
       CPACKET_DATA = [0x91, 0x02]
       CPACKET_END = [0x92, 0x02]
 
+      CPACKET_DATA_LENGTH = 32
       WRIST_APP_DELIMITER = /\xac.*\r\n/n
       WRIST_APP_CODE_INDEX = 8
 
@@ -43,7 +44,7 @@ class TimexDatalinkClient
       end
 
       def payloads
-        paginate_cpackets(header: CPACKET_DATA, cpackets: wrist_app_data.bytes)
+        paginate_cpackets(header: CPACKET_DATA, length: CPACKET_DATA_LENGTH, cpackets: wrist_app_data.bytes)
       end
 
       def wrist_app_data

@@ -13,6 +13,7 @@ class TimexDatalinkClient
       CPACKET_DATA = [0x91, 0x03]
       CPACKET_END = [0x92, 0x03]
 
+      CPACKET_DATA_LENGTH = 32
       SOUND_DATA_HEADER = "\x25\x04\x19\x69"
 
       attr_accessor :spc_file
@@ -41,7 +42,7 @@ class TimexDatalinkClient
       end
 
       def payloads
-        paginate_cpackets(header: CPACKET_DATA, cpackets: sound_theme_data.bytes)
+        paginate_cpackets(header: CPACKET_DATA, length: CPACKET_DATA_LENGTH, cpackets: sound_theme_data.bytes)
       end
 
       def sound_theme_data

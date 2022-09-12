@@ -8,6 +8,7 @@ require "timex_datalink_client/eeprom/appointment"
 require "timex_datalink_client/eeprom/list"
 require "timex_datalink_client/eeprom/phone_number"
 
+require "timex_datalink_client/protocol_1/eeprom"
 require "timex_datalink_client/protocol_1/end"
 require "timex_datalink_client/protocol_1/start"
 require "timex_datalink_client/protocol_1/sync"

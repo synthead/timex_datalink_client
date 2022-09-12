@@ -7,6 +7,7 @@ require "timex_datalink_client/protocol_1/end"
 require "timex_datalink_client/protocol_1/start"
 require "timex_datalink_client/protocol_1/sync"
 require "timex_datalink_client/protocol_1/time"
+require "timex_datalink_client/protocol_1/time_name"
 
 require "timex_datalink_client/protocol_3/alarm"
 require "timex_datalink_client/protocol_3/eeprom"

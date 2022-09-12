@@ -88,6 +88,15 @@ appointments = [
   )
 ]
 
+# For protocol 1:
+
+TimexDatalinkClient::Protocol1::Eeprom.new(
+  appointments: appointments,
+  appointment_notification: 2
+)
+
+# For protocol 3:
+
 TimexDatalinkClient::Protocol3::Eeprom.new(
   appointments: appointments,
   appointment_notification: 2
@@ -110,6 +119,12 @@ anniversaries = [
   )
 ]
 
+# For protocol 1:
+
+TimexDatalinkClient::Protocol1::Eeprom.new(anniversaries: anniversaries)
+
+# For protocol 3:
+
 TimexDatalinkClient::Protocol3::Eeprom.new(anniversaries: anniversaries)
 ```
 
@@ -131,6 +146,12 @@ phone_numbers = [
   )
 ]
 
+# For protocol 1:
+
+TimexDatalinkClient::Protocol1::Eeprom.new(phone_numbers: phone_numbers)
+
+# For protocol 3:
+
 TimexDatalinkClient::Protocol3::Eeprom.new(phone_numbers: phone_numbers)
 ```
 
@@ -150,6 +171,12 @@ lists = [
   )
 ]
 
+# For protocol 1:
+
+TimexDatalinkClient::Protocol1::Eeprom.new(lists: lists)
+
+# For protocol 3:
+
 TimexDatalinkClient::Protocol3::Eeprom.new(lists: lists)
 ```
 
@@ -158,20 +185,46 @@ TimexDatalinkClient::Protocol3::Eeprom.new(lists: lists)
 <image src="https://user-images.githubusercontent.com/820984/188431136-e2a40eec-d9cd-4b15-992e-3d7b1251b0ee.png" width="600px">
 
 ```ruby
+# For protocol 1:
+
+TimexDatalinkClient::Protocol1::Time.new(
+  zone: 1,
+  time: Time.new(2022, 9, 5, 3, 39, 44),
+  is_24h: false
+)
+
+TimexDatalinkClient::Protocol1::TimeName.new(
+  zone: 1,
+  name: "PDT"
+)
+
+TimexDatalinkClient::Protocol1::Time.new(
+  zone: 2,
+  time: Time.new(2022, 9, 5, 11, 39, 44),
+  is_24h: true
+)
+
+TimexDatalinkClient::Protocol1::TimeName.new(
+  zone: 2,
+  name: "GMT"
+)
+
+# For protocol 3:
+
 TimexDatalinkClient::Protocol3::Time.new(
   zone: 1,
-  name: "PDT",
   time: Time.new(2022, 9, 5, 3, 39, 44),
   is_24h: false,
-  date_format: 0,
+  name: "PDT",
+  date_format: 0
 )
 
 TimexDatalinkClient::Protocol3::Time.new(
   zone: 2,
-  name: "GMT",
   time: Time.new(2022, 9, 5, 11, 39, 44),
   is_24h: true,
-  date_format: 0,
+  name: "GMT",
+  date_format: 0
 )
 ```
 
@@ -180,6 +233,45 @@ TimexDatalinkClient::Protocol3::Time.new(
 <image src="https://user-images.githubusercontent.com/820984/188433212-57f41380-9416-4bc2-98fa-4dbc260c2965.png" width="600px">
 
 ```ruby
+# For protocol 1:
+
+TimexDatalinkClient::Protocol1::Alarm.new(
+  number: 1,
+  audible: true,
+  time: Time.new(2022, 1, 1, 9, 0),
+  message: "Wake up"
+)
+
+TimexDatalinkClient::Protocol1::Alarm.new(
+  number: 2,
+  audible: true,
+  time: Time.new(2022, 1, 1, 9, 5),
+  message: "For real"
+)
+
+TimexDatalinkClient::Protocol1::Alarm.new(
+  number: 3,
+  audible: true,
+  time: Time.new(2022, 1, 1, 9, 10),
+  message: "Get up"
+)
+
+TimexDatalinkClient::Protocol1::Alarm.new(
+  number: 4,
+  audible: true,
+  time: Time.new(2022, 1, 1, 9, 15),
+  message: "Or not"
+)
+
+TimexDatalinkClient::Protocol1::Alarm.new(
+  number: 5,
+  audible: false,
+  time: Time.new(2022, 1, 1, 11, 30),
+  message: "Told you"
+)
+
+# For protocol 3:
+
 TimexDatalinkClient::Protocol3::Alarm.new(
   number: 1,
   audible: true,
@@ -221,6 +313,8 @@ TimexDatalinkClient::Protocol3::Alarm.new(
 <image src="https://user-images.githubusercontent.com/820984/188433986-723686d2-d862-4f54-acea-430c1a8f2571.png" width="600px">
 
 ```ruby
+# Only supported in protocol 3:
+
 TimexDatalinkClient::Protocol3::WristApp.new(zap_file: "DATALINK/APP/TIMER13.ZAP")
 ```
 
@@ -229,17 +323,19 @@ TimexDatalinkClient::Protocol3::WristApp.new(zap_file: "DATALINK/APP/TIMER13.ZAP
 <image src="https://user-images.githubusercontent.com/820984/188434465-97dc97ca-a396-4643-82ee-26724a4ca718.png" width="600px">
 
 ```ruby
-  TimexDatalinkClient::Protocol3::SoundTheme.new(spc_file: "DATALINK/SND/DEFAULT.SPC")
+# Only supported in protocol 3:
 
-  TimexDatalinkClient::Protocol3::SoundOptions.new(
-    hourly_chime: true,
-    button_beep: false
-  )
+TimexDatalinkClient::Protocol3::SoundTheme.new(spc_file: "DATALINK/SND/DEFAULT.SPC")
+
+TimexDatalinkClient::Protocol3::SoundOptions.new(
+  hourly_chime: true,
+  button_beep: false
+)
 ```
 
 ## Code example
 
-Here is an example that sends every type of data to the watch and uses all the features of this library:
+Here is an example that uses protocol 3 to every type of data to a device and uses all the features of this library:
 
 ```ruby
 require "timex_datalink_client"

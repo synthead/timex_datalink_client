@@ -53,7 +53,7 @@ describe TimexDatalinkClient::Protocol3::Time do
       ]
     end
 
-    context "when time is 2015-10-21 19:28:32 NZDT" do
+    context "when time is 1997-09-19 19:36:55 NZDT" do
       let(:tzinfo) { TZInfo::Timezone.get("Pacific/Auckland") }
       let(:time) { tzinfo.local_time(1997, 9, 19, 19, 36, 55) }
 

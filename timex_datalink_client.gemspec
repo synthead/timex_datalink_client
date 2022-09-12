@@ -23,6 +23,10 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/helpers/crc_packets_wrapper.rb",
     "lib/timex_datalink_client/helpers/length_packet_wrapper.rb",
 
+    "lib/timex_datalink_client/protocol_1/end.rb",
+    "lib/timex_datalink_client/protocol_1/start.rb",
+    "lib/timex_datalink_client/protocol_1/sync.rb",
+
     "lib/timex_datalink_client/protocol_3/alarm.rb",
     "lib/timex_datalink_client/protocol_3/eeprom.rb",
     "lib/timex_datalink_client/protocol_3/eeprom/anniversary.rb",

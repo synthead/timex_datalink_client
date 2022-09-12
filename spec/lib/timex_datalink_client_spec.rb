@@ -22,7 +22,7 @@ describe TimexDatalinkClient do
       ),
       TimexDatalinkClient::Protocol3::Eeprom.new(
         appointments: [
-          TimexDatalinkClient::Protocol3::Eeprom::Appointment.new(
+          TimexDatalinkClient::Eeprom::Appointment.new(
             time: Time.new(1997, 9, 19),
             message: "release timexdl.exe"
           )

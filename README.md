@@ -486,7 +486,7 @@ reliably with the [Teensy LC Notebook Adapter](https://github.com/synthead/timex
 timex_datalink_client = TimexDatalinkClient.new(
   serial_device: "/dev/ttyACM0",
   models: models,
-  byte_sleep: 0.006,
+  byte_sleep: 0.008,
   packet_sleep: 0.06,
   verbose: true
 )

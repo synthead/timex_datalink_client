@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe TimexDatalinkClient::Protocol3::Eeprom::List do
+describe TimexDatalinkClient::Eeprom::List do
   let(:list_entry) { "Muffler Bearings" }
   let(:priority) { 0 }
 

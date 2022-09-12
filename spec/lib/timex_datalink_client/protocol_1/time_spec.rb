@@ -38,7 +38,7 @@ describe TimexDatalinkClient::Protocol1::Time do
       ]
     end
 
-    context "when time is 2015-10-21 19:28:32" do
+    context "when time is 1997-09-19 19:36:55" do
       let(:time) { Time.new(1997, 9, 19, 19, 36, 55) }
 
       it_behaves_like "CRC-wrapped packets", [

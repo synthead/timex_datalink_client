@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/eeprom/list.rb",
     "lib/timex_datalink_client/eeprom/phone_number.rb",
 
+    "lib/timex_datalink_client/protocol_1/eeprom.rb",
     "lib/timex_datalink_client/protocol_1/end.rb",
     "lib/timex_datalink_client/protocol_1/start.rb",
     "lib/timex_datalink_client/protocol_1/sync.rb",

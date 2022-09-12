@@ -3,6 +3,11 @@
 require "timex_datalink_client/version"
 require "timex_datalink_client/notebook_adapter"
 
+require "timex_datalink_client/eeprom/anniversary"
+require "timex_datalink_client/eeprom/appointment"
+require "timex_datalink_client/eeprom/list"
+require "timex_datalink_client/eeprom/phone_number"
+
 require "timex_datalink_client/protocol_1/end"
 require "timex_datalink_client/protocol_1/start"
 require "timex_datalink_client/protocol_1/sync"
@@ -11,10 +16,6 @@ require "timex_datalink_client/protocol_1/time_name"
 
 require "timex_datalink_client/protocol_3/alarm"
 require "timex_datalink_client/protocol_3/eeprom"
-require "timex_datalink_client/protocol_3/eeprom/anniversary"
-require "timex_datalink_client/protocol_3/eeprom/appointment"
-require "timex_datalink_client/protocol_3/eeprom/list"
-require "timex_datalink_client/protocol_3/eeprom/phone_number"
 require "timex_datalink_client/protocol_3/end"
 require "timex_datalink_client/protocol_3/sound_options"
 require "timex_datalink_client/protocol_3/sound_theme"

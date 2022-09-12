@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe TimexDatalinkClient::Protocol3::Eeprom::Appointment do
+describe TimexDatalinkClient::Eeprom::Appointment do
   let(:time) { Time.new(1997, 9, 19) }
   let(:message) { "Release TIMEXDL.EXE" }
 

@@ -26,6 +26,10 @@ require "timex_datalink_client/protocol_3/sync"
 require "timex_datalink_client/protocol_3/time"
 require "timex_datalink_client/protocol_3/wrist_app"
 
+require "timex_datalink_client/protocol_9/end"
+require "timex_datalink_client/protocol_9/start"
+require "timex_datalink_client/protocol_9/sync"
+
 class TimexDatalinkClient
   attr_accessor :serial_device, :models, :byte_sleep, :packet_sleep, :verbose
 

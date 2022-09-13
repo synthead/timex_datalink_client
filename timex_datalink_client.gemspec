@@ -13,7 +13,6 @@ Gem::Specification.new do |s|
 
   s.files       = [
     "lib/timex_datalink_client.rb",
-    "lib/timex_datalink_client/end.rb",
     "lib/timex_datalink_client/notebook_adapter.rb",
     "lib/timex_datalink_client/sync.rb",
     "lib/timex_datalink_client/version.rb",

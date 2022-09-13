@@ -44,6 +44,7 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/protocol_3/time.rb",
     "lib/timex_datalink_client/protocol_3/wrist_app.rb",
 
+    "lib/timex_datalink_client/protocol_9/alarm.rb",
     "lib/timex_datalink_client/protocol_9/end.rb",
     "lib/timex_datalink_client/protocol_9/sound_options.rb",
     "lib/timex_datalink_client/protocol_9/start.rb",

@@ -33,6 +33,7 @@ require "timex_datalink_client/protocol_9/start"
 require "timex_datalink_client/protocol_9/sync"
 require "timex_datalink_client/protocol_9/time"
 require "timex_datalink_client/protocol_9/time_name"
+require "timex_datalink_client/protocol_9/timer"
 
 class TimexDatalinkClient
   attr_accessor :serial_device, :models, :byte_sleep, :packet_sleep, :verbose

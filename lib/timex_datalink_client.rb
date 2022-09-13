@@ -27,6 +27,7 @@ require "timex_datalink_client/protocol_3/time"
 require "timex_datalink_client/protocol_3/wrist_app"
 
 require "timex_datalink_client/protocol_9/end"
+require "timex_datalink_client/protocol_9/sound_options"
 require "timex_datalink_client/protocol_9/start"
 require "timex_datalink_client/protocol_9/sync"
 require "timex_datalink_client/protocol_9/time"

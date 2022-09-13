@@ -42,7 +42,11 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/protocol_3/start.rb",
     "lib/timex_datalink_client/protocol_3/sync.rb",
     "lib/timex_datalink_client/protocol_3/time.rb",
-    "lib/timex_datalink_client/protocol_3/wrist_app.rb"
+    "lib/timex_datalink_client/protocol_3/wrist_app.rb",
+
+    "lib/timex_datalink_client/protocol_9/end.rb",
+    "lib/timex_datalink_client/protocol_9/start.rb",
+    "lib/timex_datalink_client/protocol_9/sync.rb"
   ]
 
   s.add_dependency "crc", "~> 0.4.2"

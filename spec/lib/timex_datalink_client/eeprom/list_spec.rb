@@ -37,7 +37,7 @@ describe TimexDatalinkClient::Eeprom::List do
       ]
     end
 
-    context "when list_entry is \";@_|<>[]" do
+    context "when list_entry is \";@_|<>[]\"" do
       let(:list_entry) { ";@_|<>[]" }
 
       it_behaves_like "a length-prefixed packet", [

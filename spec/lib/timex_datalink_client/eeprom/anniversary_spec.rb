@@ -39,7 +39,7 @@ describe TimexDatalinkClient::Eeprom::Anniversary do
       ]
     end
 
-    context "when anniversary is \";@_|<>[]" do
+    context "when anniversary is \";@_|<>[]\"" do
       let(:anniversary) { ";@_|<>[]" }
 
       it_behaves_like "a length-prefixed packet", [

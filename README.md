@@ -57,6 +57,7 @@ below to identify the protcol.
 |![image](https://user-images.githubusercontent.com/820984/189607899-5bb67438-1c82-41e0-95d1-d1134cfb1f8b.png)|Use protocol 1 models in `TimexDatalinkClient::Protocol1`|
 |![image](https://user-images.githubusercontent.com/820984/189609399-25eea5c5-958e-489d-936e-139342c9fddf.png)|Use protocol 3 models in `TimexDatalinkClient::Protocol3`|
 |![image](https://user-images.githubusercontent.com/820984/189609671-33a6dc6b-1eb1-4942-8bac-238e6056d1c2.png)|Protocol 4 (currently not supported)|
+|![image](https://user-images.githubusercontent.com/820984/190122029-6df17bd0-171a-425c-ac63-d415eeb9fffd.png)|Use protocol 9 models in `TimexDatalinkClient::Protocol9`|
 
 During data transmission, the "start" packet of each protocol will announce the protocol number to the device.  If the
 protocol doesn't match the device, the screen will display "PC-WATCH MISMATCH" and safely abort the data transmission.

@@ -11,7 +11,7 @@ describe TimexDatalinkClient::Eeprom::PhoneNumber do
     described_class.new(
       name: name,
       number: number,
-      type: type,
+      type: type
     )
   end
 

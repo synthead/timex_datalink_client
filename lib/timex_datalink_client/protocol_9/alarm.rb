@@ -44,7 +44,7 @@ class TimexDatalinkClient
             month.to_i,
             day.to_i,
             audible_integer,
-            message_characters,
+            message_characters
           ].flatten
         ]
       end

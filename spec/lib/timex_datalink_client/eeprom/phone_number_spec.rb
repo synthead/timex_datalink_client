@@ -73,7 +73,7 @@ describe TimexDatalinkClient::Eeprom::PhoneNumber do
     end
 
     context "when type is \"H\"" do
-      let(:type) { "h" }
+      let(:type) { "H" }
 
       it_behaves_like "a length-prefixed packet", [
         0x21, 0x43, 0x65, 0x87, 0x09, 0xcf, 0x96, 0xb2, 0x75, 0x22, 0x69, 0x31, 0x4f, 0x25, 0xfe

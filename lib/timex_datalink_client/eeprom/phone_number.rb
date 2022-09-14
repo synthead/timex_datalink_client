@@ -37,15 +37,13 @@ class TimexDatalinkClient
 
       private
 
-      def number_with_type_truncated
+      def number_with_type_padded
         number_with_type = "#{number} #{type}"
-        padded_number_with_type = number_with_type.rjust(PHONE_DIGITS)
-
-        padded_number_with_type[0..PHONE_DIGITS - 1]
+        number_with_type.rjust(PHONE_DIGITS)
       end
 
       def number_with_type_characters
-        phone_chars_for(number_with_type_truncated)
+        phone_chars_for(number_with_type_padded)
       end
 
       def name_characters

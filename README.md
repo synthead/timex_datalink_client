@@ -73,22 +73,22 @@ Here are some examples of data in the original Timex Datalink software and how t
 <image src="https://user-images.githubusercontent.com/820984/188425133-3b7a0a3a-ac2a-41a7-aeeb-326909e43f7e.png" width="600px">
 
 ```ruby
+# For protocol 1:
+
 appointments = [
-  TimexDatalinkClient::Eeprom::Appointment.new(
+  TimexDatalinkClient::Protocol1::Eeprom::Appointment.new(
     time: Time.new(2022, 10, 31, 19, 0),
     message: "Scare the neighbors"
   ),
-  TimexDatalinkClient::Eeprom::Appointment.new(
+  TimexDatalinkClient::Protocol1::Eeprom::Appointment.new(
     time: Time.new(2022, 11, 24, 17, 0),
     message: "Feed the neighbors"
   ),
-  TimexDatalinkClient::Eeprom::Appointment.new(
+  TimexDatalinkClient::Protocol1::Eeprom::Appointment.new(
     time: Time.new(2022, 12, 25, 14, 0),
     message: "Spoil the neighbors"
   )
 ]
-
-# For protocol 1:
 
 TimexDatalinkClient::Protocol1::Eeprom.new(
   appointments: appointments,
@@ -96,6 +96,21 @@ TimexDatalinkClient::Protocol1::Eeprom.new(
 )
 
 # For protocol 3:
+
+appointments = [
+  TimexDatalinkClient::Protocol3::Eeprom::Appointment.new(
+    time: Time.new(2022, 10, 31, 19, 0),
+    message: "Scare the neighbors"
+  ),
+  TimexDatalinkClient::Protocol3::Eeprom::Appointment.new(
+    time: Time.new(2022, 11, 24, 17, 0),
+    message: "Feed the neighbors"
+  ),
+  TimexDatalinkClient::Protocol3::Eeprom::Appointment.new(
+    time: Time.new(2022, 12, 25, 14, 0),
+    message: "Spoil the neighbors"
+  )
+]
 
 TimexDatalinkClient::Protocol3::Eeprom.new(
   appointments: appointments,
@@ -108,22 +123,33 @@ TimexDatalinkClient::Protocol3::Eeprom.new(
 <image src="https://user-images.githubusercontent.com/820984/188428125-3a394e1d-5d15-4e28-bd40-b1aeadb360c2.png" width="600px">
 
 ```ruby
+# For protocol 1:
+
 anniversaries = [
-  TimexDatalinkClient::Eeprom::Anniversary.new(
+  TimexDatalinkClient::Protocol1::Eeprom::Anniversary.new(
     time: Time.new(1985, 7, 3),
     anniversary: "Release of Back to the Future"
   ),
-  TimexDatalinkClient::Eeprom::Anniversary.new(
+  TimexDatalinkClient::Protocol1::Eeprom::Anniversary.new(
     time: Time.new(1968, 4, 6),
     anniversary: "Release of 2001"
   )
 ]
 
-# For protocol 1:
-
 TimexDatalinkClient::Protocol1::Eeprom.new(anniversaries: anniversaries)
 
 # For protocol 3:
+
+anniversaries = [
+  TimexDatalinkClient::Protocol3::Eeprom::Anniversary.new(
+    time: Time.new(1985, 7, 3),
+    anniversary: "Release of Back to the Future"
+  ),
+  TimexDatalinkClient::Protocol3::Eeprom::Anniversary.new(
+    time: Time.new(1968, 4, 6),
+    anniversary: "Release of 2001"
+  )
+]
 
 TimexDatalinkClient::Protocol3::Eeprom.new(anniversaries: anniversaries)
 ```
@@ -133,24 +159,37 @@ TimexDatalinkClient::Protocol3::Eeprom.new(anniversaries: anniversaries)
 <image src="https://user-images.githubusercontent.com/820984/188428971-d4085717-2dd2-42c1-894a-e75ecca585b0.png" width="600px">
 
 ```ruby
+# For protocol 1:
+
 phone_numbers = [
-  TimexDatalinkClient::Eeprom::PhoneNumber.new(
+  TimexDatalinkClient::Protocol1::Eeprom::PhoneNumber.new(
     name: "Marty McFly",
     number: "1112223333",
     type: "H"
   ),
-  TimexDatalinkClient::Eeprom::PhoneNumber.new(
+  TimexDatalinkClient::Protocol1::Eeprom::PhoneNumber.new(
     name: "Doc Brown",
     number: "4445556666",
     type: "C"
   )
 ]
 
-# For protocol 1:
-
 TimexDatalinkClient::Protocol1::Eeprom.new(phone_numbers: phone_numbers)
 
 # For protocol 3:
+
+phone_numbers = [
+  TimexDatalinkClient::Protocol3::Eeprom::PhoneNumber.new(
+    name: "Marty McFly",
+    number: "1112223333",
+    type: "H"
+  ),
+  TimexDatalinkClient::Protocol3::Eeprom::PhoneNumber.new(
+    name: "Doc Brown",
+    number: "4445556666",
+    type: "C"
+  )
+]
 
 TimexDatalinkClient::Protocol3::Eeprom.new(phone_numbers: phone_numbers)
 ```
@@ -160,22 +199,33 @@ TimexDatalinkClient::Protocol3::Eeprom.new(phone_numbers: phone_numbers)
 <image src="https://user-images.githubusercontent.com/820984/188429625-fe3bef86-58b2-445d-8669-a61000dd3e77.png" width="600px">
 
 ```ruby
+# For protocol 1:
+
 lists = [
-  TimexDatalinkClient::Eeprom::List.new(
+  TimexDatalinkClient::Protocol1::Eeprom::List.new(
     list_entry: "Muffler bearings",
     priority: 2
   ),
-  TimexDatalinkClient::Eeprom::List.new(
+  TimexDatalinkClient::Protocol1::Eeprom::List.new(
     list_entry: "Headlight fluid",
     priority: 4
   )
 ]
 
-# For protocol 1:
-
 TimexDatalinkClient::Protocol1::Eeprom.new(lists: lists)
 
 # For protocol 3:
+
+lists = [
+  TimexDatalinkClient::Protocol3::Eeprom::List.new(
+    list_entry: "Muffler bearings",
+    priority: 2
+  ),
+  TimexDatalinkClient::Protocol3::Eeprom::List.new(
+    list_entry: "Headlight fluid",
+    priority: 4
+  )
+]
 
 TimexDatalinkClient::Protocol3::Eeprom.new(lists: lists)
 ```
@@ -341,38 +391,38 @@ Here is an example that uses protocol 3 to every type of data to a device and us
 require "timex_datalink_client"
 
 appointments = [
-  TimexDatalinkClient::Eeprom::Appointment.new(
+  TimexDatalinkClient::Protocol3::Eeprom::Appointment.new(
     time: Time.new(2022, 10, 31, 19, 0),
     message: "Scare the neighbors"
   ),
-  TimexDatalinkClient::Eeprom::Appointment.new(
+  TimexDatalinkClient::Protocol3::Eeprom::Appointment.new(
     time: Time.new(2022, 11, 24, 17, 0),
     message: "Feed the neighbors"
   ),
-  TimexDatalinkClient::Eeprom::Appointment.new(
+  TimexDatalinkClient::Protocol3::Eeprom::Appointment.new(
     time: Time.new(2022, 12, 25, 14, 0),
     message: "Spoil the neighbors"
   )
 ]
 
 anniversaries = [
-  TimexDatalinkClient::Eeprom::Anniversary.new(
+  TimexDatalinkClient::Protocol3::Eeprom::Anniversary.new(
     time: Time.new(1985, 7, 3),
     anniversary: "Release of Back to the Future"
   ),
-  TimexDatalinkClient::Eeprom::Anniversary.new(
+  TimexDatalinkClient::Protocol3::Eeprom::Anniversary.new(
     time: Time.new(1968, 4, 6),
     anniversary: "Release of 2001"
   )
 ]
 
 phone_numbers = [
-  TimexDatalinkClient::Eeprom::PhoneNumber.new(
+  TimexDatalinkClient::Protocol3::Eeprom::PhoneNumber.new(
     name: "Marty McFly",
     number: "1112223333",
     type: "H"
   ),
-  TimexDatalinkClient::Eeprom::PhoneNumber.new(
+  TimexDatalinkClient::Protocol3::Eeprom::PhoneNumber.new(
     name: "Doc Brown",
     number: "4445556666",
     type: "C"
@@ -380,11 +430,11 @@ phone_numbers = [
 ]
 
 lists = [
-  TimexDatalinkClient::Eeprom::List.new(
+  TimexDatalinkClient::Protocol3::Eeprom::List.new(
     list_entry: "Muffler bearings",
     priority: 2
   ),
-  TimexDatalinkClient::Eeprom::List.new(
+  TimexDatalinkClient::Protocol3::Eeprom::List.new(
     list_entry: "Headlight fluid",
     priority: 4
   )

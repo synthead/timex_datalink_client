@@ -31,7 +31,7 @@ class TimexDatalinkClient
       def packet
         [
           number_with_type_characters,
-          name_characters,
+          name_characters
         ].flatten
       end
 

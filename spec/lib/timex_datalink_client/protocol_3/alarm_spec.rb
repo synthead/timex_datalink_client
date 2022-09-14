@@ -56,7 +56,7 @@ describe TimexDatalinkClient::Protocol3::Alarm do
       ]
     end
 
-    context "when message is \";@_|<>[]" do
+    context "when message is \";@_|<>[]\"" do
       let(:message) { ";@_|<>[]" }
 
       it_behaves_like "CRC-wrapped packets", [

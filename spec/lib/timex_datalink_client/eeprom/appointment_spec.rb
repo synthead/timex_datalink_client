@@ -37,7 +37,7 @@ describe TimexDatalinkClient::Eeprom::Appointment do
       ]
     end
 
-    context "when message is \";@_|<>[]" do
+    context "when message is \";@_|<>[]\"" do
       let(:message) { ";@_|<>[]" }
 
       it_behaves_like "a length-prefixed packet", [

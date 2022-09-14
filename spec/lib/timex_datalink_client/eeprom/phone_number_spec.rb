@@ -31,7 +31,7 @@ describe TimexDatalinkClient::Eeprom::PhoneNumber do
       ]
     end
 
-    context "when name is \";@_|<>[]" do
+    context "when name is \";@_|<>[]\"" do
       let(:name) { ";@_|<>[]" }
 
       it_behaves_like "a length-prefixed packet", [

@@ -40,7 +40,7 @@ describe TimexDatalinkClient::Protocol9::Timer do
       ]
     end
 
-    context "when label is \";@_|<>[]" do
+    context "when label is \";@_|<>[]\"" do
       let(:label) { ";@_|<>[]" }
 
       it_behaves_like "CRC-wrapped packets", [

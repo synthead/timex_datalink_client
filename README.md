@@ -1,7 +1,7 @@
 # Timex Datalink library for Ruby
 
 Here is a fully-tested, feature-complete, and byte-for-byte perfect reimplementation of the Timex Datalink client
-software as a Ruby library!  This library supports protocol version 1 and 3, which covers almost every Timex Datalink
+software as a Ruby library!  This library supports protocols 1, 3, and 9, which covers almost every Timex Datalink
 device!
 
 These devices have been tested to work with this library:

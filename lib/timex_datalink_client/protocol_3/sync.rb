@@ -3,6 +3,7 @@
 class TimexDatalinkClient
   class Protocol3
     class Sync
+      PING_BYTE = [0x78]
       SYNC_1_BYTE = [0x55]
       SYNC_2_BYTE = [0xaa]
 
@@ -22,7 +23,7 @@ class TimexDatalinkClient
       #
       # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
       def packets
-        [render_sync_1 + render_sync_2]
+        [PING_BYTE + render_sync_1 + render_sync_2]
       end
 
       private

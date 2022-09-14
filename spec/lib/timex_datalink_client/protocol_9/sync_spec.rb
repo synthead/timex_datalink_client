@@ -9,12 +9,12 @@ describe TimexDatalinkClient::Protocol9::Sync do
   describe "#packets" do
     subject(:packets) { sync.packets }
 
-    it { should eq([[0x55] * length + [0xaa] * 40]) }
+    it { should eq([[0x78] + [0x55] * length + [0xaa] * 40]) }
 
     context "when length is 350" do
       let(:length) { 350 }
 
-      it { should eq([[0x55] * length + [0xaa] * 40]) }
+      it { should eq([[0x78] + [0x55] * length + [0xaa] * 40]) }
     end
   end
 end

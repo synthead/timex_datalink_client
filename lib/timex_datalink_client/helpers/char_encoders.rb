@@ -19,8 +19,8 @@ class TimexDatalinkClient
         end
       end
 
-      def eeprom_chars_for(string_chars)
-        chars = chars_for(string_chars, char_map: EEPROM_CHARS, length: 31).append(EEPROM_TERMINATOR)
+      def eeprom_chars_for(string_chars, length: 31)
+        chars = chars_for(string_chars, char_map: EEPROM_CHARS, length: length).append(EEPROM_TERMINATOR)
 
         packed_int = chars.each_with_index.sum do |char, index|
           char << (6 * index)

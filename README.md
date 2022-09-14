@@ -8,6 +8,7 @@ These devices have been tested to work with this library:
 
 - Timex 70301 (Datalink 50, protocol 1)
 - Timex 69737 (Datalink 150, protocol 3)
+- Timex 78701 (Ironman Triathlon, protocol 9)
 - Franklin Rolodex Flash PC Companion RFLS-8 (protocol 1)
 
 Protocol 4 is not currently supported.  The only known product to use this protocol is the Timex Datalink 150s.  This

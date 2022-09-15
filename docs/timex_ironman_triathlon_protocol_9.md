@@ -1,4 +1,4 @@
-# Protocol 9 usage
+# Using TimexDatalinkClient with Protocol 9
 
 This document describes how to use protocol 9 devices with this library by comparing code examples to the Timex Ironman
 Triathlon software version 2.01.

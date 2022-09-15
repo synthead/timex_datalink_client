@@ -1,4 +1,4 @@
-# Protocol 3 usage
+# Using TimexDatalinkClient with Protocol 3
 
 This document describes how to use protocol 3 devices with this library by comparing code examples to the Timex Datalink
 software version 2.1d.

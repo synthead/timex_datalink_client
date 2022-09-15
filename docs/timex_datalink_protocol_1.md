@@ -1,4 +1,4 @@
-# Protocol 1 usage
+# Using TimexDatalinkClient with Protocol 1
 
 This document describes how to use protocol 1 devices with this library by comparing code examples to the Timex Datalink
 software version 2.1d.

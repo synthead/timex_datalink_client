@@ -8,7 +8,7 @@ software version 2.1d.
 Please note that WristApps and Watch Sounds are not supported in protocol 1.  They are visible in the Timex Datalink
 software, but when the buttons are clicked, it will display a dialog about the feature is not supported.
 
-### Appointments
+## Appointments
 
 ![image](https://user-images.githubusercontent.com/820984/190337012-215f8a66-de44-47a3-9834-4bc90c113a77.png)
 
@@ -34,7 +34,7 @@ TimexDatalinkClient::Protocol1::Eeprom.new(
 )
 ```
 
-### Anniversaries
+## Anniversaries
 
 ![image](https://user-images.githubusercontent.com/820984/190337661-b1a57a49-cf7c-4fc6-9439-5d49d3f3f44c.png)
 
@@ -53,7 +53,7 @@ anniversaries = [
 TimexDatalinkClient::Protocol1::Eeprom.new(anniversaries: anniversaries)
 ```
 
-### Phone Numbers
+## Phone Numbers
 
 ![image](https://user-images.githubusercontent.com/820984/190338579-f062d4f2-1477-4b5f-8f11-28766d985df6.png)
 
@@ -74,7 +74,7 @@ phone_numbers = [
 TimexDatalinkClient::Protocol1::Eeprom.new(phone_numbers: phone_numbers)
 ```
 
-### Make a List
+## Make a List
 
 ![image](https://user-images.githubusercontent.com/820984/190338737-1a972c10-5e50-4c33-8386-cd014bff3128.png)
 
@@ -93,7 +93,7 @@ lists = [
 TimexDatalinkClient::Protocol1::Eeprom.new(lists: lists)
 ```
 
-### Time Settings
+## Time Settings
 
 ![image](https://user-images.githubusercontent.com/820984/190338907-7fd94480-5898-4e46-b715-56565293d0c8.png)
 
@@ -121,7 +121,7 @@ TimexDatalinkClient::Protocol1::TimeName.new(
 )
 ```
 
-### Alarms
+## Alarms
 
 ![image](https://user-images.githubusercontent.com/820984/190340768-d426d7f3-d439-420b-907e-d514e9548179.png)
 

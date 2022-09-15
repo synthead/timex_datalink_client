@@ -51,7 +51,7 @@ Pro, Royal FL95, Tiger PDA2000, Franklin Rolodex Flash PC Companion RFLS-8, and 
 
 On Timex Datalink watches, pressing the center button on the right will change its mode.  Press this button until "COMM
 MODE" is displayed, then "COMM READY" will appear.  This is sometimes accompanied by a version number.  Use the table
-below to identify the protcol.
+below to identify the protocol.
 
 |Watch display|Protocol compatibility|
 |---|---|

@@ -272,13 +272,13 @@ models = [
   TimexDatalinkClient::Protocol3::Alarm.new(
     number: 4,
     audible: true,
-    time: Time.new(2022, 1, 1, 9, 15),  # Year, month, and day is ignored.
+    time: Time.new(0, 1, 1, 9, 15),  # Year, month, and day is ignored.
     message: "Or not"
   ),
   TimexDatalinkClient::Protocol3::Alarm.new(
     number: 5,
     audible: false,
-    time: Time.new(2022, 1, 1, 11, 30),  # Year, month, and day is ignored.
+    time: Time.new(0, 1, 1, 11, 30),  # Year, month, and day is ignored.
     message: "Told you"
   ),
 

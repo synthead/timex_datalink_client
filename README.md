@@ -11,8 +11,9 @@ These devices have been tested to work with this library:
 - Timex 78701 (Ironman Triathlon, protocol 9)
 - Franklin Rolodex Flash PC Companion RFLS-8 (protocol 1)
 
-Protocol 4 is not currently supported.  The only known product to use this protocol is the Timex Datalink 150s.  This
-may be supported sometime in the future.
+Protocols 4 and 6 are not currently supported.  The Timex Datalink 150s uses protocol 4, and the Motorola Beepwear Pro
+uses protocol 6.  These are the only devices known to use these protocols.  They might be supported sometime in the
+future!
 
 ## What is the Timex Datalink?
 

@@ -165,9 +165,9 @@ TimexDatalinkClient::Protocol1::Alarm.new(
 )
 ```
 
-## Code example
+## Complete code example
 
-Here is an example that uses all of the above data to a device and uses all the features of protocol 1:
+Here is an example that syncs all models to a device that supports protocol 1:
 
 ```ruby
 require "timex_datalink_client"

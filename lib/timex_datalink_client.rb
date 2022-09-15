@@ -47,9 +47,11 @@ class TimexDatalinkClient
   # Create a TimexDatalinkClient instance.
   #
   # @param serial_device [String] Path to serial device.
-  # @param models [Array<Protocol3::Alarm, Protocol3::Eeprom, Protocol3::End, Protocol3::SoundOptions,
-  #   Protocol3::SoundTheme, Protocol3::Start, Protocol3::Sync, Protocol3::Time, Protocol3::WristApp>] Models to compile
-  #   data for.
+  # @param models [Array<Protocol1::Sync, Protocol1::Start, Protocol1::Time, Protocol1::TimeName, Protocol1::Alarm,
+  #   Protocol1::Eeprom, Protocol1::End, Protocol3::Sync, Protocol3::Start, Protocol3::Time, Protocol3::Alarm,
+  #   Protocol3::Eeprom, Protocol3::SoundTheme, Protocol3::SoundOptions, Protocol3::WristApp, Protocol3::End,
+  #   Protocol9::Sync, Protocol9::Start, Protocol9::Time, Protocol9::TimeName, Protocol9::Timer, Protocol9::Alarm,
+  #   Protocol9::Eeprom, Protocol9::SoundOptions, Protocol9::End>] Models to compile data for.
   # @param byte_sleep [Integer, nil] Time to sleep after sending byte.
   # @param packet_sleep [Integer, nil] Time to sleep after sending packet of bytes.
   # @param verbose [Boolean] Write verbose output to console.

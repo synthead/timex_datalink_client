@@ -225,7 +225,7 @@ phone_numbers = [
 
 chrono = TimexDatalinkClient::Protocol9::Eeprom::Chrono.new(
   label: "CHRONO",
-  laps: 0
+  laps: 8
 )
 
 time1 = Time.now

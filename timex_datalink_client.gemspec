@@ -49,6 +49,7 @@ Gem::Specification.new do |s|
 
     "lib/timex_datalink_client/protocol_4/alarm.rb",
     "lib/timex_datalink_client/protocol_4/end.rb",
+    "lib/timex_datalink_client/protocol_4/sound_theme.rb",
     "lib/timex_datalink_client/protocol_4/start.rb",
     "lib/timex_datalink_client/protocol_4/sync.rb",
     "lib/timex_datalink_client/protocol_4/time.rb",

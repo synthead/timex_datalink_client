@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "timex_datalink_client/version"
 require "timex_datalink_client/notebook_adapter"
+require "timex_datalink_client/version"
 
 require "timex_datalink_client/protocol_1/alarm"
 require "timex_datalink_client/protocol_1/eeprom"

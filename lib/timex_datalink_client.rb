@@ -40,6 +40,7 @@ require "timex_datalink_client/protocol_4/sound_theme"
 require "timex_datalink_client/protocol_4/start"
 require "timex_datalink_client/protocol_4/sync"
 require "timex_datalink_client/protocol_4/time"
+require "timex_datalink_client/protocol_4/wrist_app"
 
 require "timex_datalink_client/protocol_9/alarm"
 require "timex_datalink_client/protocol_9/eeprom"

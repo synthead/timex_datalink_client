@@ -1,7 +1,7 @@
 # Timex Datalink library for Ruby
 
 Here is a fully-tested, feature-complete, and byte-for-byte perfect reimplementation of the Timex Datalink client
-software as a Ruby library!  This library supports protocols 1, 3, and 9, which covers almost every Timex Datalink
+software as a Ruby library!  This library supports protocols 1, 3, 4, and 9, which covers almost every Timex Datalink
 device!
 
 These devices have been tested to work with this library:
@@ -12,9 +12,8 @@ These devices have been tested to work with this library:
 - Franklin Rolodex Flash PC Companion RFLS-8 (protocol 1)
 - Royal FL95 PC Organizer (protocol 1)
 
-Protocols 4 and 6 are not currently supported.  The Timex Datalink 150s uses protocol 4, and the Motorola Beepwear Pro
-uses protocol 6.  These are the only devices known to use these protocols.  They might be supported sometime in the
-future!
+Protocol 6 is not currently supported.  The only known product to use this protocol is the Motorola Beepwear Pro.  This
+may be supported sometime in the future!
 
 ## What is the Timex Datalink?
 
@@ -58,7 +57,7 @@ below to identify the protocol.
 |---|---|
 |![image](https://user-images.githubusercontent.com/820984/189607899-5bb67438-1c82-41e0-95d1-d1134cfb1f8b.png)|Use protocol 1 models in `TimexDatalinkClient::Protocol1`|
 |![image](https://user-images.githubusercontent.com/820984/189609399-25eea5c5-958e-489d-936e-139342c9fddf.png)|Use protocol 3 models in `TimexDatalinkClient::Protocol3`|
-|![image](https://user-images.githubusercontent.com/820984/189609671-33a6dc6b-1eb1-4942-8bac-238e6056d1c2.png)|Protocol 4 (currently not supported)|
+|![image](https://user-images.githubusercontent.com/820984/189609671-33a6dc6b-1eb1-4942-8bac-238e6056d1c2.png)|Use protocol 4 models in `TimexDatalinkClient::Protocol4`|
 |![image](https://user-images.githubusercontent.com/820984/190122029-6df17bd0-171a-425c-ac63-d415eeb9fffd.png)|Use protocol 9 models in `TimexDatalinkClient::Protocol9`|
 |![image](https://user-images.githubusercontent.com/820984/190326340-3ffba239-ea9e-4595-83ae-c261be284a30.png)|Protocol 6 (currently not supported)|
 
@@ -73,6 +72,7 @@ Code examples for supported protocols have their own documentation:
 
 - [Using TimexDatalinkClient with Protocol 1](docs/timex_datalink_protocol_1.md)
 - [Using TimexDatalinkClient with Protocol 3](docs/timex_datalink_protocol_3.md)
+- [Using TimexDatalinkClient with Protocol 4](docs/timex_datalink_protocol_4.md)
 - [Using TimexDatalinkClient with Protocol 9](docs/timex_ironman_triathlon_protocol_9.md)
 
 ## Tuning data transfer performance

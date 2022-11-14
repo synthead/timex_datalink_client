@@ -48,6 +48,11 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/protocol_3/wrist_app.rb",
 
     "lib/timex_datalink_client/protocol_4/alarm.rb",
+    "lib/timex_datalink_client/protocol_4/eeprom.rb",
+    "lib/timex_datalink_client/protocol_4/eeprom/anniversary.rb",
+    "lib/timex_datalink_client/protocol_4/eeprom/appointment.rb",
+    "lib/timex_datalink_client/protocol_4/eeprom/list.rb",
+    "lib/timex_datalink_client/protocol_4/eeprom/phone_number.rb",
     "lib/timex_datalink_client/protocol_4/end.rb",
     "lib/timex_datalink_client/protocol_4/sound_theme.rb",
     "lib/timex_datalink_client/protocol_4/start.rb",

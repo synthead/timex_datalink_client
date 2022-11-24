@@ -6,9 +6,11 @@ device!
 
 These devices have been tested to work with this library:
 
-- Timex 70301 (Datalink 50, protocol 1)
-- Timex 69737 (Datalink 150, protocol 3)
-- Timex 78701 (Ironman Triathlon, protocol 9)
+- Timex Datalink 50 (protocol 1)
+- Timex Datalink 70 (protocol 1)
+- Timex Datalink 150 (protocol 3)
+- Timex Datalink 150s (protocol 4)
+- Timex Ironman Triathlon (protocol 9)
 - Franklin Rolodex Flash PC Companion RFLS-8 (protocol 1)
 - Royal FL95 PC Organizer (protocol 1)
 

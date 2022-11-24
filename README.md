@@ -14,8 +14,8 @@ These devices have been tested to work with this library:
 - Franklin Rolodex Flash PC Companion RFLS-8 (protocol 1)
 - Royal FL95 PC Organizer (protocol 1)
 
-Protocol 6 is not currently supported.  The only known product to use this protocol is the Motorola Beepwear Pro.  This
-may be supported sometime in the future!
+Protocols 6 and 7 are not currently supported.  The Motorola Beepwear Pro uses protocol 6, and the DSI e-BRAIN uses
+protocol 7.  These are the only devices known to use these protocols.  They might be supported sometime in the future!
 
 ## What is the Timex Datalink?
 

@@ -8,6 +8,6 @@ describe TimexDatalinkClient::Protocol7::End do
   describe "#packets", :crc do
     subject(:packets) { end_instance.packets }
 
-    it_behaves_like "CRC-wrapped packets", [[0x92, 0x05], [0x21]]
+    it_behaves_like "CRC-wrapped packets", [[0x21]]
   end
 end

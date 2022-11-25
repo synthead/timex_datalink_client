@@ -7,14 +7,13 @@ class TimexDatalinkClient
     class End
       prepend Helpers::CrcPacketsWrapper
 
-      SETUP_PACKET = [0x92, 0x05]
       CPACKET_SKIP = [0x21]
 
       # Compile packets for data end command.
       #
       # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
       def packets
-        [SETUP_PACKET, CPACKET_SKIP]
+        [CPACKET_SKIP]
       end
     end
   end

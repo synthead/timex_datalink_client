@@ -15,6 +15,35 @@ describe TimexDatalinkClient::Protocol7::Eeprom::Activity do
     )
   end
 
+  describe ".packets" do
+    let(:activities) { [activity_instance] }
+
+    subject(:packets) { described_class.packets(activities) }
+
+    it do
+      should eq([0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x1e, 0x01, 0x0b, 0x00, 0x30, 0xb1, 0xff, 0x00, 0x00, 0x04])
+    end
+
+    context "with two activities" do
+      let(:activity_instance_2) do
+        described_class.new(
+          time: Time.new(0, 1, 1, 2, 30, 0),
+          messages: messages,
+          random_speech: true
+        )
+      end
+
+      let(:activities) { [activity_instance, activity_instance_2] }
+
+      it do
+        should eq [
+          0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x01, 0x1e, 0x01, 0x10, 0x00, 0x02, 0x1e, 0x01, 0x15, 0x00, 0x30, 0xb1,
+          0xff, 0x00, 0x00, 0x30, 0xb1, 0xff, 0x00, 0x00, 0x04
+        ]
+      end
+    end
+  end
+
   describe "#metadata_packet" do
     let(:activity_index) { 1 }
 

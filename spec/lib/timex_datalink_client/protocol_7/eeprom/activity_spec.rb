@@ -7,7 +7,7 @@ describe TimexDatalinkClient::Protocol7::Eeprom::Activity do
   let(:messages) { [[0xb1]] }
   let(:random_speech) { false }
 
-  let(:activity_instance) do
+  let(:activity) do
     described_class.new(
       time: time,
       messages: messages,
@@ -16,7 +16,7 @@ describe TimexDatalinkClient::Protocol7::Eeprom::Activity do
   end
 
   describe ".packets" do
-    let(:activities) { [activity_instance] }
+    let(:activities) { [activity] }
 
     subject(:packets) { described_class.packets(activities) }
 
@@ -25,7 +25,7 @@ describe TimexDatalinkClient::Protocol7::Eeprom::Activity do
     end
 
     context "with two activities" do
-      let(:activity_instance_2) do
+      let(:activity_2) do
         described_class.new(
           time: Time.new(0, 1, 1, 2, 30, 0),
           messages: messages,
@@ -33,7 +33,7 @@ describe TimexDatalinkClient::Protocol7::Eeprom::Activity do
         )
       end
 
-      let(:activities) { [activity_instance, activity_instance_2] }
+      let(:activities) { [activity, activity_2] }
 
       it do
         should eq [
@@ -47,7 +47,7 @@ describe TimexDatalinkClient::Protocol7::Eeprom::Activity do
   describe "#metadata_packet" do
     let(:activity_index) { 1 }
 
-    subject(:metadata_packet) { activity_instance.metadata_packet(activity_index) }
+    subject(:metadata_packet) { activity.metadata_packet(activity_index) }
 
     it { should eq([0x01, 0x1e, 0x01, 0x0b, 0x00]) }
 
@@ -71,7 +71,7 @@ describe TimexDatalinkClient::Protocol7::Eeprom::Activity do
   end
 
   describe "#messages_packet" do
-    subject(:messages_packet) { activity_instance.messages_packet }
+    subject(:messages_packet) { activity.messages_packet }
 
     it { should eq([0x30, 0xb1, 0xff, 0x00, 0x00]) }
 
@@ -118,7 +118,7 @@ describe TimexDatalinkClient::Protocol7::Eeprom::Activity do
   end
 
   describe "#random_speech" do
-    subject(:random_speech_value) { activity_instance.random_speech }
+    subject(:random_speech_value) { activity.random_speech }
 
     it { should be_falsey }
 

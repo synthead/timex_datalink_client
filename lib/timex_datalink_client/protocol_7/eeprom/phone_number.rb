@@ -39,6 +39,8 @@ class TimexDatalinkClient
         end
 
         private_class_method def self.names_and_numbers(phone_numbers)
+          return [] if phone_numbers.empty?
+
           names_and_numbers = phone_numbers.flat_map(&:name_and_number)
 
           phone_numbers.first.four_byte_format_for(names_and_numbers)

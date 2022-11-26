@@ -20,6 +20,12 @@ describe TimexDatalinkClient::Protocol7::Eeprom::PhoneNumber do
 
     it { should eq([0x01, 0x00, 0x30, 0xb1, 0xfe, 0x00, 0x00, 0x30, 0x01, 0xff, 0x00, 0x00, 0x03]) }
 
+    context "with no phone numbers" do
+      let(:phone_numbers) { [] }
+
+      it { should eq([0x00, 0x00, 0x03]) }
+    end
+
     context "with two phone numbers" do
       let(:phone_number_2) do
         described_class.new(

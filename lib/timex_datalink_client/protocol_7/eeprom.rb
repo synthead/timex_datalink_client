@@ -25,7 +25,7 @@ class TimexDatalinkClient
       # Create an Eeprom instance.
       #
       # @param activities [Array<Activity>, nil] Activities to be added to EEPROM data.
-      # @param phone_numbers [Array<Activity>, nil] Phone numbers to be added to EEPROM data.
+      # @param phone_numbers [Array<PhoneNumber>, nil] Phone numbers to be added to EEPROM data.
       # @return [Eeprom] Eeprom instance.
       def initialize(activities: nil, phone_numbers: nil)
         @activities = activities

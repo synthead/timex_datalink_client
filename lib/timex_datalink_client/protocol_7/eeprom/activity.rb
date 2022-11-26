@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
+require "timex_datalink_client/helpers/four_byte_formatter"
+
 class TimexDatalinkClient
   class Protocol7
     class Eeprom
       class Activity
+        include Helpers::FourByteFormatter
+
         METADATA_BYTES_BASE = 6
         METADATA_BYTES_SIZE = 5
-
-        MESSAGES_HEADERS = [0xc0, 0x30, 0x0c, 0x03, 0x00]
-        MESSAGES_NULL = 0x00
-        MESSAGES_TERMINATOR_MIDDLE = 0xfe
-        MESSAGES_TERMINATOR_END = 0xff
 
         attr_accessor :time, :messages, :random_speech
 
@@ -44,30 +43,7 @@ class TimexDatalinkClient
         #
         # @return [Array<Integer>] Array of integers that represent bytes.
         def messages_packet
-          [].tap do |message_bytes|
-            messages.each_with_index do |message_line, message_line_index|
-              message_line_remaining = message_line.dup
-
-              loop do
-                message_packet = message_line_remaining.shift(4)
-                message_bytes << MESSAGES_HEADERS[message_packet.count]
-
-                message_bytes.concat(message_packet)
-
-                next if message_packet.count == 4
-
-                has_next_line = messages[message_line_index + 1]
-                terminator = has_next_line ? MESSAGES_TERMINATOR_MIDDLE : MESSAGES_TERMINATOR_END
-
-                message_bytes << terminator
-
-                null_pad = [MESSAGES_NULL] * (3 - message_packet.count)
-                message_bytes.concat(null_pad)
-
-                break if message_line_remaining.empty?
-              end
-            end
-          end
+          four_byte_format_for(messages)
         end
 
         private

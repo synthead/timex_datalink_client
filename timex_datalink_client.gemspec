@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/helpers/char_encoders.rb",
     "lib/timex_datalink_client/helpers/cpacket_paginator.rb",
     "lib/timex_datalink_client/helpers/crc_packets_wrapper.rb",
+    "lib/timex_datalink_client/helpers/four_byte_formatter.rb",
     "lib/timex_datalink_client/helpers/length_packet_wrapper.rb",
 
     "lib/timex_datalink_client/protocol_1/alarm.rb",

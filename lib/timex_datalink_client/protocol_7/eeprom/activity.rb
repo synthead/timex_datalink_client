@@ -13,11 +13,15 @@ class TimexDatalinkClient
 
         PACKETS_TERMINATOR = 0x04
 
+        # Compile data for all activities.
+        #
+        # @param activities [Array<Activity>] Activities to compile data for.
+        # @return [Array] Compiled data of all activities.
         def self.packets(activities)
           header(activities) + metadata_and_messages(activities) + [PACKETS_TERMINATOR]
         end
 
-        def self.header(activities)
+        private_class_method def self.header(activities)
           [
             random_speech(activities),
             0,
@@ -28,13 +32,13 @@ class TimexDatalinkClient
           ]
         end
 
-        def self.random_speech(activities)
+        private_class_method def self.random_speech(activities)
           activities.each_with_index.sum do |activity, activity_index|
             activity.random_speech ? 1 << activity_index : 0
           end
         end
 
-        def self.metadata_and_messages(activities)
+        private_class_method def self.metadata_and_messages(activities)
           metadata = activities.each_with_index.map do |activity, activity_index|
             activity.metadata_packet(activities.count + activity_index)
           end

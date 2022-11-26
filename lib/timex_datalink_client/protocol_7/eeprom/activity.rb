@@ -13,6 +13,10 @@ class TimexDatalinkClient
 
         PACKETS_TERMINATOR = 0x04
 
+        # Compile data for all activities.
+        #
+        # @param activities [Array<Activity>] Activities to compile data for.
+        # @return [Array] Compiled data of all activities.
         def self.packets(activities)
           header(activities) + metadata_and_messages(activities) + [PACKETS_TERMINATOR]
         end

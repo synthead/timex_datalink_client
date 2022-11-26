@@ -11,6 +11,39 @@ class TimexDatalinkClient
         METADATA_BYTES_BASE = 6
         METADATA_BYTES_SIZE = 5
 
+        PACKETS_TERMINATOR = 0x04
+
+        def self.packets(activities)
+          header(activities) + metadata_and_messages(activities) + [PACKETS_TERMINATOR]
+        end
+
+        def self.header(activities)
+          [
+            random_speech(activities),
+            0,
+            0,
+            0,
+            activities.count,
+            0
+          ]
+        end
+
+        def self.random_speech(activities)
+          activities.each_with_index.sum do |activity, activity_index|
+            activity.random_speech ? 1 << activity_index : 0
+          end
+        end
+
+        def self.metadata_and_messages(activities)
+          metadata = activities.each_with_index.map do |activity, activity_index|
+            activity.metadata_packet(activities.count + activity_index)
+          end
+
+          messages = activities.map { |activity| activity.messages_packet }
+
+          (metadata + messages).flatten
+        end
+
         attr_accessor :time, :messages, :random_speech
 
         # Create an Activity instance.

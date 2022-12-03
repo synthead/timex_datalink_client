@@ -108,8 +108,8 @@ class TimexDatalinkClient
         HEADER_VALUE_3_PHRASES = 2
         HEADER_VALUE_3_DEVICE_NICK = 8
 
-        HEADER_VALUE_4_LENGTH_NO_DEVICE = 10
-        HEADER_VALUE_4_LENGTH_WITH_DEVICE = 14
+        NICKNAME_LENGTH_WITHOUT_DEVICE = 10
+        NICKNAME_LENGTH_WITH_DEVICE = 14
 
         HEADER_VALUE_4_DEVICE_BASE = 8
         HEADER_VALUE_4_PHRASE = 2
@@ -195,7 +195,7 @@ class TimexDatalinkClient
           value_3 += HEADER_VALUE_3_PHRASES * phrases.count
 
           packet_counts = nicknames_with_suffixes.map { |nickname| 1 + nickname.count / 4 }
-          value_4_length = device_nickname.any? ? HEADER_VALUE_4_LENGTH_WITH_DEVICE : HEADER_VALUE_4_LENGTH_NO_DEVICE
+          value_4_length = device_nickname.any? ? NICKNAME_LENGTH_WITH_DEVICE : NICKNAME_LENGTH_WITHOUT_DEVICE
 
           value_4 = value_4_length.times.flat_map do |value_4_index|
             device_value = HEADER_VALUE_4_DEVICE_INDEXES[value_4_index].sum { |device_index| packet_counts[device_index] }
@@ -228,23 +228,11 @@ class TimexDatalinkClient
         end
 
         def nickname_format
-          [
-            device_nickname,
-            device_nickname,
-            user_nickname,
-            user_nickname,
-            user_nickname,
-            user_nickname,
-            user_nickname,
-            user_nickname,
-            user_nickname,
-            user_nickname,
-            user_nickname,
-            device_nickname,
-            device_nickname,
-            device_nickname,
-            device_nickname
-          ]
+          format = [device_nickname] * 2
+          format += [user_nickname] * 9
+          format += [device_nickname] * 4 if device_nickname.any?
+
+          format
         end
 
         def nicknames_with_suffixes

@@ -8,6 +8,9 @@ class TimexDatalinkClient
       class Speech
         include Helpers::FourByteFormatter
 
+        NICKNAME_LENGTH_WITHOUT_DEVICE = 10
+        NICKNAME_LENGTH_WITH_DEVICE = 14
+
         NICKNAME_PACKET_PREFIXES = [
           [
             [0xf0, 0xb0],
@@ -107,9 +110,6 @@ class TimexDatalinkClient
         HEADER_VALUE_3_BASE = 0x1a
         HEADER_VALUE_3_PHRASES = 2
         HEADER_VALUE_3_DEVICE_NICK = 8
-
-        NICKNAME_LENGTH_WITHOUT_DEVICE = 10
-        NICKNAME_LENGTH_WITH_DEVICE = 14
 
         HEADER_VALUE_4_DEVICE_BASE = 8
         HEADER_VALUE_4_PHRASE = 2

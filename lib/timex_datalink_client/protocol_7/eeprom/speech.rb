@@ -211,7 +211,7 @@ class TimexDatalinkClient
             value += HEADER_VALUE_4_PHRASE * phrases.count
             value += HEADER_VALUE_4_DEVICE_BASE if device_nickname.any?
 
-            value.divmod(256).reverse
+            value
           end
 
           value_5 = phrases.each_index.flat_map do |phrase_index|
@@ -221,10 +221,12 @@ class TimexDatalinkClient
             value += HEADER_VALUE_5_DEVICE * device_nickname.length
             value += HEADER_VALUE_5_PHRASE_INDEX * phrase_index
 
-            value.divmod(256).reverse
+            value
           end
 
-          [value_1, 0, value_2, 0, value_3, 0] + value_4 + value_5
+          all_values = [value_1, value_2, value_3] + value_4 + value_5
+
+          that = all_values.flat_map { |value| value.divmod(256).reverse }
         end
 
         def nickname_bytes

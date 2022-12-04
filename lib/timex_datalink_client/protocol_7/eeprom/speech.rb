@@ -114,7 +114,7 @@ class TimexDatalinkClient
         HEADER_VALUE_4_DEVICE_BASE = 8
         HEADER_VALUE_4_PHRASE = 2
 
-        HEADER_VALUE_4_BASES = [0x1a, 0x1a, 0x1a, 0x1f, 0x1a, 0x1a, 0x1a, 0x1a, 0x1a, 0x1a, 0x79, 0x79, 0x79, 0x79]
+        HEADER_VALUE_4_BASES = [0x1a, 0x1a, 0x1a, 0x1f, 0x1a, 0x1a, 0x1a, 0x1a, 0x1a, 0x1a, 0x1a, 0x1a, 0x1a, 0x1a]
         HEADER_VALUE_4_DEVICE_MULTIPLIERS = [5, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 5, 5, 5]
 
         HEADER_VALUE_4_DEVICE_INDEXES = [
@@ -134,7 +134,7 @@ class TimexDatalinkClient
           [0, 1, 11, 12, 13]
         ]
 
-        HEADER_VALUE_4_USER_MULTIPLIERS = [0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 10, 5, 5, 0, 0, 0, 0]
+        HEADER_VALUE_4_USER_MULTIPLIERS = [0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
 
         HEADER_VALUE_4_USER_INDEXES = [
           [],
@@ -147,10 +147,10 @@ class TimexDatalinkClient
           [3, 4, 5, 6, 7, 10],
           [3, 4, 5, 6, 7, 8, 10],
           [3, 4, 5, 6, 7, 8, 9, 10],
-          [],
-          [],
-          [],
-          [],
+          [2, 3, 4, 5, 6, 7, 8, 9, 10],
+          [2, 3, 4, 5, 6, 7, 8, 9, 10],
+          [2, 3, 4, 5, 6, 7, 8, 9, 10],
+          [2, 3, 4, 5, 6, 7, 8, 9, 10]
         ]
 
         HEADER_VALUE_5_BASE = 0x8d

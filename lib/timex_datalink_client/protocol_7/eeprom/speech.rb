@@ -154,11 +154,14 @@ class TimexDatalinkClient
         ]
 
         HEADER_VALUE_5_BASE = 0x8d
-        HEADER_VALUE_5_PHRASE = 2
         HEADER_VALUE_5_DEVICE_BASE = -107
-        HEADER_VALUE_5_USER = 5
-        HEADER_VALUE_5_PHRASE_INDEX = 5
+        HEADER_VALUE_5_DEVICE_INDEXES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
         HEADER_VALUE_5_DEVICE_MULTIPLIER = 5
+        HEADER_VALUE_5_USER_BASE = -55
+        HEADER_VALUE_5_USER_INDEXES = [0, 1, 11, 12, 13]
+        HEADER_VALUE_5_USER_MULTIPLIER = 5
+        HEADER_VALUE_5_PHRASE = 2
+        HEADER_VALUE_5_PHRASE_INDEX = 5
 
         PACKETS_TERMINATOR = 0x05
 
@@ -219,11 +222,20 @@ class TimexDatalinkClient
             value = HEADER_VALUE_5_BASE
 
             if device_nickname.any?
-              value += HEADER_VALUE_5_DEVICE_BASE
-              value += HEADER_VALUE_5_DEVICE_MULTIPLIER * packet_counts.sum
+              device_value = HEADER_VALUE_5_DEVICE_INDEXES.sum { |device_index| packet_counts[device_index] }
+              device_value *= HEADER_VALUE_5_DEVICE_MULTIPLIER
+              device_value += HEADER_VALUE_5_DEVICE_BASE
+
+              value += device_value
             end
 
-            value += HEADER_VALUE_5_USER * user_nickname.length
+            if user_nickname.any?
+              user_value = HEADER_VALUE_5_USER_INDEXES.sum { |device_index| packet_counts[device_index] }
+              user_value *= HEADER_VALUE_5_USER_MULTIPLIER
+              user_value += HEADER_VALUE_5_USER_BASE
+
+              value += user_value
+            end
 
             value += HEADER_VALUE_5_PHRASE * phrases.count
             value += HEADER_VALUE_5_PHRASE_INDEX * phrase_index

@@ -155,9 +155,10 @@ class TimexDatalinkClient
 
         HEADER_VALUE_5_BASE = 0x8d
         HEADER_VALUE_5_PHRASE = 2
-        HEADER_VALUE_5_DEVICE_BASE = 48
-        HEADER_VALUE_5_DEVICE = 5
+        HEADER_VALUE_5_DEVICE_BASE = -107
+        HEADER_VALUE_5_USER = 5
         HEADER_VALUE_5_PHRASE_INDEX = 5
+        HEADER_VALUE_5_DEVICE_MULTIPLIER = 5
 
         PACKETS_TERMINATOR = 0x05
 
@@ -216,9 +217,15 @@ class TimexDatalinkClient
 
           value_5 = phrases.each_index.flat_map do |phrase_index|
             value = HEADER_VALUE_5_BASE
-            value += HEADER_VALUE_5_DEVICE_BASE if device_nickname.any?
+
+            if device_nickname.any?
+              value += HEADER_VALUE_5_DEVICE_BASE
+              value += HEADER_VALUE_5_DEVICE_MULTIPLIER * packet_counts.sum
+            end
+
+            value += HEADER_VALUE_5_USER * user_nickname.length
+
             value += HEADER_VALUE_5_PHRASE * phrases.count
-            value += HEADER_VALUE_5_DEVICE * device_nickname.length
             value += HEADER_VALUE_5_PHRASE_INDEX * phrase_index
 
             value

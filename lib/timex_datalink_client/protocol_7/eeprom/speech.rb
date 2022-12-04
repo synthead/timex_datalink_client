@@ -182,7 +182,7 @@ class TimexDatalinkClient
           @user_nickname = user_nickname
         end
 
-        # Compile data for nicknames and phrases..
+        # Compile data for nicknames and phrases.
         #
         # @return [Array] Compiled data of all nicknames and phrases.
         def packets

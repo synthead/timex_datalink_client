@@ -192,25 +192,42 @@ class TimexDatalinkClient
         private
 
         def header
+          all_values = [header_value_1, header_value_2, header_value_3] + header_values_4 + header_values_5
+
+          all_values.flat_map { |value| value.divmod(256).reverse }
+        end
+
+        def header_value_1
           value_1 = HEADER_VALUE_1_BASE + phrases.count
           value_1 += HEADER_VALUE_1_DEVICE_NICK if device_nickname.any?
 
+          value_1
+        end
+
+        def header_value_2
           value_2 = HEADER_VALUE_2_BASE
           value_2 += HEADER_VALUE_2_PHRASES if phrases.any?
           value_2 += HEADER_VALUE_2_DEVICE_NICK if phrases.any? && device_nickname.any?
 
+          value_2
+        end
+
+        def header_value_3
           value_3 = HEADER_VALUE_3_BASE
           value_3 += HEADER_VALUE_3_DEVICE_NICK if device_nickname.any?
           value_3 += HEADER_VALUE_3_PHRASES * phrases.count
 
-          packet_counts = nicknames_with_suffixes.map { |nickname| 1 + nickname.count / 4 }
+          value_3
+        end
+
+        def header_values_4
           value_4_length = device_nickname.any? ? NICKNAME_LENGTH_WITH_DEVICE : NICKNAME_LENGTH_WITHOUT_DEVICE
 
-          value_4 = value_4_length.times.flat_map do |value_4_index|
-            device_value = HEADER_VALUE_4_DEVICE_INDEXES[value_4_index].sum { |device_index| packet_counts[device_index] }
+          value_4_length.times.flat_map do |value_4_index|
+            device_value = HEADER_VALUE_4_DEVICE_INDEXES[value_4_index].sum { |device_index| packet_lengths[device_index] }
             device_value *= HEADER_VALUE_4_DEVICE_MULTIPLIERS[value_4_index]
 
-            user_value = HEADER_VALUE_4_USER_INDEXES[value_4_index].sum { |device_index| packet_counts[device_index] }
+            user_value = HEADER_VALUE_4_USER_INDEXES[value_4_index].sum { |device_index| packet_lengths[device_index] }
             user_value *= HEADER_VALUE_4_USER_MULTIPLIERS[value_4_index]
 
             value = device_value + user_value
@@ -220,12 +237,14 @@ class TimexDatalinkClient
 
             value
           end
+        end
 
-          value_5 = phrases.each_index.flat_map do |phrase_index|
+        def header_values_5
+          phrases.each_index.flat_map do |phrase_index|
             value = HEADER_VALUE_5_BASE
 
             if device_nickname.any?
-              device_value = HEADER_VALUE_5_DEVICE_INDEXES.sum { |device_index| packet_counts[device_index] }
+              device_value = HEADER_VALUE_5_DEVICE_INDEXES.sum { |device_index| packet_lengths[device_index] }
               device_value *= HEADER_VALUE_5_DEVICE_MULTIPLIER
               device_value += HEADER_VALUE_5_DEVICE_BASE
 
@@ -233,7 +252,7 @@ class TimexDatalinkClient
             end
 
             if user_nickname.any?
-              user_value = HEADER_VALUE_5_USER_INDEXES.sum { |device_index| packet_counts[device_index] }
+              user_value = HEADER_VALUE_5_USER_INDEXES.sum { |device_index| packet_lengths[device_index] }
               user_value *= HEADER_VALUE_5_USER_MULTIPLIER
               user_value += HEADER_VALUE_5_USER_BASE
 
@@ -245,14 +264,14 @@ class TimexDatalinkClient
 
             value
           end
-
-          all_values = [value_1, value_2, value_3] + value_4 + value_5
-
-          that = all_values.flat_map { |value| value.divmod(256).reverse }
         end
 
         def nickname_bytes
           four_byte_format_for(nicknames_with_suffixes, packet_prefixes: packet_prefixes)
+        end
+
+        def packet_lengths
+          nicknames_with_suffixes.map { |nickname| 1 + nickname.length / 4 }
         end
 
         def nickname_format

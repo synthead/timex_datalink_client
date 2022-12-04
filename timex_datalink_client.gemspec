@@ -66,6 +66,7 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/protocol_7/eeprom/activity.rb",
     "lib/timex_datalink_client/protocol_7/eeprom/phone_number.rb",
     "lib/timex_datalink_client/protocol_7/eeprom/phrase.rb",
+    "lib/timex_datalink_client/protocol_7/eeprom/speech.rb",
     "lib/timex_datalink_client/protocol_7/end.rb",
     "lib/timex_datalink_client/protocol_7/start.rb",
     "lib/timex_datalink_client/protocol_7/sync.rb",

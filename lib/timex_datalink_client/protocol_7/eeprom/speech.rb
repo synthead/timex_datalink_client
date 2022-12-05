@@ -164,7 +164,7 @@ class TimexDatalinkClient
         HEADER_VALUE_5_USER_MULTIPLIER = 5
 
         HEADER_VALUE_5_PHRASE = 2
-        HEADER_VALUE_5_PHRASE_INDEX = 5
+        HEADER_VALUE_5_PHRASE_PACKET = 5
 
         PACKETS_TERMINATOR = 0x05
 
@@ -260,7 +260,7 @@ class TimexDatalinkClient
             end
 
             value += HEADER_VALUE_5_PHRASE * phrases.count
-            value += HEADER_VALUE_5_PHRASE_INDEX * phrase_index
+            value += HEADER_VALUE_5_PHRASE_PACKET * phrases.first(phrase_index).sum { |phrase| 1 + phrase.length / 4 }
 
             value
           end

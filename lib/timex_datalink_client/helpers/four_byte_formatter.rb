@@ -12,9 +12,9 @@ class TimexDatalinkClient
           last_index = bytes_index == byte_arrays.count - 1
           terminator = last_index ? BYTE_TERMINATOR_ENDR : BYTE_TERMINATOR_ENDF
 
-          bytes << terminator
+          bytes_with_terminator = bytes + [terminator]
 
-          bytes.each_slice(4).flat_map do |bytes_slice|
+          bytes_with_terminator.each_slice(4).flat_map do |bytes_slice|
             bytes_slice.fill(BYTE_NULL, bytes_slice.count, 4 - bytes_slice.count)
 
             packet_lsbs_sum = bytes_slice.each_with_index.sum { |byte, index| byte / 256 << 6 - index * 2 }

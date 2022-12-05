@@ -20,18 +20,18 @@ class TimexDatalinkClient
 
       CPACKET_DATA_LENGTH = 32
 
-      attr_accessor :activities, :phone_numbers, :phrases
+      attr_accessor :activities, :phone_numbers, :speech
 
       # Create an Eeprom instance.
       #
       # @param activities [Array<Activity>, nil] Activities to be added to EEPROM data.
       # @param phone_numbers [Array<PhoneNumber>, nil] Phone numbers to be added to EEPROM data.
-      # @param phrases [Array<Phrase>, nil] Phrases to be added to EEPROM data.
+      # @param speech [Speech, nil] Speech to be added to EEPROM data.
       # @return [Eeprom] Eeprom instance.
-      def initialize(activities: nil, phone_numbers: nil, phrases: nil)
+      def initialize(activities: nil, phone_numbers: nil, speech: nil)
         @activities = activities
         @phone_numbers = phone_numbers
-        @phrases = phrases
+        @speech = speech
       end
 
       # Compile packets for EEPROM data.
@@ -59,7 +59,7 @@ class TimexDatalinkClient
         [].tap do |packets|
           packets.concat(Activity.packets(activities)) if activities
           packets.concat(PhoneNumber.packets(phone_numbers)) if phone_numbers
-          packets.concat(Phrase.packets(phrases)) if phrases
+          packets.concat(speech.packets) if speech
         end
       end
     end

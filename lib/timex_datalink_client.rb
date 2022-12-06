@@ -45,6 +45,7 @@ require "timex_datalink_client/protocol_4/wrist_app"
 
 require "timex_datalink_client/protocol_7/eeprom"
 require "timex_datalink_client/protocol_7/eeprom/activity"
+require "timex_datalink_client/protocol_7/eeprom/games"
 require "timex_datalink_client/protocol_7/eeprom/phone_number"
 require "timex_datalink_client/protocol_7/eeprom/speech"
 require "timex_datalink_client/protocol_7/end"

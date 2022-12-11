@@ -70,6 +70,7 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/protocol_7/eeprom/phone_number.rb",
     "lib/timex_datalink_client/protocol_7/eeprom/speech.rb",
     "lib/timex_datalink_client/protocol_7/end.rb",
+    "lib/timex_datalink_client/protocol_7/phrase_builder.rb",
     "lib/timex_datalink_client/protocol_7/start.rb",
     "lib/timex_datalink_client/protocol_7/sync.rb",
 
@@ -88,6 +89,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "crc", "~> 0.4.2"
   s.add_dependency "rubyserial", "~> 0.6.0"
+  s.add_dependency "mdb", "~> 0.5.0"
 
   s.add_development_dependency "rspec", "~> 3.11.0"
   s.add_development_dependency "tzinfo", "~> 2.0.5"

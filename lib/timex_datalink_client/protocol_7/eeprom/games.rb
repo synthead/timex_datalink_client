@@ -69,7 +69,7 @@ class TimexDatalinkClient
         # Compile data for games.
         #
         # @return [Array<Integer>] Compiled data for games.
-        def packets
+        def packet
           [
             enabled_games,
             countdown_timer_time,

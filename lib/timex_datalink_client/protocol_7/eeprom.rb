@@ -62,7 +62,7 @@ class TimexDatalinkClient
           packets.concat(Activity.packets(activities)) if activities
           packets.concat(games.packet) if games
           packets.concat(PhoneNumber.packets(phone_numbers)) if phone_numbers
-          packets.concat(speech.packets) if speech
+          packets.concat(speech.packet) if speech
         end
       end
     end

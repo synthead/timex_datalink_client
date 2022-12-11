@@ -114,7 +114,7 @@ class TimexDatalinkClient
         # Compile data for nicknames and phrases.
         #
         # @return [Array<Integer>] Compiled data of all nicknames and phrases.
-        def packets
+        def packet
           header + nickname_bytes + formatted_phrases + [PACKETS_TERMINATOR]
         end
 

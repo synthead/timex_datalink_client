@@ -15,8 +15,8 @@ describe TimexDatalinkClient::Protocol7::Eeprom::Speech do
     )
   end
 
-  describe "#packets" do
-    subject(:packets) { speech.packets }
+  describe "#packet" do
+    subject(:packet) { speech.packet }
 
     it do
       should eq [

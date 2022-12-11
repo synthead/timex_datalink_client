@@ -1,0 +1,133 @@
+# frozen_string_literal: true
+
+require "spec_helper"
+
+describe TimexDatalinkClient::Protocol7::Eeprom::Calendar do
+  let(:time) { Time.new(2022, 12, 10, 1, 30, 0) }
+  let(:events) { [] }
+
+  let(:calendar) do
+    described_class.new(
+      time: time,
+      events: events
+    )
+  end
+
+  describe "#packet" do
+    subject(:packet) { calendar.packet }
+
+    it { should eq([0x00, 0x00, 0x01, 0x1e, 0xbb, 0x20, 0x12, 0x00, 0x01]) }
+
+    context "when time is 2020-04-10 18:25:30" do
+      let(:time) { Time.new(2020, 4, 10, 18, 25, 30) }
+
+      it { should eq([0x00, 0x00, 0x12, 0x19, 0xed, 0x1c, 0xdd, 0x00, 0x01]) }
+    end
+
+    context "when events contains one event with one word" do
+      let(:events) do
+        [
+          described_class::Event.new(
+            time: Time.new(2022, 12, 15, 3, 30, 0),
+            phrase: [0x069]
+          )
+        ]
+      end
+
+      it do
+        should eq [
+          0x01, 0x00, 0xca, 0x05, 0x06, 0x00, 0x30, 0x69, 0xff, 0x00, 0x00, 0x01, 0x1e, 0xbb, 0x20, 0x12, 0x00, 0x01
+        ]
+      end
+    end
+
+    context "when events contains one event with five words" do
+      let(:events) do
+        [
+          described_class::Event.new(
+            time: Time.new(2022, 12, 15, 3, 30, 0),
+            phrase: [0x069, 0x069, 0x069, 0x069, 0x069]
+          )
+        ]
+      end
+
+      it do
+        should eq [
+          0x01, 0x00, 0xca, 0x05, 0x06, 0x00, 0x00, 0x69, 0x69, 0x69, 0x69, 0x30, 0x69, 0xff, 0x00, 0x00, 0x01, 0x1e,
+          0xbb, 0x20, 0x12, 0x00, 0x01
+        ]
+      end
+    end
+
+    context "when events contains two events with one word each" do
+      let(:events) do
+        [
+          described_class::Event.new(
+            time: Time.new(2022, 12, 15, 3, 30, 0),
+            phrase: [0x069]
+          ),
+          described_class::Event.new(
+            time: Time.new(2022, 12, 20, 5, 0, 0),
+            phrase: [0x064]
+          )
+        ]
+      end
+
+      it do
+        should eq [
+          0x02, 0x00, 0xca, 0x05, 0x0a, 0x00, 0x7c, 0x0b, 0x0f, 0x00, 0x30, 0x69, 0xfe, 0x00, 0x00, 0x30, 0x64, 0xff,
+          0x00, 0x00, 0x01, 0x1e, 0xbb, 0x20, 0x12, 0x00, 0x01
+        ]
+      end
+    end
+
+    context "when events contains two events with one and five words" do
+      let(:events) do
+        [
+          described_class::Event.new(
+            time: Time.new(2022, 12, 15, 3, 30, 0),
+            phrase: [0x069]
+          ),
+          described_class::Event.new(
+            time: Time.new(2022, 12, 20, 5, 0, 0),
+            phrase: [0x064, 0x064, 0x064, 0x064, 0x064]
+          )
+        ]
+      end
+
+      it do
+        should eq [
+          0x02, 0x00, 0xca, 0x05, 0x0a, 0x00, 0x7c, 0x0b, 0x0f, 0x00, 0x30, 0x69, 0xfe, 0x00, 0x00, 0x00, 0x64, 0x64,
+          0x64, 0x64, 0x30, 0x64, 0xff, 0x00, 0x00, 0x01, 0x1e, 0xbb, 0x20, 0x12, 0x00, 0x01
+        ]
+      end
+    end
+
+    context "when events contains three events with five words each" do
+      let(:events) do
+        [
+          described_class::Event.new(
+            time: Time.new(2022, 12, 15, 3, 30, 0),
+            phrase: [0x069, 0x069, 0x069, 0x069, 0x069]
+          ),
+          described_class::Event.new(
+            time: Time.new(2022, 12, 20, 5, 0, 0),
+            phrase: [0x064, 0x064, 0x064, 0x064, 0x064]
+          ),
+          described_class::Event.new(
+            time: Time.new(2022, 12, 23, 18, 30, 0),
+            phrase: [0x074, 0x074, 0x074, 0x074, 0x074]
+          )
+        ]
+      end
+
+      it do
+        should eq [
+          0x03, 0x00, 0xca, 0x05, 0x0e, 0x00, 0x7c, 0x0b, 0x18, 0x00, 0x7e, 0x0f, 0x22, 0x00, 0x00, 0x69, 0x69, 0x69,
+          0x69, 0x30, 0x69, 0xfe, 0x00, 0x00, 0x00, 0x64, 0x64, 0x64, 0x64, 0x30, 0x64, 0xfe, 0x00, 0x00, 0x00, 0x74,
+          0x74, 0x74, 0x74, 0x30, 0x74, 0xff, 0x00, 0x00, 0x01, 0x1e, 0xbb, 0x20, 0x12, 0x00, 0x01
+        ]
+      end
+    end
+  end
+end

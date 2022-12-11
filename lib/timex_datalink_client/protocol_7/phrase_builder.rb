@@ -59,7 +59,7 @@ class TimexDatalinkClient
       def vocab_links_for_vocab(vocab)
         links = vocab_links_table.select { |vocab_link| vocab_link[:"PC Index"] == vocab[:"PC Index"] }
 
-        links.sort_by { |link| link[:Sequence] }
+        links.sort_by { |link| link[:Sequence].to_i }
       end
 
       def vocab_for_vocab_link(vocab_link)

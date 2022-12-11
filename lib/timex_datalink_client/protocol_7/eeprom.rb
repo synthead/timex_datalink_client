@@ -60,7 +60,7 @@ class TimexDatalinkClient
       def all_packets
         [].tap do |packets|
           packets.concat(Activity.packets(activities)) if activities
-          packets.concat(games.packets) if games
+          packets.concat(games.packet) if games
           packets.concat(PhoneNumber.packets(phone_numbers)) if phone_numbers
           packets.concat(speech.packets) if speech
         end

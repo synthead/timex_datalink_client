@@ -35,8 +35,8 @@ describe TimexDatalinkClient::Protocol7::Eeprom::Games do
     )
   end
 
-  describe "#packets" do
-    subject(:packets) { sounds.packets }
+  describe "#packet" do
+    subject(:packet) { sounds.packet }
 
     it { should eq([0x00, 0x00, 0x58, 0x02, 0x30, 0x62, 0xfe, 0x00, 0x00, 0x30, 0x62, 0xfe, 0x00, 0x00, 0x02]) }
 

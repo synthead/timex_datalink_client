@@ -77,9 +77,10 @@ class TimexDatalinkClient
   #   Protocol1::Eeprom, Protocol1::End, Protocol3::Sync, Protocol3::Start, Protocol3::Time, Protocol3::Alarm,
   #   Protocol3::Eeprom, Protocol3::SoundTheme, Protocol3::SoundOptions, Protocol3::WristApp, Protocol3::End,
   #   Protocol4::Sync, Protocol4::Start, Protocol4::Time, Protocol4::Alarm, Protocol4::Eeprom, Protocol4::SoundTheme,
-  #   Protocol4::SoundOptions, Protocol4::WristApp, Protocol4::End, Protocol9::Sync, Protocol9::Start, Protocol9::Time,
-  #   Protocol9::TimeName, Protocol9::Timer, Protocol9::Alarm, Protocol9::Eeprom, Protocol9::SoundOptions,
-  #   Protocol9::End>] Models to compile data for.
+  #   Protocol4::SoundOptions, Protocol4::WristApp, Protocol4::End, Protocol7::Sync, Protocol7::Start,
+  #   Protocol7::Eeprom, Protocol7::End, Protocol9::Sync, Protocol9::Start, Protocol9::Time, Protocol9::TimeName,
+  #   Protocol9::Timer, Protocol9::Alarm, Protocol9::Eeprom, Protocol9::SoundOptions, Protocol9::End>] Models to compile
+  #   data for.
   # @param byte_sleep [Integer, nil] Time to sleep after sending byte.
   # @param packet_sleep [Integer, nil] Time to sleep after sending packet of bytes.
   # @param verbose [Boolean] Write verbose output to console.

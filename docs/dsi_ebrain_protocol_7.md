@@ -41,7 +41,7 @@ activities = [
     random_speech: false
   ),
   TimexDatalinkClient::Protocol7::Eeprom::Activity.new(
-    time: Time.new(0, 1, 1, 0, 30, 0),  # Year, month, and day is ignored.
+    time: Time.new(0, 1, 1, 8, 0, 0),  # Year, month, and day is ignored.
     messages: [picture_day],
     random_speech: true
   )

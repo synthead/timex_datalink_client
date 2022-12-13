@@ -52,7 +52,7 @@ TimexDatalinkClient::Protocol7::Eeprom.new(activities: activities)
 
 ## Games
 
-![image](https://user-images.githubusercontent.com/820984/207318722-1a37c1ff-e511-45a1-8990-f257935b117b.png)
+![image](https://user-images.githubusercontent.com/820984/207332351-327afbe5-3344-4e63-af15-cb2bd23ff62b.png)
 
 ```ruby
 phrase_builder = TimexDatalinkClient::Protocol7::PhraseBuilder.new(database: "pcvocab.mdb")
@@ -62,18 +62,18 @@ bell = phrase_builder.vocab_ids_for("<Bell>").first
 
 games = TimexDatalinkClient::Protocol7::Eeprom::Games.new(
   memory_game_enabled: true,
-  fortune_teller_enabled: true,
+  fortune_teller_enabled: false,
   countdown_timer_enabled: true,
   countdown_timer_seconds: 90,
   countdown_timer_sound: fart,
-  mind_reader_enabled: true,
+  mind_reader_enabled: false,
   music_time_keeper_enabled: true,
   music_time_keeper_sound: bell,
-  morse_code_practice_enabled: true,
+  morse_code_practice_enabled: false,
   treasure_hunter_enabled: true,
-  rhythm_rhyme_buster_enabled: true,
+  rhythm_rhyme_buster_enabled: false,
   stop_watch_enabled: true,
-  red_light_green_light_enabled: true
+  red_light_green_light_enabled: false
 )
 
 TimexDatalinkClient::Protocol7::Eeprom.new(games: games)
@@ -199,18 +199,18 @@ bell = phrase_builder.vocab_ids_for("<Bell>").first
 
 games = TimexDatalinkClient::Protocol7::Eeprom::Games.new(
   memory_game_enabled: true,
-  fortune_teller_enabled: true,
+  fortune_teller_enabled: false,
   countdown_timer_enabled: true,
   countdown_timer_seconds: 90,
   countdown_timer_sound: fart,
-  mind_reader_enabled: true,
+  mind_reader_enabled: false,
   music_time_keeper_enabled: true,
   music_time_keeper_sound: bell,
-  morse_code_practice_enabled: true,
+  morse_code_practice_enabled: false,
   treasure_hunter_enabled: true,
-  rhythm_rhyme_buster_enabled: true,
+  rhythm_rhyme_buster_enabled: false,
   stop_watch_enabled: true,
-  red_light_green_light_enabled: true
+  red_light_green_light_enabled: false
 )
 
 time = Time.now

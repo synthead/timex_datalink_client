@@ -72,7 +72,7 @@ class TimexDatalinkClient
 
   # Create a TimexDatalinkClient instance.
   #
-  # @param serial_device [String] Path to serial device.
+  # @param serial_device [String, nil] Path to serial device.
   # @param models [Array<Protocol1::Sync, Protocol1::Start, Protocol1::Time, Protocol1::TimeName, Protocol1::Alarm,
   #   Protocol1::Eeprom, Protocol1::End, Protocol3::Sync, Protocol3::Start, Protocol3::Time, Protocol3::Alarm,
   #   Protocol3::Eeprom, Protocol3::SoundTheme, Protocol3::SoundOptions, Protocol3::WristApp, Protocol3::End,
@@ -85,7 +85,7 @@ class TimexDatalinkClient
   # @param packet_sleep [Integer, nil] Time to sleep after sending packet of bytes.
   # @param verbose [Boolean] Write verbose output to console.
   # @return [TimexDatalinkClient] TimexDatalinkClient instance.
-  def initialize(serial_device:, models: [], byte_sleep: nil, packet_sleep: nil, verbose: false)
+  def initialize(serial_device: nil, models: [], byte_sleep: nil, packet_sleep: nil, verbose: false)
     @serial_device = serial_device
     @models = models
     @byte_sleep = byte_sleep

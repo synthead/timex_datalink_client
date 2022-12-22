@@ -32,6 +32,9 @@ top and repeats for the next frame. This means that the electron guns turn on wh
 turn off when its drawing the black background. This produces flashing light as the graphics are drawn, which is
 ultimately received by the optical sensor and decoded by the Timex Datalink device.
 
+Have a CRT monitor?  Use this library with [timex\_datalink\_crt](https://github.com/synthead/timex_datalink_crt) to
+transfer data with your CRT!
+
 <image src="https://user-images.githubusercontent.com/820984/188436622-8cac39c7-9edc-4d92-a8c7-cbe9774cb691.jpg" width="600px">
 
 For laptop users, Timex also offered the Datalink Notebook Adapter.  Instead of using a CRT monitor, the Notebook

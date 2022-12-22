@@ -23,7 +23,7 @@ may be supported sometime in the future!
 The Timex Datalink is a watch that was introduced in 1994 that is essentially a small PDA on your wrist.  The early
 models (supported by this software) have an optical sensor on the top of the face that receives data via visible light.
 
-<image src="https://user-images.githubusercontent.com/820984/188436920-c6763a48-ce5a-4f16-af2d-df8bd7ca4849.png" width="600px">
+<image src="https://user-images.githubusercontent.com/820984/209043607-a449b764-42f9-4f92-9a32-cd0665551289.jpg" width="600px">
 
 Originally, these watches received their data by drawing patterns on CRT computer monitors.  CRTs draw scan lines from
 top to bottom with electron beams, so the beams essentially "flash" as they draw the picture.  This allows data to be

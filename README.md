@@ -25,9 +25,12 @@ models (supported by this software) have an optical sensor on the top of the fac
 
 <image src="https://user-images.githubusercontent.com/820984/209043607-a449b764-42f9-4f92-9a32-cd0665551289.jpg" width="600px">
 
-Originally, these watches received their data by drawing patterns on CRT computer monitors.  CRTs draw scan lines from
-top to bottom with electron beams, so the beams essentially "flash" as they draw the picture.  This allows data to be
-"drawn" on the screen for the watch to receive wirelessly.
+The original data transfer method involves
+[drawing patterns of lines on a CRT monitor](https://www.youtube.com/watch?v=p3Pzxmq-JLM) for the watch to receive with
+the optical sensor.  CRTs use electron beams that draw scan lines one-by-one from top to bottom, then it returns to the
+top and repeats for the next frame. This means that the electron guns turn on when its drawing a white line, and and
+turn off when its drawing the black background. This produces flashing light as the graphics are drawn, which is
+ultimately received by the optical sensor and decoded by the Timex Datalink device.
 
 <image src="https://user-images.githubusercontent.com/820984/188436622-8cac39c7-9edc-4d92-a8c7-cbe9774cb691.jpg" width="600px">
 

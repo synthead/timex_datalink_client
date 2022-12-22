@@ -157,16 +157,24 @@ TimexDatalinkClient::Protocol3::Alarm.new(
 
 ![image](https://user-images.githubusercontent.com/820984/190347561-eab2353d-90d0-44b5-aa69-eb58c4e1c4d4.png)
 
+This example requires a ZAP file present to upload.  See the
+[Acquiring SPC and ZAP files for protocols 3 and 4 documentation](acquiring_spc_and_zap_files.md) for information
+on how to acquire ZAP files from the original Timex Datalink software.
+
 ```ruby
-TimexDatalinkClient::Protocol3::WristApp.new(zap_file: "DATALINK/APP/TIMER13.ZAP")
+TimexDatalinkClient::Protocol3::WristApp.new(zap_file: "TIMER13.ZAP")
 ```
 
 ## Watch Sounds
 
 ![image](https://user-images.githubusercontent.com/820984/190347710-b57fe25b-95b1-49b6-a897-6ad6f2ffe1aa.png)
 
+This example requires a SPC file present to upload.  See the
+[Acquiring SPC and ZAP files for protocols 3 and 4 documentation](acquiring_spc_and_zap_files.md) for information
+on how to acquire SPC files from the original Timex Datalink software.
+
 ```ruby
-TimexDatalinkClient::Protocol3::SoundTheme.new(spc_file: "DATALINK/SND/DEFAULT.SPC")
+TimexDatalinkClient::Protocol3::SoundTheme.new(spc_file: "DEFAULT.SPC")
 
 TimexDatalinkClient::Protocol3::SoundOptions.new(
   hourly_chime: true,
@@ -175,6 +183,10 @@ TimexDatalinkClient::Protocol3::SoundOptions.new(
 ```
 
 ## Complete code example
+
+This example requires SPC and ZAP files present to upload.  See the
+[Acquiring SPC and ZAP files for protocols 3 and 4 documentation](acquiring_spc_and_zap_files.md) for information
+on how to acquire SPC and ZAP files from the original Timex Datalink software.
 
 Here is an example that syncs all models to a device that supports protocol 3:
 
@@ -290,14 +302,14 @@ models = [
     appointment_notification: 3  # In 5 minute intervals.  255 for no notification.
   ),
 
-  TimexDatalinkClient::Protocol3::SoundTheme.new(spc_file: "DATALINK/SND/DEFHIGH.SPC"),
+  TimexDatalinkClient::Protocol3::SoundTheme.new(spc_file: "DEFHIGH.SPC"),
 
   TimexDatalinkClient::Protocol3::SoundOptions.new(
     hourly_chime: true,
     button_beep: true
   ),
 
-  TimexDatalinkClient::Protocol3::WristApp.new(zap_file: "DATALINK/APP/TIMER13.ZAP"),
+  TimexDatalinkClient::Protocol3::WristApp.new(zap_file: "TIMER13.ZAP"),
 
   TimexDatalinkClient::Protocol3::End.new
 ]

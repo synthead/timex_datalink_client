@@ -56,6 +56,19 @@ travel!  Here's a shot of James H. Newman wearing a Datalink watch on the Space 
 In addition, the Datalink protocol is also used in some other watches, organizers, and toys, i.e. the Motorola Beepwear
 Pro, Royal FL95, Tiger PDA2000, Franklin Rolodex Flash PC Companion RFLS-8, and DSI e-BRAIN 69006.
 
+## Installing Ruby and the timex\_datalink\_client gem
+
+If you need to install Ruby, follow the
+[Ruby installation instructions](https://www.ruby-lang.org/en/documentation/installation) first.
+
+Then, with Ruby installed, run this command to install the timex\_datalink\_client gem:
+
+```
+gem install timex_datalink_client
+```
+
+You're done!  From here, continue reading the documentation for which protocol to use and follow the code examples below.
+
 ## Determining the protocol to use
 
 On Timex Datalink watches, pressing the center button on the right will change its mode.  Press this button until "COMM

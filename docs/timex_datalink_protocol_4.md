@@ -162,7 +162,7 @@ This example requires a ZAP file present to upload.  See the
 on how to acquire ZAP files from the original Timex Datalink software.
 
 ```ruby
-TimexDatalinkClient::Protocol4::WristApp.new(zap_file: "DATALINK/APP/TIMER13.ZAP")
+TimexDatalinkClient::Protocol4::WristApp.new(zap_file: "TIMER13.ZAP")
 ```
 
 ## Watch Sounds
@@ -174,7 +174,7 @@ This example requires a SPC file present to upload.  See the
 on how to acquire SPC files from the original Timex Datalink software.
 
 ```ruby
-TimexDatalinkClient::Protocol4::SoundTheme.new(spc_file: "DATALINK/SND/DEFAULT.SPC")
+TimexDatalinkClient::Protocol4::SoundTheme.new(spc_file: "DEFAULT.SPC")
 
 TimexDatalinkClient::Protocol4::SoundOptions.new(
   hourly_chime: true,
@@ -302,14 +302,14 @@ models = [
     appointment_notification: 3  # In 5 minute intervals.  255 for no notification.
   ),
 
-  TimexDatalinkClient::Protocol4::SoundTheme.new(spc_file: "DATALINK/SND/DEFHIGH.SPC"),
+  TimexDatalinkClient::Protocol4::SoundTheme.new(spc_file: "DEFHIGH.SPC"),
 
   TimexDatalinkClient::Protocol4::SoundOptions.new(
     hourly_chime: true,
     button_beep: true
   ),
 
-  TimexDatalinkClient::Protocol4::WristApp.new(zap_file: "DATALINK/APP/TIMER13.ZAP"),
+  TimexDatalinkClient::Protocol4::WristApp.new(zap_file: "TIMER13.ZAP"),
 
   TimexDatalinkClient::Protocol4::End.new
 ]

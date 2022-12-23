@@ -30,6 +30,28 @@ describe TimexDatalinkClient::Protocol1::Time do
       ]
     end
 
+    context "when zone is 0" do
+      let(:zone) { 0 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Zone 0 is invalid!  Valid zones are 1..2."
+        )
+      end
+    end
+
+    context "when zone is 3" do
+      let(:zone) { 3 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Zone 3 is invalid!  Valid zones are 1..2."
+        )
+      end
+    end
+
     context "when is_24h is true" do
       let(:is_24h) { true }
 

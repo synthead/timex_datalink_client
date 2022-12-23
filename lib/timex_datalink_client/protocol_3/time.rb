@@ -11,6 +11,15 @@ class TimexDatalinkClient
 
       CPACKET_TIME = [0x32]
 
+      DATE_FORMATS = {
+        "%_m-%d-%y": 0,
+        "%_d-%m-%y": 1,
+        "%y-%m-%d": 2,
+        "%_m.%d.%y": 4,
+        "%_d.%m.%y": 5,
+        "%y.%m.%d": 6
+      }.freeze
+
       attr_accessor :zone, :is_24h, :date_format, :time
 
       # Create a Time instance.

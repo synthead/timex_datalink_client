@@ -87,9 +87,10 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/protocol_9/timer.rb"
   ]
 
+  s.add_dependency "activemodel", "~> 7.0.4"
   s.add_dependency "crc", "~> 0.4.2"
-  s.add_dependency "rubyserial", "~> 0.6.0"
   s.add_dependency "mdb", "~> 0.5.0"
+  s.add_dependency "rubyserial", "~> 0.6.0"
 
   s.add_development_dependency "rspec", "~> 3.11.0"
   s.add_development_dependency "tzinfo", "~> 2.0.5"

@@ -59,6 +59,28 @@ describe TimexDatalinkClient::Protocol9::Eeprom::Chrono do
 
       it { should eq([0x24, 0x0c, 0x11, 0x1b, 0x18, 0x17, 0x18, 0x24]) }
     end
+
+    context "when laps is 1" do
+      let(:laps) { 1 }
+
+      it do
+        expect { packet }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Laps value 1 is invalid!  Valid laps values are 2..50."
+        )
+      end
+    end
+
+    context "when laps is 51" do
+      let(:laps) { 51 }
+
+      it do
+        expect { packet }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Laps value 51 is invalid!  Valid laps values are 2..50."
+        )
+      end
+    end
   end
 
   describe "#chrono_bytesize", :crc do

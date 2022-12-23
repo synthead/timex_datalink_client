@@ -6,7 +6,7 @@ describe TimexDatalinkClient::Protocol9::Timer do
   let(:number) { 1 }
   let(:label) { "Timer 1" }
   let(:time) { Time.new(0, 1, 1, 1, 2, 3) }
-  let(:action_at_end) { 0 }
+  let(:action_at_end) { :stop_timer }
 
   let(:timer) do
     described_class.new(
@@ -64,8 +64,16 @@ describe TimexDatalinkClient::Protocol9::Timer do
       ]
     end
 
-    context "when action_at_end is 2" do
-      let(:action_at_end) { 2 }
+    context "when action_at_end is :repeat_timer" do
+      let(:action_at_end) { :repeat_timer }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x43, 0x01, 0x01, 0x02, 0x03, 0x01, 0x1d, 0x12, 0x16, 0x0e, 0x1b, 0x24, 0x01, 0x24]
+      ]
+    end
+
+    context "when action_at_end is :start_chrono" do
+      let(:action_at_end) { :start_chrono }
 
       it_behaves_like "CRC-wrapped packets", [
         [0x43, 0x01, 0x01, 0x02, 0x03, 0x02, 0x1d, 0x12, 0x16, 0x0e, 0x1b, 0x24, 0x01, 0x24]

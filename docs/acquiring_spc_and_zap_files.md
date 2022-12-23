@@ -1,4 +1,4 @@
-# Acquiring SPC and ZAP files for protocols 3 and 4
+# Acquiring SPC and ZAP Files for Protocols 3 and 4
 
 SPC files are sound themes, and ZAP files are WristApp programs.  Sound themes and WristApp programs are supported in
 protocols 3 and 4, namely the Timex Datalink 150 and 150s.  These files can be transferred using the `SoundTheme` and

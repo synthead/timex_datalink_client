@@ -17,6 +17,20 @@ describe TimexDatalinkClient::Protocol9::Timer do
     )
   end
 
+  describe "ACTIONS_AT_END" do
+    subject(:actions_at_end) { described_class::ACTIONS_AT_END }
+
+    let(:expected_actions_at_end) do
+      {
+        stop_timer: 0,
+        repeat_timer: 1,
+        start_chrono: 2
+      }
+    end
+
+    it { should eq(expected_actions_at_end) }
+  end
+
   describe "#packets", :crc do
     subject(:packets) { timer.packets }
 

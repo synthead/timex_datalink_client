@@ -11,6 +11,12 @@ class TimexDatalinkClient
 
       CPACKET_TIMER = [0x43]
 
+      ACTIONS_AT_END = {
+        stop_timer: 0,
+        repeat_timer: 1,
+        start_chrono: 2
+      }.freeze
+
       attr_accessor :number, :label, :time, :action_at_end
 
       # Create a Timer instance.

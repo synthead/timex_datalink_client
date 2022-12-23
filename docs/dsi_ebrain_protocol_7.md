@@ -5,6 +5,10 @@ software version 1.1.6.
 
 ![image](https://user-images.githubusercontent.com/820984/207302212-543abafa-2c6b-4cc7-a413-31f3d8567268.png)
 
+Every code example below uses the `pcvocab.mdb` speech database file.  Please see the
+[Acquiring pcvocab.mdb for Protocol 7 documentation](acquiring_pcvocab.mdb.md) for how to acquire `pcvocab.mdb` for
+these examples.
+
 ## Nicknames
 
 ![image](https://user-images.githubusercontent.com/820984/207304059-cdb2bc30-19c3-4556-aaec-f2b20df3f58c.png)

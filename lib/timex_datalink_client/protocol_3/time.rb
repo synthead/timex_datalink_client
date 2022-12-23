@@ -11,13 +11,13 @@ class TimexDatalinkClient
 
       CPACKET_TIME = [0x32]
 
-      DATE_FORMATS = {
-        "%_m-%d-%y": 0,
-        "%_d-%m-%y": 1,
-        "%y-%m-%d": 2,
-        "%_m.%d.%y": 4,
-        "%_d.%m.%y": 5,
-        "%y.%m.%d": 6
+      DATE_FORMAT_MAP = {
+        "%_m-%d-%y" => 0,
+        "%_d-%m-%y" => 1,
+        "%y-%m-%d" => 2,
+        "%_m.%d.%y" => 4,
+        "%_d.%m.%y" => 5,
+        "%y.%m.%d" => 6
       }.freeze
 
       attr_accessor :zone, :is_24h, :date_format, :time
@@ -26,7 +26,8 @@ class TimexDatalinkClient
       #
       # @param zone [Integer] Time zone number (1 or 2).
       # @param is_24h [Boolean] Toggle 24 hour time.
-      # @param date_format [Integer] Date format.
+      # @param date_format ["%_m-%d-%y", "%_d-%m-%y", "%y-%m-%d", "%_m.%d.%y", "%_d.%m.%y", "%y.%m.%d"] Date format
+      #   (represented by Time#strftime format).
       # @param time [::Time] Time to set (including time zone).
       # @param name [String, nil] Name of time zone (defaults to zone from time; 3 chars max)
       # @return [Time] Time instance.
@@ -55,7 +56,7 @@ class TimexDatalinkClient
             name_characters,
             wday_from_monday,
             is_24h_value,
-            date_format
+            date_format_value
           ].flatten
         ]
       end
@@ -80,6 +81,10 @@ class TimexDatalinkClient
 
       def is_24h_value
         is_24h ? 2 : 1
+      end
+
+      def date_format_value
+        DATE_FORMAT_MAP.fetch(date_format)
       end
     end
   end

@@ -17,7 +17,7 @@ describe TimexDatalinkClient do
       TimexDatalinkClient::Protocol3::Time.new(
         zone: 1,
         is_24h: false,
-        date_format: 0,
+        date_format: "%_m-%d-%y",
         time: TZInfo::Timezone.get("US/Pacific").local_time(2015, 10, 21, 19, 28, 32)
       ),
       TimexDatalinkClient::Protocol3::Eeprom.new(

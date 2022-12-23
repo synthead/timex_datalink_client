@@ -7,7 +7,7 @@ require "spec_helper"
 describe TimexDatalinkClient::Protocol3::Time do
   let(:zone) { 1 }
   let(:is_24h) { false }
-  let(:date_format) { 0 }
+  let(:date_format) { "%_m-%d-%y" }
   let(:tzinfo) { TZInfo::Timezone.get("US/Pacific") }
   let(:time) { tzinfo.local_time(2015, 10, 21, 19, 28, 32) }
   let(:name) { nil }
@@ -20,23 +20,6 @@ describe TimexDatalinkClient::Protocol3::Time do
       time: time,
       name: name
     )
-  end
-
-  describe "DATE_FORMATS" do
-    subject(:date_formats) { described_class::DATE_FORMATS }
-
-    let(:expected_date_formats) do
-      {
-        "%_m-%d-%y": 0,
-        "%_d-%m-%y": 1,
-        "%y-%m-%d": 2,
-        "%_m.%d.%y": 4,
-        "%_d.%m.%y": 5,
-        "%y.%m.%d": 6
-      }
-    end
-
-    it { should eq(expected_date_formats) }
   end
 
   describe "#packets", :crc do
@@ -62,11 +45,43 @@ describe TimexDatalinkClient::Protocol3::Time do
       ]
     end
 
-    context "when date_format is 4" do
-      let(:date_format) { 4 }
+    context "when date_format is \"%_d-%m-%y\"" do
+      let(:date_format) { "%_d-%m-%y" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x19, 0x0d, 0x1d, 0x02, 0x01, 0x01]
+      ]
+    end
+
+    context "when date_format is \"%y-%m-%d\"" do
+      let(:date_format) { "%y-%m-%d" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x19, 0x0d, 0x1d, 0x02, 0x01, 0x02]
+      ]
+    end
+
+    context "when date_format is \"%_m.%d.%y\"" do
+      let(:date_format) { "%_m.%d.%y" }
 
       it_behaves_like "CRC-wrapped packets", [
         [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x19, 0x0d, 0x1d, 0x02, 0x01, 0x04]
+      ]
+    end
+
+    context "when date_format is \"%_d.%m.%y\"" do
+      let(:date_format) { "%_d.%m.%y" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x19, 0x0d, 0x1d, 0x02, 0x01, 0x05]
+      ]
+    end
+
+    context "when date_format is \"%y.%m.%d\"" do
+      let(:date_format) { "%y.%m.%d" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x19, 0x0d, 0x1d, 0x02, 0x01, 0x06]
       ]
     end
 

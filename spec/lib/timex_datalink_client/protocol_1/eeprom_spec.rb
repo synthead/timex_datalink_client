@@ -48,11 +48,11 @@ describe TimexDatalinkClient::Protocol1::Eeprom do
     [
       TimexDatalinkClient::Protocol1::Eeprom::List.new(
         list_entry: "muffler bearings",
-        priority: 0
+        priority: nil
       ),
       TimexDatalinkClient::Protocol1::Eeprom::List.new(
         list_entry: "headlight fluid",
-        priority: 0
+        priority: nil
       )
     ]
   end

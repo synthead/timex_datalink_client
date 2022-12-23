@@ -90,6 +90,17 @@ lists = [
 TimexDatalinkClient::Protocol4::Eeprom.new(lists: lists)
 ```
 
+Here are the available Priority values from the Timex Datalink software with their equivalent `List` `priority` values:
+
+|Timex Datalink Priority value|`List` `priority` value|
+|---|---|
+|1 - Highest|`1`|
+|2 - High|`2`|
+|3 - Medium|`3`|
+|4 - Low|`4`|
+|5 - Lowest|`5`|
+|None|`nil`|
+
 ## Time Settings
 
 ![image](https://user-images.githubusercontent.com/820984/190338907-7fd94480-5898-4e46-b715-56565293d0c8.png)

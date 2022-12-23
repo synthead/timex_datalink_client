@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
+require "active_model"
+
 require "timex_datalink_client/helpers/char_encoders"
 require "timex_datalink_client/helpers/crc_packets_wrapper"
 
 class TimexDatalinkClient
   class Protocol1
     class Alarm
+      include ActiveModel::Validations
       include Helpers::CharEncoders
       prepend Helpers::CrcPacketsWrapper
 
@@ -16,6 +19,11 @@ class TimexDatalinkClient
 
       attr_accessor :number, :audible, :time, :message, :month, :day
 
+      validates :number, inclusion: {
+        in: 1..5,
+        message: "value %{value} is invalid!  Valid number values are 1..5."
+      }
+
       # Create an Alarm instance.
       #
       # @param number [Integer] Alarm number (from 1 to 5).
@@ -24,6 +32,7 @@ class TimexDatalinkClient
       # @param message [String] Alarm message text.
       # @param month [Integer, nil] Month of alarm.
       # @param day [Integer, nil] Day of alarm.
+      # @raise [ActiveModel::ValidationError] One or more model values are invalid.
       # @return [Alarm] Alarm instance.
       def initialize(number:, audible:, time:, message:, month: nil, day: nil)
         @number = number
@@ -38,6 +47,8 @@ class TimexDatalinkClient
       #
       # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
       def packets
+        validate!
+
         [alarm_data_packet].tap do |packets|
           packets << alarm_silent_packet unless audible
         end

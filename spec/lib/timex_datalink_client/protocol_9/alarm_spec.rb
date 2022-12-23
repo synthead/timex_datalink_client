@@ -31,15 +31,37 @@ describe TimexDatalinkClient::Protocol9::Alarm do
       ]
     ]
 
-    context "when number is 2" do
-      let(:number) { 2 }
+    context "when number is 10" do
+      let(:number) { 10 }
 
       it_behaves_like "CRC-wrapped packets", [
         [
-          0x50, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a, 0x15, 0x0a, 0x1b, 0x16, 0x24, 0x01, 0x24, 0x24, 0x24, 0x24,
+          0x50, 0x0a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a, 0x15, 0x0a, 0x1b, 0x16, 0x24, 0x01, 0x24, 0x24, 0x24, 0x24,
           0x24, 0x24, 0x24, 0x24, 0x24
         ]
       ]
+    end
+
+    context "when number is 0" do
+      let(:number) { 0 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Number value 0 is invalid!  Valid number values are 1..10."
+        )
+      end
+    end
+
+    context "when number is 11" do
+      let(:number) { 11 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Number value 11 is invalid!  Valid number values are 1..10."
+        )
+      end
     end
 
     context "when audible is true" do

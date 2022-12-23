@@ -11,7 +11,7 @@ class TimexDatalinkClient
 
       CPACKET_TIMER = [0x43]
 
-      ACTIONS_AT_END = {
+      ACTION_AT_END_MAP = {
         stop_timer: 0,
         repeat_timer: 1,
         start_chrono: 2

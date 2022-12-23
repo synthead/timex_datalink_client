@@ -57,35 +57,35 @@ TimexDatalinkClient::Protocol9::Timer.new(
   number: 1,
   label: "TIMER 1",
   time: Time.new(0, 1, 1, 0, 5, 0),  # Year, month, and day is ignored.
-  action_at_end: 0
+  action_at_end: TimexDatalinkClient::Protocol9::Timer::ACTIONS_AT_END[:stop_timer]
 )
 
 TimexDatalinkClient::Protocol9::Timer.new(
   number: 2,
   label: "TIMER 2",
   time: Time.new(0, 1, 1, 0, 10, 0),  # Year, month, and day is ignored.
-  action_at_end: 1
+  action_at_end: TimexDatalinkClient::Protocol9::Timer::ACTIONS_AT_END[:repeat_timer]
 )
 
 TimexDatalinkClient::Protocol9::Timer.new(
   number: 3,
   label: "TIMER 3",
   time: Time.new(0, 1, 1, 0, 15, 0),  # Year, month, and day is ignored.
-  action_at_end: 1
+  action_at_end: TimexDatalinkClient::Protocol9::Timer::ACTIONS_AT_END[:repeat_timer]
 )
 
 TimexDatalinkClient::Protocol9::Timer.new(
   number: 4,
   label: "TIMER 4",
   time: Time.new(0, 1, 1, 1, 30, 0),  # Year, month, and day is ignored.
-  action_at_end: 0
+  action_at_end: TimexDatalinkClient::Protocol9::Timer::ACTIONS_AT_END[:stop_timer]
 )
 
 TimexDatalinkClient::Protocol9::Timer.new(
   number: 5,
   label: "TIMER 5",
   time: Time.new(0, 1, 1, 1, 0, 0),  # Year, month, and day is ignored.
-  action_at_end: 2
+  action_at_end: TimexDatalinkClient::Protocol9::Timer::ACTIONS_AT_END[:start_chrono]
 )
 ```
 
@@ -259,31 +259,31 @@ models = [
     number: 1,
     label: "TIMER 1",
     time: Time.new(0, 1, 1, 0, 5, 0),  # Year, month, and day is ignored.
-    action_at_end: 0
+    action_at_end: TimexDatalinkClient::Protocol9::Timer::ACTIONS_AT_END[:stop_timer]
   ),
   TimexDatalinkClient::Protocol9::Timer.new(
     number: 2,
     label: "TIMER 2",
     time: Time.new(0, 1, 1, 0, 10, 0),  # Year, month, and day is ignored.
-    action_at_end: 1
+    action_at_end: TimexDatalinkClient::Protocol9::Timer::ACTIONS_AT_END[:repeat_timer]
   ),
   TimexDatalinkClient::Protocol9::Timer.new(
     number: 3,
     label: "TIMER 3",
     time: Time.new(0, 1, 1, 0, 15, 0),  # Year, month, and day is ignored.
-    action_at_end: 1
+    action_at_end: TimexDatalinkClient::Protocol9::Timer::ACTIONS_AT_END[:repeat_timer]
   ),
   TimexDatalinkClient::Protocol9::Timer.new(
     number: 4,
     label: "TIMER 4",
     time: Time.new(0, 1, 1, 1, 30, 0),  # Year, month, and day is ignored.
-    action_at_end: 0
+    action_at_end: TimexDatalinkClient::Protocol9::Timer::ACTIONS_AT_END[:stop_timer]
   ),
   TimexDatalinkClient::Protocol9::Timer.new(
     number: 5,
     label: "TIMER 5",
     time: Time.new(0, 1, 1, 1, 0, 0),  # Year, month, and day is ignored.
-    action_at_end: 2
+    action_at_end: TimexDatalinkClient::Protocol9::Timer::ACTIONS_AT_END[:start_chrono]
   ),
 
   TimexDatalinkClient::Protocol9::Alarm.new(

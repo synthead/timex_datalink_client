@@ -28,6 +28,28 @@ describe TimexDatalinkClient::Protocol9::TimeName do
       ]
     end
 
+    context "when zone is 0" do
+      let(:zone) { 0 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Zone 0 is invalid!  Valid zones are 1..2."
+        )
+      end
+    end
+
+    context "when zone is 3" do
+      let(:zone) { 3 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Zone 3 is invalid!  Valid zones are 1..2."
+        )
+      end
+    end
+
     context "when name is \"1\"" do
       let(:name) { "1" }
 

@@ -7,8 +7,8 @@ database file, `pcvocab.mdb`.
 
 ## Extracting pcvocab.mdb from the DSI e-BRAIN software CD
 
-The pcvocab.mdb file is buried inside of installer files on the DSI e-BRAIN software CD.  First, acquire an ISO image of
-the DSI e-BRAIN CD.  If you need to download it, you can find it on
+The `pcvocab.mdb` file is buried inside of installer files on the DSI e-BRAIN software CD.  First, acquire an ISO image
+of the DSI e-BRAIN CD.  If you need to download it, you can find it on
 [the Internet Archive](https://archive.org/details/ebrain-1.1.6) (here's a
 [direct link](https://archive.org/download/ebrain-1.1.6/ebrain-1.1.6.iso)).
 

@@ -25,7 +25,6 @@ class TimexDatalinkClient
         #
         # @param list_entry [String] List entry text.
         # @param priority [Integer, nil] List priority.
-        # @raise [ActiveModel::ValidationError] One or more model values are invalid.
         # @return [List] List instance.
         def initialize(list_entry:, priority:)
           @list_entry = list_entry
@@ -34,6 +33,7 @@ class TimexDatalinkClient
 
         # Compile a packet for a list.
         #
+        # @raise [ActiveModel::ValidationError] One or more model values are invalid.
         # @return [Array<Integer>] Array of integers that represent bytes.
         def packet
           validate!

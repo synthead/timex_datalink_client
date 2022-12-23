@@ -113,17 +113,17 @@ TimexDatalinkClient::Protocol4::Time.new(
 ```
 
 Here are the valid values for `action_at_end`, represented by
-[Time#strftime format](https://apidock.com/ruby/DateTime/strftime), followed by an example of 2015-10-21 in `%Y-%m-%d`
+[Time#strftime format](https://apidock.com/ruby/DateTime/strftime), followed by an example of 2023-09-06 in `%Y-%m-%d`
 format:
 
 |`date_format` value|Formatted example|
 |---|---|
-|`"%_m-%d-%y"`|`10-21-15`|
-|`"%_d-%m-%y"`|`21-10-15`|
-|`"%y-%m-%d"`|`15-10-21`|
-|`"%_m.%d.%y"`|`10.21.15`|
-|`"%_d.%m.%y"`|`21.10.15`|
-|`"%y.%m.%d"`|`15.10.21`|
+|`"%_m-%d-%y"`|` 9-06-23`|
+|`"%_d-%m-%y"`|` 6-09-23`|
+|`"%y-%m-%d"`|`23-09-06`|
+|`"%_m.%d.%y"`|` 9.06.23`|
+|`"%_d.%m.%y"`|` 6.09.23`|
+|`"%y.%m.%d"`|`23.09.06`|
 
 ## Alarms
 

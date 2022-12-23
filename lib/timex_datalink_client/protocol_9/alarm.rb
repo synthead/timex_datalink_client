@@ -29,7 +29,6 @@ class TimexDatalinkClient
       # @param message [String] Alarm message text.
       # @param month [Integer, nil] Month of alarm.
       # @param day [Integer, nil] Day of alarm.
-      # @raise [ActiveModel::ValidationError] One or more model values are invalid.
       # @return [Alarm] Alarm instance.
       def initialize(number:, audible:, time:, message:, month: nil, day: nil)
         @number = number
@@ -42,6 +41,7 @@ class TimexDatalinkClient
 
       # Compile packets for an alarm.
       #
+      # @raise [ActiveModel::ValidationError] One or more model values are invalid.
       # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
       def packets
         validate!

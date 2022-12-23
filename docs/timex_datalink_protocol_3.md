@@ -100,7 +100,7 @@ TimexDatalinkClient::Protocol3::Time.new(
   name: "PDT",
   time: Time.new(2022, 9, 5, 3, 39, 44),
   is_24h: false,
-  date_format: TimexDatalinkClient::Protocol3::Time::DATE_FORMATS[:"%_m-%d-%y"]
+  date_format: "%_m-%d-%y"
 )
 
 TimexDatalinkClient::Protocol3::Time.new(
@@ -108,19 +108,22 @@ TimexDatalinkClient::Protocol3::Time.new(
   name: "GMT",
   time: Time.new(2022, 9, 5, 11, 39, 44),
   is_24h: true,
-  date_format: TimexDatalinkClient::Protocol3::Time::DATE_FORMATS[:"%_m-%d-%y"]
+  date_format: "%_m-%d-%y"
 )
 ```
 
-These are the available keys for `DATE_FORMATS`, represented by
-[Ruby's `strftime` format](https://apidock.com/ruby/DateTime/strftime):
+Here are the valid values for `action_at_end`, represented by
+[Time#strftime format](https://apidock.com/ruby/DateTime/strftime), followed by an example of 2015-10-21 in `%Y-%m-%d`
+format:
 
-- `:"%_m-%d-%y"`
-- `:"%_d-%m-%y"`
-- `:"%y-%m-%d"`
-- `:"%_m.%d.%y"`
-- `:"%_d.%m.%y"`
-- `:"%y.%m.%d"`
+|`date_format` value|Formatted example|
+|---|---|
+|`"%_m-%d-%y"`|`10-21-15`|
+|`"%_d-%m-%y"`|`21-10-15`|
+|`"%y-%m-%d"`|`15-10-21`|
+|`"%_m.%d.%y"`|`10.21.15`|
+|`"%_d.%m.%y"`|`21.10.15`|
+|`"%y.%m.%d"`|`15.10.21`|
 
 ## Alarms
 
@@ -264,13 +267,13 @@ models = [
     zone: 1,
     time: time1,
     is_24h: false,
-    date_format: TimexDatalinkClient::Protocol3::Time::DATE_FORMATS[:"%_m-%d-%y"]
+    date_format: "%_m-%d-%y"
   ),
   TimexDatalinkClient::Protocol3::Time.new(
     zone: 2,
     time: time2,
     is_24h: true,
-    date_format: TimexDatalinkClient::Protocol3::Time::DATE_FORMATS[:"%_m-%d-%y"]
+    date_format: "%_m-%d-%y"
   ),
 
   TimexDatalinkClient::Protocol3::Alarm.new(

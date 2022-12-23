@@ -13,30 +13,20 @@ downloaded from [Timex's website](https://assets.timex.com/html/data_link_softwa
 
 With the software downloaded, follow the directions below to extract SPC and ZAP files from the installer.
 
-### From UNIX-compatible systems with bsdtar
+### From UNIX-compatible systems with 7z
 
-These instructions will use bsdtar, which is a part of [libarchive](https://www.libarchive.org), so make sure this is
-installed first.  libarchive is probably a package in your distro's package manager, so install it this way, if
+These instructions will use 7z, which is a part of [p7zip](https://p7zip.sourceforge.net), so make sure this is
+installed first.  p7zip is probably a package in your distro's package manager, so install it this way, if
 possible.
 
-Then, extract `SETUP.EXE` from `TDL21D.EXE` like so:
+The SPC and ZAP files are in the `SETUP.EXE` file, which is inside of `TDL21D.EXE`.  These commands will extract
+`SETUP.EXE` from `TDL21D.EXE`, create `sound-themes` and `wrist-apps` directories, and extract the SPC and ZAP files to
+the appropriate directories.
 
 ```
-bsdtar xvf TDL21D.EXE SETUP.EXE
-```
-
-From here, we can extract the sound themes from `SETUP.EXE` like this:
-
-```
-mkdir sound-themes
-bsdtar xvf SETUP.EXE -C sound-themes *.SPC
-```
-
-And we can extract the WristApps from `SETUP.EXE` like this:
-
-```
-mkdir wrist-apps
-bsdtar xvf SETUP.EXE -C wrist-apps *.ZAP
+7z e TDL21D.EXE SETUP.EXE
+7z e SETUP.EXE -osound-themes *.SPC
+7z e SETUP.EXE -owrist-apps *.ZAP
 ```
 
 ### From Windows with 7zip

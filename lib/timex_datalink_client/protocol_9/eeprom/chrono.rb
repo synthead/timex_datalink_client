@@ -1,17 +1,25 @@
 # frozen_string_literal: true
 
+require "active_model"
+
 require "timex_datalink_client/helpers/char_encoders"
 
 class TimexDatalinkClient
   class Protocol9
     class Eeprom
       class Chrono
+        include ActiveModel::Validations
         include Helpers::CharEncoders
 
         CHRONO_LABEL_LENGTH = 8
         CHRONO_INITIAL_SIZE = 14
 
         attr_accessor :label, :laps
+
+        validates :laps, inclusion: {
+          in: 2..50,
+          message: "value %{value} is invalid!  Valid laps values are 2..50."
+        }
 
         # Create a Chrono instance.
         #
@@ -27,6 +35,8 @@ class TimexDatalinkClient
         #
         # @return [Array<Integer>] Array of integers that represent bytes.
         def packet
+          validate!
+
           label_characters
         end
 

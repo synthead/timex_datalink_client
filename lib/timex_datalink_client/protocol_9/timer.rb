@@ -24,7 +24,7 @@ class TimexDatalinkClient
       # @param number [Integer] Entry number for timer.
       # @param label [String] Label for timer.
       # @param time [Time] Time of timer.
-      # @param action_at_end [Integer] Action at end of timer.
+      # @param action_at_end [:stop_timer, :repeat_timer, :start_chrono] Action at end of timer.
       # @return [Timer] Timer instance.
       def initialize(number:, label:, time:, action_at_end:)
         @number = number
@@ -44,13 +44,17 @@ class TimexDatalinkClient
             time.hour,
             time.min,
             time.sec,
-            action_at_end,
+            action_at_end_value,
             label_characters
           ].flatten
         ]
       end
 
       private
+
+      def action_at_end_value
+        ACTION_AT_END_MAP.fetch(action_at_end)
+      end
 
       def label_characters
         chars_for(label, length: 8, pad: true)

@@ -4,7 +4,7 @@ require "spec_helper"
 
 describe TimexDatalinkClient::Protocol4::Eeprom::List do
   let(:list_entry) { "Muffler Bearings" }
-  let(:priority) { 0 }
+  let(:priority) { nil }
 
   let(:list) do
     described_class.new(
@@ -20,12 +20,42 @@ describe TimexDatalinkClient::Protocol4::Eeprom::List do
       0x00, 0x96, 0xf7, 0x3c, 0x95, 0xb3, 0x91, 0x8b, 0xa3, 0x6c, 0xd2, 0x05, 0x71, 0x3f
     ]
 
-    context "when priority is 3" do
-      let(:priority) { 3 }
+    context "when priority is 1" do
+      let(:priority) { 1 }
 
       it_behaves_like "a length-prefixed packet", [
-        0x03, 0x96, 0xf7, 0x3c, 0x95, 0xb3, 0x91, 0x8b, 0xa3, 0x6c, 0xd2, 0x05, 0x71, 0x3f
+        0x01, 0x96, 0xf7, 0x3c, 0x95, 0xb3, 0x91, 0x8b, 0xa3, 0x6c, 0xd2, 0x05, 0x71, 0x3f
       ]
+    end
+
+    context "when priority is 5" do
+      let(:priority) { 5 }
+
+      it_behaves_like "a length-prefixed packet", [
+        0x05, 0x96, 0xf7, 0x3c, 0x95, 0xb3, 0x91, 0x8b, 0xa3, 0x6c, 0xd2, 0x05, 0x71, 0x3f
+      ]
+    end
+
+    context "when priority is 0" do
+      let(:priority) { 0 }
+
+      it do
+        expect { packet }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Priority 0 is invalid!  Valid priorities are 1..5 or nil."
+        )
+      end
+    end
+
+    context "when priority is 6" do
+      let(:priority) { 6 }
+
+      it do
+        expect { packet }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Priority 6 is invalid!  Valid priorities are 1..5 or nil."
+        )
+      end
     end
 
     context "when list_entry is \"Headlight Fluid with More than 31 Characters\"" do

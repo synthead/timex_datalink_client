@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "active_model"
+
 require "timex_datalink_client/helpers/char_encoders"
 require "timex_datalink_client/helpers/length_packet_wrapper"
 
@@ -7,10 +9,17 @@ class TimexDatalinkClient
   class Protocol4
     class Eeprom
       class List
+        include ActiveModel::Validations
         include Helpers::CharEncoders
         prepend Helpers::LengthPacketWrapper
 
         attr_accessor :list_entry, :priority
+
+        validates :priority, inclusion: {
+          in: 1..5,
+          allow_nil: true,
+          message: "%{value} is invalid!  Valid priorities are 1..5 or nil."
+        }
 
         # Create a List instance.
         #
@@ -26,8 +35,10 @@ class TimexDatalinkClient
         #
         # @return [Array<Integer>] Array of integers that represent bytes.
         def packet
+          validate!
+
           [
-            priority,
+            priority_value,
             list_entry_characters
           ].flatten
         end
@@ -36,6 +47,10 @@ class TimexDatalinkClient
 
         def list_entry_characters
           eeprom_chars_for(list_entry)
+        end
+
+        def priority_value
+          priority.nil? ? 0 : priority
         end
       end
     end

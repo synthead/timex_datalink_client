@@ -112,6 +112,16 @@ TimexDatalinkClient::Protocol4::Time.new(
 )
 ```
 
+These are the available keys for `DATE_FORMATS`, represented by
+[Ruby's `strftime` format](https://apidock.com/ruby/DateTime/strftime):
+
+- `:"%_m-%d-%y"`
+- `:"%_d-%m-%y"`
+- `:"%y-%m-%d"`
+- `:"%_m.%d.%y"`
+- `:"%_d.%m.%y"`
+- `:"%y.%m.%d"`
+
 ## Alarms
 
 ![image](https://user-images.githubusercontent.com/820984/190345616-e011cb73-8a71-49c5-84df-48b539a20e56.png)

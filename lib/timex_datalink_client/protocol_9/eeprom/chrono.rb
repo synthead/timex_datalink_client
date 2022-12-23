@@ -33,6 +33,7 @@ class TimexDatalinkClient
 
         # Compile a packet for a chrono.
         #
+        # @raise [ActiveModel::ValidationError] One or more model values are invalid.
         # @return [Array<Integer>] Array of integers that represent bytes.
         def packet
           validate!

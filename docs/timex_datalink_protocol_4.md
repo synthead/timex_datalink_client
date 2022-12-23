@@ -100,7 +100,7 @@ TimexDatalinkClient::Protocol4::Time.new(
   name: "PDT",
   time: Time.new(2022, 9, 5, 3, 39, 44),
   is_24h: false,
-  date_format: 2
+  date_format: TimexDatalinkClient::Protocol4::Time::DATE_FORMATS[:"%_m-%d-%y"]
 )
 
 TimexDatalinkClient::Protocol4::Time.new(
@@ -108,9 +108,19 @@ TimexDatalinkClient::Protocol4::Time.new(
   name: "GMT",
   time: Time.new(2022, 9, 5, 11, 39, 44),
   is_24h: true,
-  date_format: 2
+  date_format: TimexDatalinkClient::Protocol4::Time::DATE_FORMATS[:"%_m-%d-%y"]
 )
 ```
+
+These are the available keys for `DATE_FORMATS`, represented by
+[Ruby's `strftime` format](https://apidock.com/ruby/DateTime/strftime):
+
+- `:"%_m-%d-%y"`
+- `:"%_d-%m-%y"`
+- `:"%y-%m-%d"`
+- `:"%_m.%d.%y"`
+- `:"%_d.%m.%y"`
+- `:"%y.%m.%d"`
 
 ## Alarms
 
@@ -254,13 +264,13 @@ models = [
     zone: 1,
     time: time1,
     is_24h: false,
-    date_format: 2
+    date_format: TimexDatalinkClient::Protocol4::Time::DATE_FORMATS[:"%_m-%d-%y"]
   ),
   TimexDatalinkClient::Protocol4::Time.new(
     zone: 2,
     time: time2,
     is_24h: true,
-    date_format: 2
+    date_format: TimexDatalinkClient::Protocol4::Time::DATE_FORMATS[:"%_m-%d-%y"]
   ),
 
   TimexDatalinkClient::Protocol4::Alarm.new(

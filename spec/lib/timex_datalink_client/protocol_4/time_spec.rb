@@ -22,6 +22,23 @@ describe TimexDatalinkClient::Protocol4::Time do
     )
   end
 
+  describe "DATE_FORMATS" do
+    subject(:date_formats) { described_class::DATE_FORMATS }
+
+    let(:expected_date_formats) do
+      {
+        "%_m-%d-%y": 0,
+        "%_d-%m-%y": 1,
+        "%y-%m-%d": 2,
+        "%_m.%d.%y": 4,
+        "%_d.%m.%y": 5,
+        "%y.%m.%d": 6
+      }
+    end
+
+    it { should eq(expected_date_formats) }
+  end
+
   describe "#packets", :crc do
     subject(:packets) { time_instance.packets }
 

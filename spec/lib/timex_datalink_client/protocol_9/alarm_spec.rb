@@ -42,6 +42,28 @@ describe TimexDatalinkClient::Protocol9::Alarm do
       ]
     end
 
+    context "when number is 0" do
+      let(:number) { 0 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Number value 0 is invalid!  Valid number values are 1..10."
+        )
+      end
+    end
+
+    context "when number is 11" do
+      let(:number) { 11 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Number value 11 is invalid!  Valid number values are 1..10."
+        )
+      end
+    end
+
     context "when audible is true" do
       let(:audible) { true }
 

@@ -113,6 +113,28 @@ describe TimexDatalinkClient::Protocol1::Alarm do
       ]
     end
 
+    context "when month is 0" do
+      let(:month) { 0 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Month 0 is invalid!  Valid months are 1..12 and nil."
+        )
+      end
+    end
+
+    context "when month is 13" do
+      let(:month) { 13 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Month 13 is invalid!  Valid months are 1..12 and nil."
+        )
+      end
+    end
+
     context "when day is 25" do
       let(:day) { 25 }
 
@@ -121,5 +143,28 @@ describe TimexDatalinkClient::Protocol1::Alarm do
         [0x70, 0x00, 0x62, 0x00]
       ]
     end
+
+    context "when day is 0" do
+      let(:day) { 0 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Day 0 is invalid!  Valid days are 1..31 and nil."
+        )
+      end
+    end
+
+    context "when day is 32" do
+      let(:day) { 32 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Day 32 is invalid!  Valid days are 1..31 and nil."
+        )
+      end
+    end
+
   end
 end

@@ -24,6 +24,18 @@ class TimexDatalinkClient
         message: "value %{value} is invalid!  Valid number values are 1..5."
       }
 
+      validates :month, inclusion: {
+        in: 1..12,
+        allow_nil: true,
+        message: "%{value} is invalid!  Valid months are 1..12 and nil."
+      }
+
+      validates :day, inclusion: {
+        in: 1..31,
+        allow_nil: true,
+        message: "%{value} is invalid!  Valid days are 1..31 and nil."
+      }
+
       # Create an Alarm instance.
       #
       # @param number [Integer] Alarm number (from 1 to 5).

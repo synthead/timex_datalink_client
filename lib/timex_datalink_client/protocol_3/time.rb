@@ -28,6 +28,11 @@ class TimexDatalinkClient
         message: "%{value} is invalid!  Valid zones are 1..2."
       }
 
+      validates :date_format, inclusion: {
+        in: DATE_FORMAT_MAP.keys,
+        message: "%{value} is invalid!  Valid date formats are #{DATE_FORMAT_MAP.keys}."
+      }
+
       attr_accessor :zone, :is_24h, :date_format, :time
 
       # Create a Time instance.

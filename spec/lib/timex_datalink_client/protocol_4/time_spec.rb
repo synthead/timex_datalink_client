@@ -107,6 +107,18 @@ describe TimexDatalinkClient::Protocol4::Time do
       ]
     end
 
+    context "when date_format is \"%y\"" do
+      let(:date_format) { "%y" }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Date format %y is invalid!  Valid date formats are [\"%_m-%d-%y\", \"%_d-%m-%y\"," \
+          " \"%y-%m-%d\", \"%_m.%d.%y\", \"%_d.%m.%y\", \"%y.%m.%d\"]."
+        )
+      end
+    end
+
     context "when time is 1997-09-19 19:36:55 NZDT" do
       let(:tzinfo) { TZInfo::Timezone.get("Pacific/Auckland") }
       let(:time) { tzinfo.local_time(1997, 9, 19, 19, 36, 55) }

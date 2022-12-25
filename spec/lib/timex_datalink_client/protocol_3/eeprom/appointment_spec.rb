@@ -8,8 +8,8 @@ describe TimexDatalinkClient::Protocol3::Eeprom::Appointment do
 
   let(:appointment) do
     described_class.new(
-      time: time,
-      message: message
+      time:,
+      message:
     )
   end
 

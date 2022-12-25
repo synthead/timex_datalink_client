@@ -5,8 +5,8 @@ require "spec_helper"
 describe TimexDatalinkClient::Protocol3::WristApp do
   let(:wrist_app) do
     described_class.new(
-      wrist_app_data: wrist_app_data,
-      zap_file: zap_file
+      wrist_app_data:,
+      zap_file:
     )
   end
 

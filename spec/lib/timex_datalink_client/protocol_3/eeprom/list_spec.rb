@@ -8,8 +8,8 @@ describe TimexDatalinkClient::Protocol3::Eeprom::List do
 
   let(:list) do
     described_class.new(
-      list_entry: list_entry,
-      priority: priority
+      list_entry:,
+      priority:
     )
   end
 

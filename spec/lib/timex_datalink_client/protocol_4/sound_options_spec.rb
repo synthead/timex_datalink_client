@@ -10,8 +10,8 @@ describe TimexDatalinkClient::Protocol4::SoundOptions do
 
   let(:sound_options) do
     described_class.new(
-      hourly_chime: hourly_chime,
-      button_beep: button_beep
+      hourly_chime:,
+      button_beep:
     )
   end
 

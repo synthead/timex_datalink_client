@@ -8,8 +8,8 @@ describe TimexDatalinkClient::Protocol4::Eeprom::Anniversary do
 
   let(:anniversary_instance) do
     described_class.new(
-      time: time,
-      anniversary: anniversary
+      time:,
+      anniversary:
     )
   end
 

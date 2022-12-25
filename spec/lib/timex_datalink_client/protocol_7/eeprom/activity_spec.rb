@@ -9,9 +9,9 @@ describe TimexDatalinkClient::Protocol7::Eeprom::Activity do
 
   let(:activity) do
     described_class.new(
-      time: time,
-      messages: messages,
-      random_speech: random_speech
+      time:,
+      messages:,
+      random_speech:
     )
   end
 
@@ -28,7 +28,7 @@ describe TimexDatalinkClient::Protocol7::Eeprom::Activity do
       let(:activity_2) do
         described_class.new(
           time: Time.new(0, 1, 1, 2, 30, 0),
-          messages: messages,
+          messages:,
           random_speech: true
         )
       end

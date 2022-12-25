@@ -14,11 +14,11 @@ describe TimexDatalinkClient::Protocol4::Time do
 
   let(:time_instance) do
     described_class.new(
-      zone: zone,
-      is_24h: is_24h,
-      date_format: date_format,
-      time: time,
-      name: name
+      zone:,
+      is_24h:,
+      date_format:,
+      time:,
+      name:
     )
   end
 

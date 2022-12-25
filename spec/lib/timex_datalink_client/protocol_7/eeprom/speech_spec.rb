@@ -9,9 +9,9 @@ describe TimexDatalinkClient::Protocol7::Eeprom::Speech do
 
   let(:speech) do
     described_class.new(
-      device_nickname: device_nickname,
-      user_nickname: user_nickname,
-      phrases: phrases
+      device_nickname:,
+      user_nickname:,
+      phrases:
     )
   end
 

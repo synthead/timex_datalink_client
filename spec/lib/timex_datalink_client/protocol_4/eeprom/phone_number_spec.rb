@@ -9,9 +9,9 @@ describe TimexDatalinkClient::Protocol4::Eeprom::PhoneNumber do
 
   let(:phone_number) do
     described_class.new(
-      name: name,
-      number: number,
-      type: type
+      name:,
+      number:,
+      type:
     )
   end
 

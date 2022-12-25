@@ -104,17 +104,17 @@ class TimexDatalinkClient
   #
   # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
   def packets
-    models.map(&:packets).flatten(1)
+    models.flat_map(&:packets)
   end
 
   private
 
   def notebook_adapter
     @notebook_adapter ||= NotebookAdapter.new(
-      serial_device: serial_device,
-      byte_sleep: byte_sleep,
-      packet_sleep: packet_sleep,
-      verbose: verbose
+      serial_device:,
+      byte_sleep:,
+      packet_sleep:,
+      verbose:
     )
   end
 end

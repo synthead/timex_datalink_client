@@ -19,19 +19,19 @@ describe TimexDatalinkClient::Protocol7::Eeprom::Games do
 
   let(:sounds) do
     described_class.new(
-      memory_game_enabled: memory_game_enabled,
-      fortune_teller_enabled: fortune_teller_enabled,
-      countdown_timer_enabled: countdown_timer_enabled,
-      countdown_timer_seconds: countdown_timer_seconds,
-      countdown_timer_sound: countdown_timer_sound,
-      mind_reader_enabled: mind_reader_enabled,
-      music_time_keeper_enabled: music_time_keeper_enabled,
-      music_time_keeper_sound: music_time_keeper_sound,
-      morse_code_practice_enabled: morse_code_practice_enabled,
-      treasure_hunter_enabled: treasure_hunter_enabled,
-      rhythm_rhyme_buster_enabled: rhythm_rhyme_buster_enabled,
-      stop_watch_enabled: stop_watch_enabled,
-      red_light_green_light_enabled: red_light_green_light_enabled
+      memory_game_enabled:,
+      fortune_teller_enabled:,
+      countdown_timer_enabled:,
+      countdown_timer_seconds:,
+      countdown_timer_sound:,
+      mind_reader_enabled:,
+      music_time_keeper_enabled:,
+      music_time_keeper_sound:,
+      morse_code_practice_enabled:,
+      treasure_hunter_enabled:,
+      rhythm_rhyme_buster_enabled:,
+      stop_watch_enabled:,
+      red_light_green_light_enabled:
     )
   end
 

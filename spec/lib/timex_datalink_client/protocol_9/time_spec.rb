@@ -9,9 +9,9 @@ describe TimexDatalinkClient::Protocol9::Time do
 
   let(:time_instance) do
     described_class.new(
-      zone: zone,
-      is_24h: is_24h,
-      time: time
+      zone:,
+      is_24h:,
+      time:
     )
   end
 

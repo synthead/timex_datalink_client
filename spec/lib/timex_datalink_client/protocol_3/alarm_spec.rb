@@ -10,10 +10,10 @@ describe TimexDatalinkClient::Protocol3::Alarm do
 
   let(:alarm) do
     described_class.new(
-      number: number,
-      audible: audible,
-      time: time,
-      message: message
+      number:,
+      audible:,
+      time:,
+      message:
     )
   end
 

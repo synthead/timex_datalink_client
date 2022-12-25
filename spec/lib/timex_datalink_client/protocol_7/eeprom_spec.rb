@@ -11,11 +11,11 @@ describe TimexDatalinkClient::Protocol7::Eeprom do
 
   let(:eeprom) do
     described_class.new(
-      activities: activities,
-      games: games,
-      calendar: calendar,
-      phone_numbers: phone_numbers,
-      speech: speech
+      activities:,
+      games:,
+      calendar:,
+      phone_numbers:,
+      speech:
     )
   end
 
@@ -91,7 +91,7 @@ describe TimexDatalinkClient::Protocol7::Eeprom do
       let(:calendar) do
         TimexDatalinkClient::Protocol7::Eeprom::Calendar.new(
           time: Time.new(2022, 12, 10, 1, 30, 0),
-          events: events
+          events:
         )
       end
 

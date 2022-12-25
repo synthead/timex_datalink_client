@@ -5,8 +5,8 @@ require "spec_helper"
 describe TimexDatalinkClient::Protocol4::SoundTheme do
   let(:sound_theme) do
     described_class.new(
-      sound_theme_data: sound_theme_data,
-      spc_file: spc_file
+      sound_theme_data:,
+      spc_file:
     )
   end
 

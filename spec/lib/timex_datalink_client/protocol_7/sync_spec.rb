@@ -4,7 +4,7 @@ require "spec_helper"
 
 describe TimexDatalinkClient::Protocol7::Sync do
   let(:length) { 200 }
-  let(:sync) { described_class.new(length: length) }
+  let(:sync) { described_class.new(length:) }
 
   describe "#packets" do
     subject(:packets) { sync.packets }

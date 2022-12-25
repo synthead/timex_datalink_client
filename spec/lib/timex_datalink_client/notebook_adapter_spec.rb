@@ -10,10 +10,10 @@ describe TimexDatalinkClient::NotebookAdapter do
 
   subject(:notebook_adapter) do
     described_class.new(
-      serial_device: serial_device,
-      byte_sleep: byte_sleep,
-      packet_sleep: packet_sleep,
-      verbose: verbose
+      serial_device:,
+      byte_sleep:,
+      packet_sleep:,
+      verbose:
     )
   end
 

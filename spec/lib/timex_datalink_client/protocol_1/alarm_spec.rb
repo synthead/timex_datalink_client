@@ -176,6 +176,5 @@ describe TimexDatalinkClient::Protocol1::Alarm do
         )
       end
     end
-
   end
 end

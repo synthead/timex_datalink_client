@@ -8,8 +8,8 @@ describe TimexDatalinkClient::Protocol1::TimeName do
 
   let(:time_instance) do
     described_class.new(
-      zone: zone,
-      name: name
+      zone:,
+      name:
     )
   end
 

@@ -61,11 +61,11 @@ describe TimexDatalinkClient::Protocol1::Eeprom do
 
   let(:eeprom) do
     described_class.new(
-      appointments: appointments,
-      anniversaries: anniversaries,
-      phone_numbers: phone_numbers,
-      lists: lists,
-      appointment_notification: appointment_notification
+      appointments:,
+      anniversaries:,
+      phone_numbers:,
+      lists:,
+      appointment_notification:
     )
   end
 

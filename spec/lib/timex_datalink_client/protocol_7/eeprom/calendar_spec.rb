@@ -8,8 +8,8 @@ describe TimexDatalinkClient::Protocol7::Eeprom::Calendar do
 
   let(:calendar) do
     described_class.new(
-      time: time,
-      events: events
+      time:,
+      events:
     )
   end
 

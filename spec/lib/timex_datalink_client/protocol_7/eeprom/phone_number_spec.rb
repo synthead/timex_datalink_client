@@ -8,8 +8,8 @@ describe TimexDatalinkClient::Protocol7::Eeprom::PhoneNumber do
 
   let(:phone_number) do
     described_class.new(
-      name: name,
-      number: number
+      name:,
+      number:
     )
   end
 

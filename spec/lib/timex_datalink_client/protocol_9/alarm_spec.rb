@@ -119,15 +119,48 @@ describe TimexDatalinkClient::Protocol9::Alarm do
       ]
     end
 
-    context "when month is 12" do
-      let(:month) { 12 }
+    context "when month is 2" do
+      let(:month) { 2 }
 
       it_behaves_like "CRC-wrapped packets", [
         [
-          0x50, 0x01, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x0a, 0x15, 0x0a, 0x1b, 0x16, 0x24, 0x01, 0x24, 0x24, 0x24, 0x24,
+          0x50, 0x01, 0x00, 0x00, 0x02, 0x00, 0x00, 0x0a, 0x15, 0x0a, 0x1b, 0x16, 0x24, 0x01, 0x24, 0x24, 0x24, 0x24,
           0x24, 0x24, 0x24, 0x24, 0x24
         ]
       ]
+
+      context "when day is 35" do
+        let(:day) { 35 }
+
+        it do
+          expect { packets }.to raise_error(
+            ActiveModel::ValidationError,
+            "Validation failed: Day 35 is invalid for month 2!  Valid days are 1..29 and nil when month is 2."
+          )
+        end
+      end
+    end
+
+    context "when month is 0" do
+      let(:month) { 0 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Month 0 is invalid!  Valid months are 1..12 and nil."
+        )
+      end
+    end
+
+    context "when month is 13" do
+      let(:month) { 13 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Month 13 is invalid!  Valid months are 1..12 and nil."
+        )
+      end
     end
 
     context "when day is 25" do

@@ -129,13 +129,13 @@ describe TimexDatalinkClient::Protocol9::Alarm do
         ]
       ]
 
-      context "when day is 35" do
-        let(:day) { 35 }
+      context "when day is 30" do
+        let(:day) { 30 }
 
         it do
           expect { packets }.to raise_error(
             ActiveModel::ValidationError,
-            "Validation failed: Day 35 is invalid for month 2!  Valid days are 1..29 and nil when month is 2."
+            "Validation failed: Day 30 is invalid for month 2!  Valid days are 1..29 and nil when month is 2."
           )
         end
       end

@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 require "timex_datalink_client/helpers/four_byte_formatter"
+require "timex_datalink_client/helpers/lsb_msb_formatter"
 
 class TimexDatalinkClient
   class Protocol7
     class Eeprom
       class Calendar
         include Helpers::FourByteFormatter
+        include Helpers::LsbMsbFormatter
 
         DAY_START_TIME = Time.new(2000)
         DAY_SECONDS = 86400
@@ -48,7 +50,7 @@ class TimexDatalinkClient
         private
 
         def events_count
-          events.count.divmod(256).reverse
+          lsb_msb_format_for(events.count)
         end
 
         def event_packets
@@ -57,7 +59,7 @@ class TimexDatalinkClient
 
           [].tap do |event_packets|
             events.each_with_index do |event, event_index|
-              event_bytes_formatted = event_bytes.divmod(256).reverse
+              event_bytes_formatted = lsb_msb_format_for(event_bytes)
               event_time_formatted = event.time_formatted(time)
 
               event_packets << [event_time_formatted, event_bytes_formatted]
@@ -77,13 +79,13 @@ class TimexDatalinkClient
           since_start_time_seconds = time - DAY_START_TIME
           since_start_time_days = since_start_time_seconds.to_i / DAY_SECONDS
 
-          since_start_time_days.divmod(256).reverse
+          lsb_msb_format_for(since_start_time_days)
         end
 
         def time_formatted
           five_mintes = (time.hour * 60 + time.min) / 5
 
-          five_mintes.divmod(256).reverse
+          lsb_msb_format_for(five_mintes)
         end
       end
     end

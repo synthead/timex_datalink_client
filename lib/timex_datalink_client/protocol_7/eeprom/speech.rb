@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 require "timex_datalink_client/helpers/four_byte_formatter"
+require "timex_datalink_client/helpers/lsb_msb_formatter"
 
 class TimexDatalinkClient
   class Protocol7
     class Eeprom
       class Speech
         include Helpers::FourByteFormatter
+        include Helpers::LsbMsbFormatter
 
         NICKNAME_LENGTH_WITHOUT_DEVICE = 10
         NICKNAME_LENGTH_WITH_DEVICE = 14
@@ -123,7 +125,7 @@ class TimexDatalinkClient
         def header
           all_values = [header_value_1, header_value_2, header_value_3] + header_values_4 + header_values_5
 
-          all_values.flat_map { |value| value.divmod(256).reverse }
+          all_values.flat_map { |value| lsb_msb_format_for(value) }
         end
 
         def header_value_1

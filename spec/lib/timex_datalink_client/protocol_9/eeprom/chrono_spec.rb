@@ -8,8 +8,8 @@ describe TimexDatalinkClient::Protocol9::Eeprom::Chrono do
 
   let(:timer) do
     described_class.new(
-      label: label,
-      laps: laps
+      label:,
+      laps:
     )
   end
 

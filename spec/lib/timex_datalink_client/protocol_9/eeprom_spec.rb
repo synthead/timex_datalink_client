@@ -27,8 +27,8 @@ describe TimexDatalinkClient::Protocol9::Eeprom do
 
   let(:eeprom) do
     described_class.new(
-      chrono: chrono,
-      phone_numbers: phone_numbers
+      chrono:,
+      phone_numbers:
     )
   end
 

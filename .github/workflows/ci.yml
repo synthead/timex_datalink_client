@@ -29,3 +29,14 @@ jobs:
         with:
           bundler-cache: true
       - run: bundle exec yard-junk
+
+  gemspec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: gem build timex_datalink_client.gemspec
+      - run: gem install timex_datalink_client-*.gem
+      - run: ruby -e 'require "timex_datalink_client"'

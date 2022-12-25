@@ -35,11 +35,11 @@ describe TimexDatalinkClient do
 
   let(:timex_datalink_client) do
     described_class.new(
-      serial_device: serial_device,
-      models: models,
-      byte_sleep: byte_sleep,
-      packet_sleep: packet_sleep,
-      verbose: verbose
+      serial_device:,
+      models:,
+      byte_sleep:,
+      packet_sleep:,
+      verbose:
     )
   end
 
@@ -83,10 +83,10 @@ describe TimexDatalinkClient do
       allow(notebook_adapter_double).to receive(:write)
 
       expect(TimexDatalinkClient::NotebookAdapter).to receive(:new).with(
-        serial_device: serial_device,
-        byte_sleep: byte_sleep,
-        packet_sleep: packet_sleep,
-        verbose: verbose
+        serial_device:,
+        byte_sleep:,
+        packet_sleep:,
+        verbose:
       ).and_return(notebook_adapter_double)
 
       write

@@ -173,5 +173,27 @@ describe TimexDatalinkClient::Protocol9::Alarm do
         ]
       ]
     end
+
+    context "when day is 0" do
+      let(:day) { 0 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Day 0 is invalid!  Valid days are 1..31 and nil."
+        )
+      end
+    end
+
+    context "when day is 32" do
+      let(:day) { 32 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Day 32 is invalid!  Valid days are 1..31 and nil."
+        )
+      end
+    end
   end
 end

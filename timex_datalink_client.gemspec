@@ -94,6 +94,8 @@ Gem::Specification.new do |s|
   s.add_dependency "rubyserial", "~> 0.6.0"
 
   s.add_development_dependency "rspec", "~> 3.11.0"
+  s.add_development_dependency "rubocop", "~> 1.41.1"
+  s.add_development_dependency "rubocop-github", "~> 0.20.0"
   s.add_development_dependency "tzinfo", "~> 2.0.5"
   s.add_development_dependency "yard-junk", "~> 0.0.9"
 end

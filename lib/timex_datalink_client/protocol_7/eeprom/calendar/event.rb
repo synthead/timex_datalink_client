@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
+require "timex_datalink_client/helpers/lsb_msb_formatter"
+
 class TimexDatalinkClient
   class Protocol7
     class Eeprom
       class Calendar
         class Event
+          include Helpers::LsbMsbFormatter
+
           FIVE_MINUTES_SECONDS = 300
 
           attr_accessor :time, :phrase
@@ -24,7 +28,7 @@ class TimexDatalinkClient
             seconds = (time - device_time_midnight).to_i
             five_minutes = seconds / FIVE_MINUTES_SECONDS
 
-            five_minutes.divmod(256).reverse
+            lsb_msb_format_for(five_minutes)
           end
         end
       end

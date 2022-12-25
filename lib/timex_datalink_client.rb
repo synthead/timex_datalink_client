@@ -104,7 +104,7 @@ class TimexDatalinkClient
   #
   # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
   def packets
-    models.map(&:packets).flatten(1)
+    models.flat_map(&:packets)
   end
 
   private

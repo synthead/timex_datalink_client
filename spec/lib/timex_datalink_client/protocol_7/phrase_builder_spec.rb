@@ -7,21 +7,21 @@ describe TimexDatalinkClient::Protocol7::PhraseBuilder do
 
   let(:vocab_results) do
     [
-      { :"PC Index" => "292", :Label => "Cool" },
-      { :"PC Index" => "1021", :Label => "<NoPause>" },
-      { :"PC Index" => "74", :Label => "'est" },
-      { :"PC Index" => "1233", :Label => "Coolest" },
-      { :"PC Index" => "285", :Label => "Club" }
+      { "PC Index": "292", Label: "Cool" },
+      { "PC Index": "1021", Label: "<NoPause>" },
+      { "PC Index": "74", Label: "'est" },
+      { "PC Index": "1233", Label: "Coolest" },
+      { "PC Index": "285", Label: "Club" }
     ]
   end
 
   let(:vocab_links_results) do
     [
-      { :"PC Index" => "292", :Sequence => "1", :"eBrain Index" => "292" },
-      { :"PC Index" => "285", :Sequence => "1", :"eBrain Index" => "285" },
-      { :"PC Index" => "1233", :Sequence => "1", :"eBrain Index" => "292" },
-      { :"PC Index" => "1233", :Sequence => "2", :"eBrain Index" => "1021" },
-      { :"PC Index" => "1233", :Sequence => "3", :"eBrain Index" => "74" }
+      { "PC Index": "292", Sequence: "1", "eBrain Index": "292" },
+      { "PC Index": "285", Sequence: "1", "eBrain Index": "285" },
+      { "PC Index": "1233", Sequence: "1", "eBrain Index": "292" },
+      { "PC Index": "1233", Sequence: "2", "eBrain Index": "1021" },
+      { "PC Index": "1233", Sequence: "3", "eBrain Index": "74" }
     ]
   end
 

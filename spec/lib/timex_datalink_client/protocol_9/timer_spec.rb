@@ -10,10 +10,10 @@ describe TimexDatalinkClient::Protocol9::Timer do
 
   let(:timer) do
     described_class.new(
-      number: number,
-      label: label,
-      time: time,
-      action_at_end: action_at_end
+      number:,
+      label:,
+      time:,
+      action_at_end:
     )
   end
 

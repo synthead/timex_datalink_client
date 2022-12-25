@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/protocol_3/eeprom/appointment.rb",
     "lib/timex_datalink_client/protocol_3/eeprom/list.rb",
     "lib/timex_datalink_client/protocol_3/eeprom/phone_number.rb",
-    # "lib/timex_datalink_client/protocol_3/end.rb",
+    "lib/timex_datalink_client/protocol_3/end.rb",
     "lib/timex_datalink_client/protocol_3/sound_options.rb",
     "lib/timex_datalink_client/protocol_3/sound_theme.rb",
     "lib/timex_datalink_client/protocol_3/start.rb",

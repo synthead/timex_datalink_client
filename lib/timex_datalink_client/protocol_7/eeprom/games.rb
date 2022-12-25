@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 require "timex_datalink_client/helpers/four_byte_formatter"
+require "timex_datalink_client/helpers/lsb_msb_formatter"
 
 class TimexDatalinkClient
   class Protocol7
     class Eeprom
       class Games
         include Helpers::FourByteFormatter
+        include Helpers::LsbMsbFormatter
 
         COUNTDOWN_TIMER_SECONDS_DEFAULT = 60
 
@@ -85,11 +87,11 @@ class TimexDatalinkClient
             game ? 1 << game_index : 0
           end
 
-          bitmask.divmod(256).reverse
+          lsb_msb_format_for(bitmask)
         end
 
         def countdown_timer_time
-          (countdown_timer_seconds * 10).divmod(256).reverse
+          lsb_msb_format_for(countdown_timer_seconds * 10)
         end
 
         def sounds

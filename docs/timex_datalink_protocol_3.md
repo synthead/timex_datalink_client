@@ -27,9 +27,22 @@ appointments = [
 
 TimexDatalinkClient::Protocol3::Eeprom.new(
   appointments: appointments,
-  appointment_notification: 3  # In 5 minute intervals.  255 for no notification.
+  appointment_notification_minutes: 15
 )
 ```
+
+Here are the available Watch pre-notification beep values from the Timex Datalink software with their equivalent `Appointment` `appointment_notification_minutes` values:
+
+|Timex Datalink Watch pre-notification beep value|`Appointment` `appointment_notification_minutes` value|
+|---|---|
+|No beep|`nil`|
+|At time of appointments|`0`|
+|5 minutes before appointments|`5`|
+|10 minutes before appointments|`10`|
+|15 minutes before appointments|`15`|
+|20 minutes before appointments|`20`|
+|25 minutes before appointments|`25`|
+|30 minutes before appointments|`30`|
 
 ## Anniversaries
 
@@ -323,7 +336,7 @@ models = [
     anniversaries: anniversaries,
     lists: lists,
     phone_numbers: phone_numbers,
-    appointment_notification: 3  # In 5 minute intervals.  255 for no notification.
+    appointment_notification_minutes: 15
   ),
 
   TimexDatalinkClient::Protocol3::SoundTheme.new(spc_file: "DEFHIGH.SPC"),

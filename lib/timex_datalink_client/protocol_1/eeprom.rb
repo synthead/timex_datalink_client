@@ -50,6 +50,7 @@ class TimexDatalinkClient
 
       # Compile packets for EEPROM data.
       #
+      # @raise [ActiveModel::ValidationError] One or more model values are invalid.
       # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
       def packets
         validate!

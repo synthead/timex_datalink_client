@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
+require "active_model"
+
 require "timex_datalink_client/helpers/cpacket_paginator"
 require "timex_datalink_client/helpers/crc_packets_wrapper"
 
 class TimexDatalinkClient
   class Protocol4
     class Eeprom
+      include ActiveModel::Validations
       include Helpers::CpacketPaginator
       prepend Helpers::CrcPacketsWrapper
 
@@ -17,8 +20,16 @@ class TimexDatalinkClient
       CPACKET_DATA_LENGTH = 32
       START_ADDRESS = 0x0236
       APPOINTMENT_NO_NOTIFICATION = 0xff
+      APPOINTMENT_NOTIFICATION_VALID_MINUTES = (0..30).step(5)
 
-      attr_accessor :appointments, :anniversaries, :phone_numbers, :lists, :appointment_notification
+      attr_accessor :appointments, :anniversaries, :phone_numbers, :lists, :appointment_notification_minutes
+
+      validates :appointment_notification_minutes, inclusion: {
+        in: APPOINTMENT_NOTIFICATION_VALID_MINUTES,
+        allow_nil: true,
+        message: "value %{value} is invalid!  Valid appointment notification minutes values are" \
+          " #{APPOINTMENT_NOTIFICATION_VALID_MINUTES.to_a} or nil."
+      }
 
       # Create an Eeprom instance.
       #
@@ -26,21 +37,25 @@ class TimexDatalinkClient
       # @param anniversaries [Array<Anniversary>] Anniversaries to be added to EEPROM data.
       # @param phone_numbers [Array<PhoneNumber>] Phone numbers to be added to EEPROM data.
       # @param lists [Array<List>] Lists to be added to EEPROM data.
-      # @param appointment_notification [Integer] Appointment notification (intervals of 15 minutes, 255 for no
-      #   notification)
+      # @param appointment_notification_minutes [Integer, nil] Appointment notification in minutes.
       # @return [Eeprom] Eeprom instance.
-      def initialize(appointments: [], anniversaries: [], phone_numbers: [], lists: [], appointment_notification: APPOINTMENT_NO_NOTIFICATION)
+      def initialize(
+        appointments: [], anniversaries: [], phone_numbers: [], lists: [], appointment_notification_minutes: nil
+      )
         @appointments = appointments
         @anniversaries = anniversaries
         @phone_numbers = phone_numbers
         @lists = lists
-        @appointment_notification = appointment_notification
+        @appointment_notification_minutes = appointment_notification_minutes
       end
 
       # Compile packets for EEPROM data.
       #
+      # @raise [ActiveModel::ValidationError] One or more model values are invalid.
       # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
       def packets
+        validate!
+
         [CPACKET_CLEAR, header] + payloads + [CPACKET_END]
       end
 
@@ -53,7 +68,7 @@ class TimexDatalinkClient
           items_addresses,
           items_lengths,
           earliest_appointment_year,
-          appointment_notification
+          appointment_notification_minutes_value
         ].flatten
       end
 
@@ -89,6 +104,12 @@ class TimexDatalinkClient
         return 0 unless earliest_appointment
 
         earliest_appointment.time.year % 100
+      end
+
+      def appointment_notification_minutes_value
+        return APPOINTMENT_NO_NOTIFICATION unless appointment_notification_minutes
+
+        appointment_notification_minutes / 5
       end
     end
   end

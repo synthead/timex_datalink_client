@@ -57,7 +57,7 @@ describe TimexDatalinkClient::Protocol4::Eeprom do
     ]
   end
 
-  let(:appointment_notification) { 0xff }
+  let(:appointment_notification_minutes) { nil }
 
   let(:eeprom) do
     described_class.new(
@@ -65,7 +65,7 @@ describe TimexDatalinkClient::Protocol4::Eeprom do
       anniversaries:,
       phone_numbers:,
       lists:,
-      appointment_notification:
+      appointment_notification_minutes:
     )
   end
 
@@ -200,8 +200,8 @@ describe TimexDatalinkClient::Protocol4::Eeprom do
       ]
     end
 
-    context "when appointment_notification is 2" do
-      let(:appointment_notification) { 2 }
+    context "when appointment_notification_minutes is 10" do
+      let(:appointment_notification_minutes) { 10 }
 
       it_behaves_like "CRC-wrapped packets", [
         [0x93, 0x01],
@@ -225,6 +225,18 @@ describe TimexDatalinkClient::Protocol4::Eeprom do
         [0x91, 0x01, 0x05, 0x43, 0x36, 0x4e, 0x85, 0x6d, 0x8e, 0x72, 0xfd],
         [0x92, 0x01]
       ]
+    end
+
+    context "when appointment_notification_minutes is 1" do
+      let(:appointment_notification_minutes) { 1 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Appointment notification minutes value 1 is invalid!  Valid appointment notification" \
+          " minutes values are [0, 5, 10, 15, 20, 25, 30] or nil."
+        )
+      end
     end
   end
 end

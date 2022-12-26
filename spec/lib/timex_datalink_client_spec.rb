@@ -27,7 +27,7 @@ describe TimexDatalinkClient do
             message: "release timexdl.exe"
           )
         ],
-        appointment_notification: 0
+        appointment_notification_minutes: 0
       ),
       TimexDatalinkClient::Protocol3::End.new
     ]

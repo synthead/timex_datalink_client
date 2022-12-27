@@ -63,7 +63,7 @@ If you need to install Ruby, follow the
 
 Then, with Ruby installed, run this command to install the timex\_datalink\_client gem:
 
-```
+```shell
 gem install timex_datalink_client
 ```
 

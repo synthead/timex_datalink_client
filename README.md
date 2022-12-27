@@ -63,7 +63,7 @@ If you need to install Ruby, follow the
 
 Then, with Ruby installed, run this command to install the timex\_datalink\_client gem:
 
-```
+```shell
 gem install timex_datalink_client
 ```
 
@@ -75,13 +75,47 @@ On Timex Datalink watches, pressing the center button on the right will change i
 MODE" is displayed, then "COMM READY" will appear.  This is sometimes accompanied by a version number.  Use the table
 below to identify the protocol.
 
-|Watch display|Protocol compatibility|
-|---|---|
-|![image](https://user-images.githubusercontent.com/820984/189607899-5bb67438-1c82-41e0-95d1-d1134cfb1f8b.png)|Use protocol 1 models in `TimexDatalinkClient::Protocol1`|
-|![image](https://user-images.githubusercontent.com/820984/189609399-25eea5c5-958e-489d-936e-139342c9fddf.png)|Use protocol 3 models in `TimexDatalinkClient::Protocol3`|
-|![image](https://user-images.githubusercontent.com/820984/189609671-33a6dc6b-1eb1-4942-8bac-238e6056d1c2.png)|Use protocol 4 models in `TimexDatalinkClient::Protocol4`|
-|![image](https://user-images.githubusercontent.com/820984/190122029-6df17bd0-171a-425c-ac63-d415eeb9fffd.png)|Use protocol 9 models in `TimexDatalinkClient::Protocol9`|
-|![image](https://user-images.githubusercontent.com/820984/190326340-3ffba239-ea9e-4595-83ae-c261be284a30.png)|Protocol 6 (currently not supported)|
+<table>
+  <tr>
+    <th>Watch display</th>
+    <th>Protocol compatibility</th>
+  </tr>
+
+  <tr>
+    <td>
+      <image src="https://user-images.githubusercontent.com/820984/189607899-5bb67438-1c82-41e0-95d1-d1134cfb1f8b.png">
+    </td>
+    <td>Use protocol 1 models in <code>TimexDatalinkClient::Protocol1</code></td>
+  </tr>
+
+  <tr>
+    <td>
+      <image src="https://user-images.githubusercontent.com/820984/189609399-25eea5c5-958e-489d-936e-139342c9fddf.png">
+    </td>
+    <td>Use protocol 3 models in <code>TimexDatalinkClient::Protocol3</code></td>
+  </tr>
+
+  <tr>
+    <td>
+      <image src="https://user-images.githubusercontent.com/820984/189609671-33a6dc6b-1eb1-4942-8bac-238e6056d1c2.png">
+    </td>
+    <td>Use protocol 4 models in <code>TimexDatalinkClient::Protocol4</code></td>
+  </tr>
+
+  <tr>
+    <td>
+      <image src="https://user-images.githubusercontent.com/820984/190122029-6df17bd0-171a-425c-ac63-d415eeb9fffd.png">
+    </td>
+    <td>Use protocol 9 models in <code>TimexDatalinkClient::Protocol9</code></td>
+  </tr>
+
+  <tr>
+    <td>
+      <image src="https://user-images.githubusercontent.com/820984/190326340-3ffba239-ea9e-4595-83ae-c261be284a30.png">
+    </td>
+    <td>Protocol 6 (currently not supported)</td>
+  </tr>
+</table>
 
 During data transmission, the "start" packet of each protocol will announce the protocol number to the device.  If the
 protocol doesn't match the device, the screen will display "PC-WATCH MISMATCH" and safely abort the data transmission.

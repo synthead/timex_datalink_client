@@ -23,7 +23,7 @@ possible.
 `pcvocab.mdb` is called `pcvocab.mdb1` in the `Cabs.w4.cab` archive, which is inside of `eBrain.MSI` on the ISO.  We
 need to perform a few extractions, then rename the database file, like so:
 
-```
+```shell
 7z e ebrain-1.1.6.iso eBrain.MSI
 7z e eBrain.MSI Cabs.w4.cab
 7z e Cabs.w4.cab pcvocab.mdb1

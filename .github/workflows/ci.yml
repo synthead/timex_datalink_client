@@ -40,3 +40,12 @@ jobs:
       - run: gem build timex_datalink_client.gemspec
       - run: gem install timex_datalink_client-*.gem
       - run: ruby -e 'require "timex_datalink_client"'
+
+  markdownlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: find * -type f -name '*.md' ! -path 'vendor/*' -print0 | xargs -r0 bundle exec mdl

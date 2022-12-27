@@ -23,7 +23,7 @@ The SPC and ZAP files are in the `SETUP.EXE` file, which is inside of `TDL21D.EX
 `SETUP.EXE` from `TDL21D.EXE`, create `sound-themes` and `wrist-apps` directories, and extract the SPC and ZAP files to
 the appropriate directories.
 
-```
+```shell
 7z e TDL21D.EXE SETUP.EXE
 7z e SETUP.EXE -osound-themes *.SPC
 7z e SETUP.EXE -owrist-apps *.ZAP

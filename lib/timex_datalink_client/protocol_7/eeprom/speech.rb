@@ -155,7 +155,10 @@ class TimexDatalinkClient
           value_4_length = device_nickname.any? ? NICKNAME_LENGTH_WITH_DEVICE : NICKNAME_LENGTH_WITHOUT_DEVICE
 
           value_4_length.times.flat_map do |value_4_index|
-            device_value = HEADER_VALUE_4_DEVICE_INDEXES[value_4_index].sum { |device_index| packet_lengths[device_index] }
+            device_value = HEADER_VALUE_4_DEVICE_INDEXES[value_4_index].sum do |device_index|
+              packet_lengths[device_index]
+            end
+
             device_value *= HEADER_VALUE_4_DEVICE_MULTIPLIERS[value_4_index]
 
             user_value = HEADER_VALUE_4_USER_INDEXES[value_4_index].sum { |device_index| packet_lengths[device_index] }

@@ -92,21 +92,21 @@ below to identify the protocol.
     <td>
       <image src="https://user-images.githubusercontent.com/820984/189609399-25eea5c5-958e-489d-936e-139342c9fddf.png">
     </td>
-    <td>Use protocol 1 models in <code>TimexDatalinkClient::Protocol3</code></td>
+    <td>Use protocol 3 models in <code>TimexDatalinkClient::Protocol3</code></td>
   </tr>
 
   <tr>
     <td>
       <image src="https://user-images.githubusercontent.com/820984/189609671-33a6dc6b-1eb1-4942-8bac-238e6056d1c2.png">
     </td>
-    <td>Use protocol 1 models in <code>TimexDatalinkClient::Protocol4</code></td>
+    <td>Use protocol 4 models in <code>TimexDatalinkClient::Protocol4</code></td>
   </tr>
 
   <tr>
     <td>
       <image src="https://user-images.githubusercontent.com/820984/190122029-6df17bd0-171a-425c-ac63-d415eeb9fffd.png">
     </td>
-    <td>Use protocol 1 models in <code>TimexDatalinkClient::Protocol9</code></td>
+    <td>Use protocol 9 models in <code>TimexDatalinkClient::Protocol9</code></td>
   </tr>
 
   <tr>

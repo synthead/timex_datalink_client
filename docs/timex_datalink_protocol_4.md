@@ -31,7 +31,8 @@ TimexDatalinkClient::Protocol4::Eeprom.new(
 )
 ```
 
-Here are the available Watch pre-notification beep values from the Timex Datalink software with their equivalent `Appointment` `appointment_notification_minutes` values:
+Here are the available Watch pre-notification beep values from the Timex Datalink software with their equivalent
+`Appointment` `appointment_notification_minutes` values:
 
 |Timex Datalink Watch pre-notification beep value|`Appointment` `appointment_notification_minutes` value|
 |---|---|

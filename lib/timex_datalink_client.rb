@@ -43,6 +43,10 @@ require "timex_datalink_client/protocol_4/sync"
 require "timex_datalink_client/protocol_4/time"
 require "timex_datalink_client/protocol_4/wrist_app"
 
+require "timex_datalink_client/protocol_6/end"
+require "timex_datalink_client/protocol_6/start"
+require "timex_datalink_client/protocol_6/sync"
+
 require "timex_datalink_client/protocol_7/eeprom"
 require "timex_datalink_client/protocol_7/eeprom/activity"
 require "timex_datalink_client/protocol_7/eeprom/calendar"

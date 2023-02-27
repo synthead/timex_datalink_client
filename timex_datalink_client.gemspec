@@ -64,6 +64,7 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/protocol_4/wrist_app.rb",
 
     "lib/timex_datalink_client/protocol_6/end.rb",
+    "lib/timex_datalink_client/protocol_6/night_mode_options.rb",
     "lib/timex_datalink_client/protocol_6/pager_options.rb",
     "lib/timex_datalink_client/protocol_6/start.rb",
     "lib/timex_datalink_client/protocol_6/sync.rb",

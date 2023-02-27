@@ -95,7 +95,9 @@ class TimexDatalinkClient
       # @param flex_time_zone [Boolean] Toggle using FLEXtime to set time zone.
       # @param flex_dst [Boolean] Toggle using FLEXtime to apply daylight savings time offset.
       # @return [Time] Time instance.
-      def initialize(zone:, is_24h:, date_format:, time:, name: nil, flex_time: false, flex_time_zone: false, flex_dst: false)
+      def initialize(
+        zone:, is_24h:, date_format:, time:, name: nil, flex_time: false, flex_time_zone: false, flex_dst: false
+      )
         @zone = zone
         @is_24h = is_24h
         @date_format = date_format

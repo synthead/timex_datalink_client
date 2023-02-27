@@ -66,6 +66,7 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/protocol_6/end.rb",
     "lib/timex_datalink_client/protocol_6/start.rb",
     "lib/timex_datalink_client/protocol_6/sync.rb",
+    "lib/timex_datalink_client/protocol_6/time.rb",
 
     "lib/timex_datalink_client/protocol_7/eeprom.rb",
     "lib/timex_datalink_client/protocol_7/eeprom/activity.rb",

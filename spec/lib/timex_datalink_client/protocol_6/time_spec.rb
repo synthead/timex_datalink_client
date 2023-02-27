@@ -1,0 +1,463 @@
+# frozen_string_literal: true
+
+require "tzinfo"
+
+require "spec_helper"
+
+describe TimexDatalinkClient::Protocol6::Time do
+  let(:zone) { 1 }
+  let(:is_24h) { false }
+  let(:date_format) { "%_m-%d-%y" }
+  let(:utc_offset) { "+00:00" }
+  let(:time) { Time.new(2015, 10, 21, 19, 28, 32, utc_offset) }
+  let(:name) { nil }
+  let(:flex_time) { false }
+  let(:flex_time_zone) { false }
+  let(:flex_dst) { false }
+
+  let(:time_instance) do
+    described_class.new(
+      zone:,
+      is_24h:,
+      date_format:,
+      time:,
+      name:,
+      flex_time:,
+      flex_time_zone:,
+      flex_dst:
+    )
+  end
+
+  describe "#packets", :crc do
+    subject(:packets) { time_instance.packets }
+
+    it_behaves_like "CRC-wrapped packets", [
+      [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x00, 0x01, 0x00]
+    ]
+
+    context "when zone is 2" do
+      let(:zone) { 2 }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x02, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x02, 0x02, 0x00, 0x01, 0x00]
+      ]
+    end
+
+    context "when zone is 0" do
+      let(:zone) { 0 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Zone 0 is invalid!  Valid zones are 1..2."
+        )
+      end
+    end
+
+    context "when zone is 3" do
+      let(:zone) { 3 }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Zone 3 is invalid!  Valid zones are 1..2."
+        )
+      end
+    end
+
+    context "when is_24h is true" do
+      let(:is_24h) { true }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x00, 0x02, 0x00]
+      ]
+    end
+
+    context "when date_format is \"%_d-%m-%y\"" do
+      let(:date_format) { "%_d-%m-%y" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x00, 0x01, 0x01]
+      ]
+    end
+
+    context "when date_format is \"%y-%m-%d\"" do
+      let(:date_format) { "%y-%m-%d" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x00, 0x01, 0x02]
+      ]
+    end
+
+    context "when date_format is \"%_m.%d.%y\"" do
+      let(:date_format) { "%_m.%d.%y" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x00, 0x01, 0x04]
+      ]
+    end
+
+    context "when date_format is \"%_d.%m.%y\"" do
+      let(:date_format) { "%_d.%m.%y" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x00, 0x01, 0x05]
+      ]
+    end
+
+    context "when date_format is \"%y.%m.%d\"" do
+      let(:date_format) { "%y.%m.%d" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x00, 0x01, 0x06]
+      ]
+    end
+
+    context "when date_format is \"%y\"" do
+      let(:date_format) { "%y" }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Date format %y is invalid!  Valid date formats are [\"%_m-%d-%y\", \"%_d-%m-%y\"," \
+          " \"%y-%m-%d\", \"%_m.%d.%y\", \"%_d.%m.%y\", \"%y.%m.%d\"]."
+        )
+      end
+    end
+
+    context "when time is 1997-09-19 19:36:55" do
+      let(:time) { Time.new(1997, 9, 19, 19, 36, 55, utc_offset) }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x37, 0x13, 0x24, 0x09, 0x13, 0x61, 0x1e, 0x24, 0x01, 0x04, 0x00, 0x01, 0x00]
+      ]
+    end
+
+    context "when time is in daylight savings time" do
+      let(:tzinfo) { TZInfo::Timezone.get("US/Pacific") }
+      let(:time) { tzinfo.local_time(2015, 10, 21, 19, 28, 32) }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x14, 0x1c, 0x0a, 0x15, 0x0f, 0x1a, 0x0e, 0x1e, 0x02, 0x18, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of -11:00" do
+      let(:utc_offset) { "-11:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x15, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of -10:00" do
+      let(:utc_offset) { "-10:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x16, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of -09:00" do
+      let(:utc_offset) { "-09:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x17, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of -08:00" do
+      let(:utc_offset) { "-08:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x18, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of -07:00" do
+      let(:utc_offset) { "-07:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x19, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of -06:00" do
+      let(:utc_offset) { "-06:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x1a, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of -05:00" do
+      let(:utc_offset) { "-05:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x1b, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of -04:00" do
+      let(:utc_offset) { "-04:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x1c, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of -03:30" do
+      let(:utc_offset) { "-03:30" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x14, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of -03:00" do
+      let(:utc_offset) { "-03:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x1d, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of -02:00" do
+      let(:utc_offset) { "-02:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x1e, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of -01:00" do
+      let(:utc_offset) { "-01:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x1f, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +01:00" do
+      let(:utc_offset) { "+01:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x01, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +02:00" do
+      let(:utc_offset) { "+02:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x02, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +03:00" do
+      let(:utc_offset) { "+03:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x03, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +03:30" do
+      let(:utc_offset) { "+03:30" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x0d, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +04:00" do
+      let(:utc_offset) { "+04:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x04, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +04:30" do
+      let(:utc_offset) { "+04:30" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x0e, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +05:00" do
+      let(:utc_offset) { "+05:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x05, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +05:30" do
+      let(:utc_offset) { "+05:30" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x0f, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +05:45" do
+      let(:utc_offset) { "+05:45" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x11, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +06:00" do
+      let(:utc_offset) { "+06:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x06, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +06:30" do
+      let(:utc_offset) { "+06:30" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x12, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +07:00" do
+      let(:utc_offset) { "+07:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x07, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +08:00" do
+      let(:utc_offset) { "+08:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x08, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +09:00" do
+      let(:utc_offset) { "+09:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x09, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +09:30" do
+      let(:utc_offset) { "+09:30" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x13, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +10:00" do
+      let(:utc_offset) { "+10:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x0a, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +11:00" do
+      let(:utc_offset) { "+11:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x0b, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a UTC offset of +12:00" do
+      let(:utc_offset) { "+12:00" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1e, 0x24, 0x01, 0x02, 0x0c, 0x01, 0x00]
+      ]
+    end
+
+    context "when time has a time zone" do
+      let(:time) { Time.utc(2015, 10, 21, 19, 28, 32) }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1f, 0x1e, 0x0d, 0x02, 0x00, 0x01, 0x00]
+      ]
+    end
+
+    context "when name is \"1\"" do
+      let(:name) { "1" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x01, 0x0a, 0x0a, 0x02, 0x00, 0x01, 0x00]
+      ]
+    end
+
+    context "when name is \"<>[" do
+      let(:name) { "<>[" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x36, 0x38, 0x3b, 0x02, 0x00, 0x01, 0x00]
+      ]
+    end
+
+    context "when name is \"Longer than 3 Characters\"" do
+      let(:name) { "Longer than 3 Characters" }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x16, 0x19, 0x18, 0x02, 0x00, 0x01, 0x00]
+      ]
+    end
+
+    context "when flex_time is true" do
+      let(:flex_time) { true }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x33, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1e, 0x24, 0x01, 0x00, 0x00, 0x01, 0x00]
+      ]
+
+      context "when flex_time_zone is true" do
+        let(:flex_time_zone) { true }
+
+        it_behaves_like "CRC-wrapped packets", [
+          [0x33, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1e, 0x24, 0x01, 0x00, 0x10, 0x01, 0x00]
+        ]
+      end
+
+      context "when flex_dst is true" do
+        let(:flex_dst) { true }
+
+        it_behaves_like "CRC-wrapped packets", [
+          [0x33, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1e, 0x24, 0x01, 0x00, 0x00, 0x01, 0x08]
+        ]
+      end
+    end
+
+    context "when flex_time_zone is true" do
+      let(:flex_time_zone) { true }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Flex time zone cannot be enabled unless FLEXtime is also enabled."
+        )
+      end
+    end
+
+    context "when flex_dst is true" do
+      let(:flex_dst) { true }
+
+      it do
+        expect { packets }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Flex dst cannot be enabled unless FLEXtime is also enabled."
+        )
+      end
+    end
+  end
+end

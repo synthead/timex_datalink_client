@@ -21,7 +21,7 @@ class TimexDatalinkClient
       end
 
       def protocol_6_chars_for(string_chars, length: nil, pad: false)
-        chars_for(string_chars, char_map: CHARS_PROTOCOL_6, length: length, pad: pad)
+        chars_for(string_chars, char_map: CHARS_PROTOCOL_6, length:, pad:)
       end
 
       def eeprom_chars_for(string_chars, length: 31)

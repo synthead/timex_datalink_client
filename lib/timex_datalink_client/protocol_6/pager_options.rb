@@ -57,7 +57,7 @@ class TimexDatalinkClient
         @alert_sound = alert_sound
       end
 
-      # Compile packets for sound options.
+      # Compile packets for pager options.
       #
       # @raise [ActiveModel::ValidationError] One or more model values are invalid.
       # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.

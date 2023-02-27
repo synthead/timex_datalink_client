@@ -48,7 +48,7 @@ class TimexDatalinkClient
       # @param off_minute [Integer] Minute to turn pager off at.
       # @param alert_sound [Integer, nil] Pager alert sound (0 to 5 or nil for silent).
       # @return [PagerOptions] PagerOptions instance.
-      def initialize(auto_on_off:, on_hour:, on_minute:, off_hour:, off_minute:, alert_sound:)
+      def initialize(auto_on_off: false, on_hour: 0, on_minute: 0, off_hour: 0, off_minute: 0, alert_sound: 0)
         @auto_on_off = auto_on_off
         @on_hour = on_hour
         @on_minute = on_minute

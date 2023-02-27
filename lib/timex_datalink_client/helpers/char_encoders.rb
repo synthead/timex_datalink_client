@@ -4,6 +4,7 @@ class TimexDatalinkClient
   class Helpers
     module CharEncoders
       CHARS = "0123456789abcdefghijklmnopqrstuvwxyz !\"#$%&'()*+,-./:\\;=@?_|<>[]"
+      CHARS_PROTOCOL_6 = "0123456789 abcdefghijklmnopqrstuvwxyz!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
       EEPROM_CHARS = "0123456789abcdefghijklmnopqrstuvwxyz !\"#$%&'()*+,-./:\\;=@?_|<>["
       PHONE_CHARS = "0123456789cfhpw "
       INVALID_CHAR = " "
@@ -17,6 +18,10 @@ class TimexDatalinkClient
         formatted_chars.each_char.map do |char|
           char_map.index(char) || char_map.index(INVALID_CHAR)
         end
+      end
+
+      def protocol_6_chars_for(string_chars, length: nil, pad: false)
+        chars_for(string_chars, char_map: CHARS_PROTOCOL_6, length: length, pad: pad)
       end
 
       def eeprom_chars_for(string_chars, length: 31)

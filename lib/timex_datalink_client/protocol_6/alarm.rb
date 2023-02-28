@@ -73,7 +73,7 @@ class TimexDatalinkClient
 
       # Create an Alarm instance.
       #
-      # @param number [Integer] Alarm number (from 1 to 5).
+      # @param number [Integer] Alarm number (from 1 to 8).
       # @param status [Symbol] Alarm status (:armed, :disarmed, or :unused).
       # @param time [::Time] Time of alarm.
       # @param message [String] Alarm message text.

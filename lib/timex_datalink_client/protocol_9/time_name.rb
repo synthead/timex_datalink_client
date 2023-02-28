@@ -24,7 +24,7 @@ class TimexDatalinkClient
       # Create a TimeName instance.
       #
       # @param zone [Integer] Time zone number (1 or 2).
-      # @param name [String] Name of time zone (3 chars max)
+      # @param name [String] Name of time zone (3 chars max).
       # @return [TimeName] TimeName instance.
       def initialize(zone:, name:)
         @zone = zone

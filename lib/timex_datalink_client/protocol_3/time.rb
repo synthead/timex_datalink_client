@@ -42,7 +42,7 @@ class TimexDatalinkClient
       # @param date_format ["%_m-%d-%y", "%_d-%m-%y", "%y-%m-%d", "%_m.%d.%y", "%_d.%m.%y", "%y.%m.%d"] Date format
       #   (represented by Time#strftime format).
       # @param time [::Time] Time to set (including time zone).
-      # @param name [String, nil] Name of time zone (defaults to zone from time; 3 chars max)
+      # @param name [String, nil] Name of time zone (defaults to zone from time; 3 chars max).
       # @return [Time] Time instance.
       def initialize(zone:, is_24h:, date_format:, time:, name: nil)
         @zone = zone

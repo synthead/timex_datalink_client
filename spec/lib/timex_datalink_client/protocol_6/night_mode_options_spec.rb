@@ -38,7 +38,7 @@ describe TimexDatalinkClient::Protocol6::NightModeOptions do
       end
     end
 
-    context "when indiglo_timeout_seconds is 19" do
+    context "when indiglo_timeout_seconds is 10" do
       let(:indiglo_timeout_seconds) { 10 }
 
       it_behaves_like "CRC-wrapped packets", [[0x72, 0x00, 0x08, 0x0a]]

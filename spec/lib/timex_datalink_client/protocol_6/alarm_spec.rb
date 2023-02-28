@@ -87,7 +87,7 @@ describe TimexDatalinkClient::Protocol6::Alarm do
     end
 
     context "when status is :an_invalid_symbol" do
-      let(:status) { :invalid_status}
+      let(:status) { :invalid_status }
 
       it do
         expect { packets }.to raise_error(

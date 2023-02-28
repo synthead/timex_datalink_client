@@ -43,6 +43,7 @@ require "timex_datalink_client/protocol_4/sync"
 require "timex_datalink_client/protocol_4/time"
 require "timex_datalink_client/protocol_4/wrist_app"
 
+require "timex_datalink_client/protocol_6/alarm"
 require "timex_datalink_client/protocol_6/end"
 require "timex_datalink_client/protocol_6/night_mode_options"
 require "timex_datalink_client/protocol_6/pager_options"

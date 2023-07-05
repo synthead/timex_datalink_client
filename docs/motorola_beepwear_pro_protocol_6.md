@@ -23,7 +23,7 @@ TimexDatalinkClient::Protocol6::Time.new(
   zone: 2,
   flex_time: true,
   flex_time_zone: true,
-  is_24h: false,
+  is_24h: true,
   date_format: "%_m-%d-%y"
 )
 ```

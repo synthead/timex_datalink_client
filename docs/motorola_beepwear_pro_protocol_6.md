@@ -40,7 +40,6 @@ format:
 |`"%_d.%m.%y"`|` 6.09.23`|
 |`"%y.%m.%d"`|`23.09.06`|
 
-
 ## Watch Options
 
 ![image](https://github.com/synthead/timex_datalink_client/assets/820984/a706d85c-725d-45ad-af20-0f22476ddd60)

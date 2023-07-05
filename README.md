@@ -71,9 +71,8 @@ You're done!  From here, continue reading the documentation for which protocol t
 
 ## Determining the protocol to use
 
-On Timex Datalink watches, pressing the center button on the right will change its mode.  Press this button until "COMM
-MODE" is displayed, then "COMM READY" will appear.  This is sometimes accompanied by a version number.  Use the table
-below to identify the protocol.
+On Timex Datalink watches, press the MODE button until "COMM MODE" is displayed.  "COMM READY" will appear.  This is
+sometimes accompanied by a version number.  Use the table below to identify the protocol.
 
 <table>
   <tr>

@@ -137,7 +137,7 @@ TimexDatalinkClient::Protocol4::Time.new(
 )
 ```
 
-Here are the valid values for `action_at_end`, represented by
+Here are the valid values for `date_format`, represented by
 [Time#strftime format](https://apidock.com/ruby/DateTime/strftime), followed by an example of 2023-09-06 in `%Y-%m-%d`
 format:
 

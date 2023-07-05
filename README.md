@@ -110,7 +110,7 @@ sometimes accompanied by a version number.  Use the table below to identify the 
     <td>
       <image src="https://user-images.githubusercontent.com/820984/190326340-3ffba239-ea9e-4595-83ae-c261be284a30.png">
     </td>
-    <td>Protocol 6 (currently not supported)</td>
+    <td>Use protocol 6 models in <code>TimexDatalinkClient::Protocol6</code></td>
   </tr>
 </table>
 

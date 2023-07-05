@@ -164,7 +164,7 @@ class TimexDatalinkClient
         return name if name
         return time.zone if time.zone
 
-        "TZ#{zone}"
+        "tz#{zone}"
       end
 
       def name_characters

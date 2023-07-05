@@ -73,5 +73,21 @@ describe TimexDatalinkClient::Protocol9::TimeName do
         [0x31, 0x01, 0x15, 0x18, 0x17]
       ]
     end
+
+    context "when name is nil" do
+      let(:name) { nil }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x31, 0x01, 0x1d, 0x23, 0x01]
+      ]
+
+      context "when zone is 2" do
+        let(:zone) { 2 }
+
+        it_behaves_like "CRC-wrapped packets", [
+          [0x31, 0x02, 0x1d, 0x23, 0x02]
+        ]
+      end
+    end
   end
 end

@@ -128,6 +128,22 @@ describe TimexDatalinkClient::Protocol4::Time do
       ]
     end
 
+    context "when time does not contain a time zone" do
+      let(:time) { Time.new(1997, 9, 19, 19, 36, 55, 0) }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x37, 0x13, 0x24, 0x09, 0x13, 0x61, 0x1d, 0x23, 0x01, 0x04, 0x01, 0x00]
+      ]
+
+      context "when zone is 2" do
+        let(:zone) { 2 }
+
+        it_behaves_like "CRC-wrapped packets", [
+          [0x32, 0x02, 0x37, 0x13, 0x24, 0x09, 0x13, 0x61, 0x1d, 0x23, 0x02, 0x04, 0x01, 0x00]
+        ]
+      end
+    end
+
     context "when name is \"1\"" do
       let(:name) { "1" }
 

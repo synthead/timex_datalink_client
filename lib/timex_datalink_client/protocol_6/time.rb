@@ -161,10 +161,7 @@ class TimexDatalinkClient
       end
 
       def formatted_name
-        return name if name
-        return time.zone if time.zone
-
-        "tz#{zone}"
+        name || time.zone || "tz#{zone}"
       end
 
       def name_characters

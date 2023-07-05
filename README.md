@@ -1,8 +1,8 @@
 # Timex Datalink library for Ruby
 
 Here is a fully-tested, feature-complete, and byte-for-byte perfect reimplementation of the Timex Datalink client
-software as a Ruby library!  This library supports protocols 1, 3, 4, 7, and 9, which covers almost every Timex Datalink
-device!
+software as a Ruby library!  This library supports every Datalink device manufactured, which includes protocols 1, 3, 4,
+6, 7, and 9!
 
 These devices have been tested to work with this library:
 
@@ -10,13 +10,11 @@ These devices have been tested to work with this library:
 - Timex Datalink 70 (protocol 1)
 - Timex Datalink 150 (protocol 3)
 - Timex Datalink 150s (protocol 4)
+- Motorola Beepwear Pro (protocol 6)
 - Timex Ironman Triathlon (protocol 9)
 - Franklin Rolodex Flash PC Companion RFLS-8 (protocol 1)
 - Royal FL95 PC Organizer (protocol 1)
 - DSI e-BRAIN (protocol 7)
-
-Protocol 6 is not currently supported.  The only known product to use this protocol is the Motorola Beepwear Pro.  This
-may be supported sometime in the future!
 
 ## What is the Timex Datalink?
 

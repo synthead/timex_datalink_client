@@ -49,8 +49,12 @@ class TimexDatalinkClient
 
       private
 
+      def name_formatted
+        name || "tz#{zone}"
+      end
+
       def name_characters
-        chars_for(name, length: 3, pad: true)
+        chars_for(name_formatted, length: 3, pad: true)
       end
     end
   end

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "active_model"
-
 require "timex_datalink_client/helpers/cpacket_paginator"
 require "timex_datalink_client/helpers/crc_packets_wrapper"
 require "timex_datalink_client/helpers/lsb_msb_formatter"
@@ -9,7 +7,6 @@ require "timex_datalink_client/helpers/lsb_msb_formatter"
 class TimexDatalinkClient
   class Protocol6
     class Eeprom
-      include ActiveModel::Validations
       include Helpers::CpacketPaginator
       include Helpers::LsbMsbFormatter
       prepend Helpers::CrcPacketsWrapper
@@ -36,8 +33,6 @@ class TimexDatalinkClient
       # @raise [ActiveModel::ValidationError] One or more model values are invalid.
       # @return [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
       def packets
-        validate!
-
         [CPACKET_CLEAR, header] + payloads + [CPACKET_END]
       end
 

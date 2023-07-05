@@ -136,7 +136,7 @@ describe TimexDatalinkClient::Protocol3::Time do
       ]
     end
 
-    context "when name is \"<>[" do
+    context "when name is \"<>[\"" do
       let(:name) { "<>[" }
 
       it_behaves_like "CRC-wrapped packets", [

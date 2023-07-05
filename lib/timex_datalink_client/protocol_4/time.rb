@@ -33,7 +33,7 @@ class TimexDatalinkClient
         message: "%{value} is invalid!  Valid date formats are #{DATE_FORMAT_MAP.keys}."
       }
 
-      attr_accessor :zone, :is_24h, :date_format, :time
+      attr_accessor :zone, :is_24h, :date_format, :time, :name
 
       # Create a Time instance.
       #
@@ -79,12 +79,12 @@ class TimexDatalinkClient
 
       private
 
-      def name
-        @name || time.zone || "tz#{zone}"
+      def name_formatted
+        name || time.zone || "tz#{zone}"
       end
 
       def name_characters
-        chars_for(name, length: 3, pad: true)
+        chars_for(name_formatted, length: 3, pad: true)
       end
 
       def year_mod_1900

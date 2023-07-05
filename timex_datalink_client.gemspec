@@ -103,11 +103,4 @@ Gem::Specification.new do |s|
   s.add_dependency "crc", "~> 0.4.2"
   s.add_dependency "mdb", "~> 0.5.0"
   s.add_dependency "rubyserial", "~> 0.6.0"
-
-  s.add_development_dependency "mdl", "~> 0.12.0"
-  s.add_development_dependency "rspec", "~> 3.12.0"
-  s.add_development_dependency "rubocop", "~> 1.54.1"
-  s.add_development_dependency "rubocop-github", "~> 0.20.0"
-  s.add_development_dependency "tzinfo", "~> 2.0.5"
-  s.add_development_dependency "yard-junk", "~> 0.0.9"
 end

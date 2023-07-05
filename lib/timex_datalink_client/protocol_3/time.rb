@@ -80,7 +80,7 @@ class TimexDatalinkClient
       private
 
       def name
-        @name || time.zone.downcase
+        @name || time.zone || "tz#{zone}"
       end
 
       def name_characters

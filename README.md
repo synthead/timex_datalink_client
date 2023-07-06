@@ -123,12 +123,12 @@ Most non-Timex devices use protocol 1, so start with protocol 1 if the protocol 
 
 Each protocol is individually documented with their own code examples:
 
-- [Using TimexDatalinkClient with Protocol 1](docs/timex_datalink_protocol_1.md)
-- [Using TimexDatalinkClient with Protocol 3](docs/timex_datalink_protocol_3.md)
-- [Using TimexDatalinkClient with Protocol 4](docs/timex_datalink_protocol_4.md)
-- [Using TimexDatalinkClient with Protocol 6](docs/motorola_beepwear_pro_protocol_6.md)
-- [Using TimexDatalinkClient with Protocol 7](docs/dsi_ebrain_protocol_7.md)
-- [Using TimexDatalinkClient with Protocol 9](docs/timex_ironman_triathlon_protocol_9.md)
+- [Using TimexDatalinkClient with Protocol 1](docs/timex_datalink_protocol_1.md) (Timex Datalink 50 & 70, various PDAs)
+- [Using TimexDatalinkClient with Protocol 3](docs/timex_datalink_protocol_3.md) (Timex Datalink 150)
+- [Using TimexDatalinkClient with Protocol 4](docs/timex_datalink_protocol_4.md) (Timex Datalink 150s)
+- [Using TimexDatalinkClient with Protocol 6](docs/motorola_beepwear_pro_protocol_6.md) (Motorola Beepwear Pro)
+- [Using TimexDatalinkClient with Protocol 7](docs/dsi_ebrain_protocol_7.md) (DSI e-BRAIN)
+- [Using TimexDatalinkClient with Protocol 9](docs/timex_ironman_triathlon_protocol_9.md) (Timex Ironman Triathlon)
 
 ## Tuning data transfer performance
 

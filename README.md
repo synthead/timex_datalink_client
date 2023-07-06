@@ -1,8 +1,8 @@
 # Timex Datalink library for Ruby
 
-Here is a fully-tested, feature-complete, and byte-for-byte perfect reimplementation of the Timex Datalink client
-software as a Ruby library!  This library supports every Datalink device manufactured, which includes protocols 1, 3, 4,
-6, 7, and 9!
+Here is a fully-tested, feature-complete, and byte-for-byte perfect reimplementation of all the various Timex Datalink
+client software as a Ruby library!  This library supports every Datalink device manufactured, which includes protocols
+1, 3, 4, 6, 7, and 9!
 
 These devices have been tested to work with this library:
 
@@ -119,9 +119,9 @@ protocol doesn't match the device, the screen will display "PC-WATCH MISMATCH" a
 
 Most non-Timex devices use protocol 1, so start with protocol 1 if the protocol can't be identified.
 
-## Code examples
+## Protocol documentation
 
-Code examples for supported protocols have their own documentation:
+Each protocol is individually documented with their own code examples:
 
 - [Using TimexDatalinkClient with Protocol 1](docs/timex_datalink_protocol_1.md)
 - [Using TimexDatalinkClient with Protocol 3](docs/timex_datalink_protocol_3.md)

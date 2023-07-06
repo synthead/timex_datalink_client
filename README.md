@@ -121,7 +121,7 @@ Most non-Timex devices use protocol 1, so start with protocol 1 if the protocol 
 
 ## Code examples
 
-Code examples for supported protocols have their own documentation:
+Each protocol is individually documented with their own code examples:
 
 - [Using TimexDatalinkClient with Protocol 1](docs/timex_datalink_protocol_1.md)
 - [Using TimexDatalinkClient with Protocol 3](docs/timex_datalink_protocol_3.md)

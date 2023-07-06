@@ -122,7 +122,7 @@ TimexDatalinkClient::Protocol7::Eeprom.new(calendar: calendar)
 phrase_builder = TimexDatalinkClient::Protocol7::PhraseBuilder.new(database: "pcvocab.mdb")
 
 dog_sitter = phrase_builder.vocab_ids_for("Dog", "Sitter")
-mom_and_dad = phrase_builder.vocab_ids_for("Mom", "And", "Dad")
+ebrain_mom_and_dad = phrase_builder.vocab_ids_for("eBrain", "Mom", "And", "Dad")
 
 phone_numbers = [
   TimexDatalinkClient::Protocol7::Eeprom::PhoneNumber.new(
@@ -130,7 +130,7 @@ phone_numbers = [
     number: "8675309"
   ),
   TimexDatalinkClient::Protocol7::Eeprom::PhoneNumber.new(
-    name: mom_and_dad,
+    name: ebrain_mom_and_dad,
     number: "7133659900"
   )
 ]
@@ -239,7 +239,7 @@ calendar = TimexDatalinkClient::Protocol7::Eeprom::Calendar.new(
 )
 
 dog_sitter = phrase_builder.vocab_ids_for("Dog", "Sitter")
-mom_and_dad = phrase_builder.vocab_ids_for("Mom", "And", "Dad")
+ebrain_mom_and_dad = phrase_builder.vocab_ids_for("eBrain", "Mom", "And", "Dad")
 
 phone_numbers = [
   TimexDatalinkClient::Protocol7::Eeprom::PhoneNumber.new(
@@ -247,7 +247,7 @@ phone_numbers = [
     number: "8675309"
   ),
   TimexDatalinkClient::Protocol7::Eeprom::PhoneNumber.new(
-    name: mom_and_dad,
+    name: ebrain_mom_and_dad,
     number: "7133659900"
   )
 ]

@@ -77,7 +77,7 @@ TimexDatalinkClient::Protocol9::Timer.new(
 TimexDatalinkClient::Protocol9::Timer.new(
   number: 4,
   label: "TIMER 4",
-  time: Time.new(0, 1, 1, 1, 30, 0),  # Year, month, and day is ignored.
+  time: Time.new(0, 1, 1, 0, 30, 0),  # Year, month, and day is ignored.
   action_at_end: :stop_timer
 )
 

@@ -86,11 +86,13 @@ class TimexDatalinkClient
   # @param serial_device [String, nil] Path to serial device.
   # @param models [Array<Protocol1::Sync, Protocol1::Start, Protocol1::Time, Protocol1::TimeName, Protocol1::Alarm,
   #   Protocol1::Eeprom, Protocol1::End, Protocol3::Sync, Protocol3::Start, Protocol3::Time, Protocol3::Alarm,
-  #   Protocol3::Eeprom, Protocol3::SoundTheme, Protocol3::SoundOptions, Protocol3::WristApp, Protocol3::End,
-  #   Protocol4::Sync, Protocol4::Start, Protocol4::Time, Protocol4::Alarm, Protocol4::Eeprom, Protocol4::SoundTheme,
-  #   Protocol4::SoundOptions, Protocol4::WristApp, Protocol4::End, Protocol7::Sync, Protocol7::Start,
+  #   Protocol3::SoundTheme, Protocol3::SoundOptions, Protocol3::WristApp, Protocol3::Eeprom, Protocol3::End,
+  #   Protocol4::Sync, Protocol4::Start, Protocol4::Time, Protocol4::Alarm, Protocol4::SoundTheme,
+  #   Protocol4::SoundOptions, Protocol4::WristApp, Protocol4::Eeprom, Protocol4::End, Protocol6::Sync,
+  #   Protocol6::Start, Protocol6::Time, Protocol6::Alarm, Protocol6::PagerOptions, Protocol6::NightModeOptions,
+  #   Protocol6::SoundScrollOptions, Protocol6::Eeprom, Protocol6::End, Protocol7::Sync, Protocol7::Start,
   #   Protocol7::Eeprom, Protocol7::End, Protocol9::Sync, Protocol9::Start, Protocol9::Time, Protocol9::TimeName,
-  #   Protocol9::Timer, Protocol9::Alarm, Protocol9::Eeprom, Protocol9::SoundOptions, Protocol9::End>] Models to compile
+  #   Protocol9::Alarm, Protocol9::Timer, Protocol9::SoundOptions, Protocol9::Eeprom, Protocol9::End>] Models to compile
   #   data for.
   # @param byte_sleep [Integer, nil] Time to sleep after sending byte.
   # @param packet_sleep [Integer, nil] Time to sleep after sending packet of bytes.

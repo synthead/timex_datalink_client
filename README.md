@@ -119,7 +119,7 @@ protocol doesn't match the device, the screen will display "PC-WATCH MISMATCH" a
 
 Most non-Timex devices use protocol 1, so start with protocol 1 if the protocol can't be identified.
 
-## Code examples
+## Protocol documentation
 
 Each protocol is individually documented with their own code examples:
 

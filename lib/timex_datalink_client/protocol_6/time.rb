@@ -141,23 +141,23 @@ class TimexDatalinkClient
       end
 
       def second
-        flex_time ? 0 : formatted_time.sec
+        flex_time ? 0 : time.sec
       end
 
       def hour
-        flex_time ? 0 : formatted_time.hour
+        flex_time ? 0 : time.hour
       end
 
       def minute
-        flex_time ? 0 : formatted_time.min
+        flex_time ? 0 : time.min
       end
 
       def month
-        flex_time ? 0 : formatted_time.month
+        flex_time ? 0 : time.month
       end
 
       def day
-        flex_time ? 0 : formatted_time.day
+        flex_time ? 0 : time.day
       end
 
       def formatted_name
@@ -169,15 +169,11 @@ class TimexDatalinkClient
       end
 
       def year_mod_1900
-        flex_time ? 0 : formatted_time.year % 100
+        flex_time ? 0 : time.year % 100
       end
 
       def wday_from_monday
-        flex_time ? 0 : (formatted_time.wday + 6) % 7
-      end
-
-      def formatted_time
-        time.dst? ? time + 3600 : time
+        flex_time ? 0 : (time.wday + 6) % 7
       end
 
       def formatted_utc_offset

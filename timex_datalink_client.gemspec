@@ -102,5 +102,5 @@ Gem::Specification.new do |s|
   s.add_dependency "activemodel", "~> 7.0.4"
   s.add_dependency "crc", "~> 0.4.2"
   s.add_dependency "mdb", "~> 0.5.0"
-  s.add_dependency "rubyserial", "~> 0.6.0"
+  s.add_dependency "serialport", "~> 1.3.2"
 end

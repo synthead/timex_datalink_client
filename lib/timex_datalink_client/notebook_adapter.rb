@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "rubyserial"
+require "serialport"
 
 class TimexDatalinkClient
   class NotebookAdapter
@@ -32,7 +32,7 @@ class TimexDatalinkClient
         packet.each do |byte|
           printf("%.2X ", byte) if verbose
 
-          serial.write(byte.chr)
+          serial_port.write(byte.chr)
 
           sleep(byte_sleep)
         end
@@ -45,8 +45,8 @@ class TimexDatalinkClient
 
     private
 
-    def serial
-      @serial ||= Serial.new(serial_device)
+    def serial_port
+      @serial_port ||= SerialPort.new(serial_device)
     end
   end
 end

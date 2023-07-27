@@ -5,8 +5,10 @@ software version 2.1d.
 
 ![image](https://user-images.githubusercontent.com/820984/190341990-540fd072-4380-4c01-b5d4-5f2f2b78950f.png)
 
-Please note that WristApps and Watch Sounds are not supported in protocol 1.  They are visible in the Timex Datalink
-software, but when the buttons are clicked, it will display a dialog about the feature is not supported.
+Please note that WristApps and Watch Sounds are not supported in protocol 1, even though buttons are visible for them in
+the Timex Datalink software when protocol 1 is configured.  When these buttons are clicked, it will display
+[a dialog box about how the feature is not supported](
+https://github.com/synthead/timex_datalink_client/assets/820984/62520403-2943-4a41-8256-631fada3a5b7).
 
 ## Appointments
 

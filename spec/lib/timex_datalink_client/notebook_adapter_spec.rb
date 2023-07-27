@@ -25,10 +25,10 @@ describe TimexDatalinkClient::NotebookAdapter do
       ]
     end
 
-    let(:serial_double) { instance_double(Serial) }
+    let(:serial_double) { instance_double(SerialPort) }
 
     it "writes serial data with correct sleep lengths" do
-      expect(Serial).to receive(:new).with(serial_device).and_return(serial_double)
+      expect(SerialPort).to receive(:new).with(serial_device).and_return(serial_double)
 
       packets.each do |packet|
         packet.each do |byte|
@@ -43,7 +43,7 @@ describe TimexDatalinkClient::NotebookAdapter do
     end
 
     it "does not write to console" do
-      allow(Serial).to receive(:new).with(serial_device).and_return(serial_double)
+      allow(SerialPort).to receive(:new).with(serial_device).and_return(serial_double)
       allow(serial_double).to receive(:write)
       allow(notebook_adapter).to receive(:sleep)
 
@@ -57,7 +57,7 @@ describe TimexDatalinkClient::NotebookAdapter do
       let(:verbose) { true }
 
       it "writes serial data with console output" do
-        expect(Serial).to receive(:new).with(serial_device).and_return(serial_double)
+        expect(SerialPort).to receive(:new).with(serial_device).and_return(serial_double)
 
         packets.each do |packet|
           packet.each do |byte|

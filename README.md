@@ -57,7 +57,8 @@ Pro, Royal FL95, Tiger PDA2000, Franklin Rolodex Flash PC Companion RFLS-8, and 
 ## Installing Ruby and the timex\_datalink\_client gem
 
 If you need to install Ruby, follow the
-[Ruby installation instructions](https://www.ruby-lang.org/en/documentation/installation) first.
+[Ruby installation instructions](https://www.ruby-lang.org/en/documentation/installation) first.  The oldest supported
+version is 3.1.0, so make sure to have Ruby 3.1.0 or greater installed.
 
 Then, with Ruby installed, run this command to install the timex\_datalink\_client gem:
 

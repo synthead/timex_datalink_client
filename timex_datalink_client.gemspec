@@ -99,6 +99,8 @@ Gem::Specification.new do |s|
     "lib/timex_datalink_client/protocol_9/timer.rb"
   ]
 
+  s.required_ruby_version = ">= 3.1.0"
+
   s.add_dependency "activemodel", "~> 7.0.4"
   s.add_dependency "crc", "~> 0.4.2"
   s.add_dependency "mdb", "~> 0.5.0"

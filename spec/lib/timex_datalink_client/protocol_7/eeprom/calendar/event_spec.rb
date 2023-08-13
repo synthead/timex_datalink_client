@@ -50,7 +50,7 @@ describe TimexDatalinkClient::Protocol7::Eeprom::Calendar::Event do
       it do
         expect { phrase_value }.to raise_error(
           ActiveModel::ValidationError,
-          "Validation failed: Time 2021-12-23 18:30:20 UTC must be greater than device time!"
+          "Validation failed: Time 2021-12-23 18:30:20 UTC must be greater or equal to device time!"
         )
       end
     end

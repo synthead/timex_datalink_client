@@ -16,7 +16,7 @@ class TimexDatalinkClient
 
           validates :time, comparison: {
             greater_than_or_equal_to: :device_time,
-            message: "%{value} must be greater than device time!"
+            message: "%{value} must be greater or equal to device time!"
           }
 
           attr_accessor :time, :phrase, :device_time

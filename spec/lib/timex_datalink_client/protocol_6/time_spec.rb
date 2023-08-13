@@ -133,6 +133,15 @@ describe TimexDatalinkClient::Protocol6::Time do
       ]
     end
 
+    context "when time is in daylight savings time" do
+      let(:tzinfo) { TZInfo::Timezone.get("US/Pacific") }
+      let(:time) { tzinfo.local_time(2015, 10, 21, 19, 28, 32) }
+
+      it_behaves_like "CRC-wrapped packets", [
+        [0x32, 0x01, 0x20, 0x13, 0x1c, 0x0a, 0x15, 0x0f, 0x1a, 0x0e, 0x1e, 0x02, 0x18, 0x01, 0x00]
+      ]
+    end
+
     context "when time has a UTC offset of -11:00" do
       let(:utc_offset) { "-11:00" }
 

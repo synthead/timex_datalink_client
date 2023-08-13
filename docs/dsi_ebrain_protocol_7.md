@@ -218,17 +218,18 @@ games = TimexDatalinkClient::Protocol7::Eeprom::Games.new(
 )
 
 time = Time.now
+tomorrow = time.to_date + 1
 
 breakfast_with_cousins = phrase_builder.vocab_ids_for("Breakfast", "With", "Cousins")
 crashing_around_the_house = phrase_builder.vocab_ids_for("Crashing", "Around", "The", "House")
 
 events = [
   TimexDatalinkClient::Protocol7::Eeprom::Calendar::Event.new(
-    time: Time.new(time.year, time.month, time.day + 1, 9, 0, 0),
+    time: Time.new(tomorrow.year, tomorrow.month, tomorrow.day, 9, 0, 0),
     phrase: breakfast_with_cousins
   ),
   TimexDatalinkClient::Protocol7::Eeprom::Calendar::Event.new(
-    time: Time.new(time.year, time.month, time.day + 1, 19, 0, 0),
+    time: Time.new(tomorrow.year, tomorrow.month, tomorrow.day, 19, 0, 0),
     phrase: crashing_around_the_house
   )
 ]

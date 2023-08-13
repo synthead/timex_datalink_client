@@ -224,11 +224,11 @@ crashing_around_the_house = phrase_builder.vocab_ids_for("Crashing", "Around", "
 
 events = [
   TimexDatalinkClient::Protocol7::Eeprom::Calendar::Event.new(
-    time: Time.new(2022, 12, 13, 9, 0, 0),
+    time: Time.new(time.year, time.month, time.day + 1, 9, 0, 0),
     phrase: breakfast_with_cousins
   ),
   TimexDatalinkClient::Protocol7::Eeprom::Calendar::Event.new(
-    time: Time.new(2022, 12, 13, 19, 0, 0),
+    time: Time.new(time.year, time.month, time.day + 1, 19, 0, 0),
     phrase: crashing_around_the_house
   )
 ]

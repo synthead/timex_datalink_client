@@ -43,5 +43,16 @@ describe TimexDatalinkClient::Protocol7::Eeprom::Calendar::Event do
 
       it { should eq([0x7e, 0x0f]) }
     end
+
+    context "when time is 2021-12-10 15:28:15" do
+      let(:time) { Time.utc(2021, 12, 23, 18, 30, 20) }
+
+      it do
+        expect { phrase_value }.to raise_error(
+          ActiveModel::ValidationError,
+          "Validation failed: Time 2021-12-23 18:30:20 UTC must be greater or equal to device time!"
+        )
+      end
+    end
   end
 end

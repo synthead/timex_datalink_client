@@ -39,7 +39,7 @@ jobs:
           bundler-cache: true
       - run: gem build timex_datalink_client.gemspec
       - run: gem install timex_datalink_client-*.gem
-      - run: ruby -e 'require "timex_datalink_client"'
+      - run: bundle exec ruby -e 'require "timex_datalink_client"'
 
   markdownlint:
     runs-on: ubuntu-latest

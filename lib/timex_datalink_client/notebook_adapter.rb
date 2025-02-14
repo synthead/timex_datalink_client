@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "serialport"
+require "uart"
 
 class TimexDatalinkClient
   class NotebookAdapter
@@ -28,25 +28,21 @@ class TimexDatalinkClient
     # @param packets [Array<Array<Integer>>] Two-dimensional array of integers that represent bytes.
     # @return [void]
     def write(packets)
-      packets.each do |packet|
-        packet.each do |byte|
-          printf("%.2X ", byte) if verbose
+      UART.open(serial_device) do |serial_port|
+        packets.each do |packet|
+          packet.each do |byte|
+            printf("%.2X ", byte) if verbose
 
-          serial_port.write(byte.chr)
+            serial_port.write(byte.chr)
 
-          sleep(byte_sleep)
+            sleep(byte_sleep)
+          end
+
+          sleep(packet_sleep)
+
+          puts if verbose
         end
-
-        sleep(packet_sleep)
-
-        puts if verbose
       end
-    end
-
-    private
-
-    def serial_port
-      @serial_port ||= SerialPort.new(serial_device)
     end
   end
 end

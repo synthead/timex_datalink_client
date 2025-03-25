@@ -71,7 +71,7 @@ describe TimexDatalinkClient do
   describe "VERSION" do
     subject(:version) { described_class::VERSION }
 
-    it { should eq("0.12.3") }
+    it { should eq("0.12.4") }
   end
 
   describe "#write" do
